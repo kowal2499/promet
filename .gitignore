@@ -1,0 +1,27 @@
+/*
+!wp-content/
+
+wp-content/*
+#!wp-content/plugins/
+!wp-content/themes/
+
+wp-content/themes/*
+!wp-content/themes/promet
+
+wp-content/themes/promet/node_modules/*
+wp-content/themes/promet/sass/*
+!wp-content/themes/promet/sass/specific
+
+# how it works?
+# ignore all files in /, then exclude wp-content folder in /
+# ignore entire content of wp-content except for plugins and themes
+# ignore all themes except for my particular theme
+# ignore node_modules folder in my theme folder
+# ignore the content of sass folder except for one specified folder
+# etc
+
+# white list of some files
+
+!.gitignore
+!README.md
+!CHANGELOG.md
