@@ -21,9 +21,12 @@
 </head>
 
 <body <?php body_class(); ?>>
+
+<div class="container">
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'promet' ); ?></a>
 
+	<div class="row">
 	<header id="masthead" class="site-header">
 		<div class="site-branding">
 			<?php
@@ -52,5 +55,7 @@
 			?>
 		</nav><!-- #site-navigation -->
 	</header><!-- #masthead -->
+	</div> <!-- .row -->
 
+	
 	<div id="content" class="site-content">
