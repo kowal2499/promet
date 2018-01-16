@@ -27,6 +27,6 @@
     });
 
     // create the default task
-    gulp.task('default', ['sass', 'browser-sync'], function() {
+    gulp.task('default', ['sass'/*, 'browser-sync'*/], function() {
         gulp.watch("sass/**/*.scss", ['sass'])
     });
