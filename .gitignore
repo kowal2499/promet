@@ -2,7 +2,14 @@
 !wp-content/
 
 wp-content/*
-#!wp-content/plugins/
+!wp-content/plugins/
+wp-content/plugins/*
+!wp-content/plugins/promet-plugins/
+
+wp-content/plugins/promet-plugins/public/*
+!wp-content/plugins/promet-plugins/public/sass/
+
+
 !wp-content/themes/
 
 wp-content/themes/*
