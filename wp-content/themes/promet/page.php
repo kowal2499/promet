@@ -8,6 +8,13 @@
 </head>
 <body <?php body_class(); ?>>
 
+
+<?php
+	$research = Research::getInstance();
+	var_dump($research->get());
+?>
+
+
 <?php wp_footer(); ?>
 </body>
 </html>
