@@ -129,7 +129,7 @@ class Widget_Setup {
         // odpal skrypty admina
         add_action('admin_enqueue_scripts', function() {
             if (!is_admin()) return;
-            $scripts = $this->front_scripts;
+            $scripts = $this->admin_scripts;
 
             foreach ($scripts as $script) {
                 wp_enqueue_script(

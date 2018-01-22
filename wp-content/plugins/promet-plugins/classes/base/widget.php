@@ -2,6 +2,9 @@
 include_once( plugin_dir_path( __FILE__ ) . 'custom_post_type.php');
 include_once( plugin_dir_path( __FILE__ ) . 'widget_setup.php');
 
+include_once( plugin_dir_path( __FILE__ ) . 'Research.php');
+include_once( plugin_dir_path( __FILE__ ) . 'Products.php');
+
 class Promet_Products_Widget extends WP_Widget {
 
     function __construct() {
@@ -15,9 +18,12 @@ class Promet_Products_Widget extends WP_Widget {
             ->enqueue_style('css.custom', plugins_url('/promet-plugins/public/css/custom.css'))
             ->enqueue_script('owl.carousel.js', plugins_url('/promet-plugins/public/js/owl.carousel.min.js'), 'jQuery', '1.0.0', true)
             ->enqueue_script('core.js', plugins_url('/promet-plugins/public/js/main.js'), 'jQuery', '1.0.0', true)
-            // ->debug();
+            ->enqueue_script_admin('core-admin.js', plugins_url('/promet-plugins/public/js/admin.js'), 'jQuery', '1.0', true)
             ->add_actions();
 
+        $research = Research::getInstance();
+        $products = Products::getInstance();
+        
   /*      new Widget_Setup(
             __CLASS__,
             $admin_styles,
@@ -32,34 +38,34 @@ class Promet_Products_Widget extends WP_Widget {
             )
         );
 */
-        $cpt = new Custom_Post_Type(
-                'research',
-                array(
-                    'name'              => __('Badania i Rozwój'),
-                    'singular_name'     => 'Element \'Badania i Rozwój\'',
-                    'add_new'           => 'Dodaj nowy element B&R',
-                    'add_new_item'      => 'Dodaj nowy element B&R',
-                    'all_items'         => 'Wszystkie elementy B&R'
-                ),
-                array(
-                    'public'            => true,
-                    'has_archive'       => true,
-                    'rewrite'           => array('slug' => 'badania'),
-                    'supports'          => array('title', 'editor', 'excerpt', 'thumbnail', 'custom_fields'),
-                    'menu_position'     => 6
-                ),
-                array(
-                    array(
-                        "name"      => "Promet Research Images",
-                        "fields"    => array(
-                                            'image01' => 'text',
-                                            'image02' => 'text',
-                                            'image03' => 'text'
-                                        )
-                    )
-                )
-        );
-
+        // $cpt = new Custom_Post_Type(
+        //         'research',
+        //         array(
+        //             'name'              => __('Badania i Rozwój'),
+        //             'singular_name'     => 'Element \'Badania i Rozwój\'',
+        //             'add_new'           => 'Dodaj nowy element B&R',
+        //             'add_new_item'      => 'Dodaj nowy element B&R',
+        //             'all_items'         => 'Wszystkie elementy B&R'
+        //         ),
+        //         array(
+        //             'public'            => true,
+        //             'has_archive'       => true,
+        //             'rewrite'           => array('slug' => 'badania'),
+        //             'supports'          => array('title', 'editor', 'excerpt', 'thumbnail', 'custom_fields'),
+        //             'menu_position'     => 6
+        //         ),
+        //         array(
+        //             array(
+        //                 "name"      => "Promet Research Images",
+        //                 "fields"    => array(
+        //                                     'image01' => 'text',
+        //                                     'image02' => 'text',
+        //                                     'image03' => 'text'
+        //                                 )
+        //             )
+        //         )
+        // );
+/*
         $cpt2 = new Custom_Post_Type(
                 'products',
                 array(
@@ -88,7 +94,7 @@ class Promet_Products_Widget extends WP_Widget {
                     )
                 )
         );
-
+*/
     }
     /**
      *  Zwraca tablicę produktów

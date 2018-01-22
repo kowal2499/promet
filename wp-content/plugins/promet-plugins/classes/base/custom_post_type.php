@@ -12,8 +12,6 @@ class Custom_Post_Type {
             add_action('init', array($this, 'register_post_type'));
         }
 
-
-
         foreach ($metaboxes as $metabox) {
             if (isset($metabox["name"]) && isset($metabox["fields"])) {
                 $this->add_meta_box($metabox["name"], $metabox["fields"]);
