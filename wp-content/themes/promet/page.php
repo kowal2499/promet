@@ -8,10 +8,15 @@
 </head>
 <body <?php body_class(); ?>>
 
+<?php
+	ini_set('xdebug.var_display_max_depth', 5);
+	ini_set('xdebug.var_display_max_children', 256);
+	ini_set('xdebug.var_display_max_data', 1024);
+?>
 
 <?php
 	$research = Research::getInstance();
-	var_dump($research->get());
+	var_dump($research->getAll());
 ?>
 
 

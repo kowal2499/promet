@@ -126,13 +126,15 @@ abstract class Custom_Post {
     }
 
 
-    public function get(): array {
+    public function getAll(): array {
         $items = array();
 
         $loop = new WP_Query( array( 'post_type' => $this->name, 'posts_per_page' => -1 ) );
         while ($loop->have_posts()): $loop->the_post();
-            $items[] = get_post(null, ARRAY_A);
-            $items["meta"] = get_post_meta(get_the_ID());
+            $item = [];
+            $item["general"] = get_post(null, ARRAY_A);
+            $item["meta"] = get_post_meta(get_the_ID());
+            $items[] = $item;
         endwhile;
         wp_reset_query();
 

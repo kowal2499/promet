@@ -90,15 +90,12 @@ class Widget_Setup {
 
     
     public function add_actions() {
-
+        if (is_admin() == true) {
+            // die();
+        }
         // odpal style
         add_action('wp_enqueue_scripts', function() {
-            $styles = ( is_admin() ) ? $this->admin_styles : $this->front_styles;
-            if (empty($styles)) {
-                return false;
-            }
-
-            foreach ($styles as $style) {
+            foreach ($this->front_styles as $style) {
                 wp_enqueue_style(
                     $style['handle'],
                     $style['src'],
@@ -121,6 +118,20 @@ class Widget_Setup {
                     $script['deps'],
                     $script['version'],
                     $script['inFooter']
+                );
+            }
+            return true;
+        });
+
+        // odpal style admina
+        add_action('admin_enqueue_scripts', function() {
+            foreach ($this->admin_styles as $style) {
+                wp_enqueue_style(
+                    $style['handle'],
+                    $style['src'],
+                    $style['deps'],
+                    $style['version'],
+                    $style['inFooter']
                 );
             }
             return true;
