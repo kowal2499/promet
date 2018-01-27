@@ -8,6 +8,14 @@
 </head>
 <body <?php body_class(); ?>>
 	<h2>Numer telefonu do nas: <?php echo get_option('phoneNumber01'); ?></h2>
+
+	<table>
+		<?php 
+			$opt = get_option(slideshow01);
+			var_dump(json_decode(urldecode($opt)));
+		?>
+
+	</table>
 <?php
 	ini_set('xdebug.var_display_max_depth', 5);
 	ini_set('xdebug.var_display_max_children', 256);
