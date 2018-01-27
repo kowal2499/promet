@@ -12,7 +12,7 @@
 	<table>
 		<?php 
 			$opt = get_option(slideshow01);
-			var_dump(json_decode(urldecode($opt)));
+			var_dump(json_decode(urldecode($opt), true));
 		?>
 
 	</table>
