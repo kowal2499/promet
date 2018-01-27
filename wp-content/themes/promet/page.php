@@ -7,7 +7,7 @@
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-
+	<h2>Numer telefonu do nas: <?php echo get_option('phoneNumber01'); ?></h2>
 <?php
 	ini_set('xdebug.var_display_max_depth', 5);
 	ini_set('xdebug.var_display_max_children', 256);
