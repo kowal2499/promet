@@ -1,4 +1,11 @@
-body {
-    $color: red;
-    background: $color;
+
+$colorGray: #454545;
+$colorLightGray: #999999;
+$colorWhite: #FFF;
+$white: #DDDDDD;
+
+@import "partials/header";
+
+[off-canvas] {
+    background-color: pink;
 }

@@ -54,7 +54,6 @@
 	</nav>
 
 	<section>
-	<i class="fas fa-user"></i>
 		<heading></heading>
 		<article></article>
 

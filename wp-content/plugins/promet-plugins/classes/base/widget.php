@@ -9,15 +9,21 @@ class Promet_Products_Widget extends WP_Widget {
         ));
 
         Widget_Setup::getInstance()
-            ->enqueue_style('bootstrap', plugins_url('/promet-plugins/public/css/bootstrap.min.css'))
-            // ->enqueue_style_admin('bootstrap_admin', plugins_url('/promet-plugins/public/css/bootstrap.min.css'))
-            ->enqueue_style('owl.carousel.base', plugins_url('/promet-plugins/public/css/owl.carousel.min.css'))
+            ->enqueue_style('bootstrap', plugins_url('/promet-plugins/public/css/vendor/bootstrap.min.css'))
+            ->enqueue_style('owl.carousel.base', plugins_url('/promet-plugins/public/css/vendor/owl.carousel.min.css'))
+            ->enqueue_style('slidebars', plugins_url('/promet-plugins/public/css/vendor/slidebars.min.css'))
+            ->enqueue_style('fontawsome', plugins_url('/promet-plugins/public/css/vendor/fontawesome-all.css'))
             ->enqueue_style('css.custom', plugins_url('/promet-plugins/public/css/custom.css'))
-            ->enqueue_script('owl.carousel.js', plugins_url('/promet-plugins/public/js/owl.carousel.min.js'), 'jQuery', '1.0.0', true)
-            ->enqueue_script('core.js', plugins_url('/promet-plugins/public/js/main.js'), 'jQuery', '1.0.0', true)
+
+            ->enqueue_script('jQuery3', plugins_url('/promet-plugins/public/js/vendor/jquery-3.3.1.min.js'), '', '1.0.0', true)
+            ->enqueue_script('owl.carousel', plugins_url('/promet-plugins/public/js/vendor/owl.carousel.min.js'), 'jQuery3', '1.0.0', true)
+            ->enqueue_script('bootstrap', plugins_url('/promet-plugins/public/js/vendor/bootstrap.min.js'), 'jQuery3', '1.0.0', true)
+            ->enqueue_script('slidebars', plugins_url('/promet-plugins/public/js/vendor/slidebars.min.js'), 'jQuery3', '1.0.0', true)
+
+            ->enqueue_script('core.js', plugins_url('/promet-plugins/public/js/main.js'), 'jQuery3', '1.0.0', true)
             ->enqueue_script_admin('core-admin.js', plugins_url('/promet-plugins/public/js/admin.js'), 'jQuery', '1.0', true)
             ->enqueue_script_admin('inputs-admin.js', plugins_url('/promet-plugins/admin/js/inputs.js'), 'jQuery', '1.0', true)
-            // ->enqueue_script_admin('bootstrap_admin.js', plugins_url('/promet-plugins/public/js/bootstrap.min.js'), 'jQuery', '1.0', true)
+            ->enqueue_script_admin('bootstrap_admin.js', plugins_url('/promet-plugins/public/js/bootstrap.min.js'), 'jQuery', '1.0', true)
             ->add_actions();
 
         $research = Research::getInstance();

@@ -1,0 +1,76 @@
+#header {
+    background-color: $colorGray;
+    height: 140px;
+
+    .container {
+        position: relative;
+    }
+
+    .tile-info {
+        float: right;
+        margin: 10px 5px;
+        
+
+        & + .tile-info {
+            border-right: 1px solid $colorLightGray;
+            padding-right: 10px;
+        }
+
+        .icon {
+            display: inline-block;
+            color: $colorLightGray;
+            width: 30px;
+            // height: 45px;
+            -webkit-transition: all 0.3s;
+            -moz-transition: all 0.3s;
+            -o-transition: all 0.3s;
+            -ms-transition: all 0.3s;
+            transition: all 0.3s;
+        }
+
+        .desc {
+            display: inline-block;
+            height: 45px;
+            ul {
+                margin: 0;
+                padding: 0;
+                padding-left: 3px;
+                list-style-type: none;
+                li {
+                    text-align: left;
+                    &.rowTop {
+                        color: $white;;
+                    }
+                    &.rowBottom {
+                        color: $colorLightGray;
+                    }
+                }
+                
+            }
+        }
+        &:hover {
+            .icon {
+                color: $white;
+            }
+        }
+    }
+
+    .tile-logo {
+        width: 250px;
+        float: left;
+        margin: 10px 10px;
+    }
+
+    .menuBar {
+        position: absolute;
+        left: 0;
+        right: 0;
+        width: 100%;
+        display: block;
+        height: 80px;
+        background-color: $colorWhite;
+
+        background: linear-gradient(to bottom, #ffffff 0%, #eeeeee 10);
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.25)        
+    }
+}
