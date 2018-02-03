@@ -22,7 +22,7 @@ class Promet_Products_Widget extends WP_Widget {
             ->enqueue_script('bootstrap', plugins_url('/promet-plugins/public/js/vendor/bootstrap.min.js'), 'jQuery3', '1.0.0', true)
             ->enqueue_script('slidebars', plugins_url('/promet-plugins/public/js/vendor/slidebars.min.js'), 'jQuery3', '1.0.0', true)
 
-            ->enqueue_script('core.js', plugins_url('/promet-plugins/public/js/main.js'), 'jQuery3', '1.0.0', true)
+            ->enqueue_script('app', plugins_url('/promet-plugins/public/js/app.js'), 'jQuery3', '1.0.0', true)
             ->enqueue_script_admin('core-admin.js', plugins_url('/promet-plugins/public/js/admin.js'), 'jQuery', '1.0', true)
             ->enqueue_script_admin('inputs-admin.js', plugins_url('/promet-plugins/admin/js/inputs.js'), 'jQuery', '1.0', true)
             ->enqueue_script_admin('bootstrap_admin.js', plugins_url('/promet-plugins/public/js/bootstrap.min.js'), 'jQuery', '1.0', true)

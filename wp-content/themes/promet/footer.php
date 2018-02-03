@@ -1,7 +1,5 @@
     </div><!-- .canvas -->
-	<div off-canvas="id-1 left reveal">
-		To jest treść sidebara
-	</div>
+	<?php get_template_part( 'template-parts/content-footer_mobile', get_post_format() ); ?>
 
 <?php wp_footer(); ?>
 
