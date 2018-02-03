@@ -4,61 +4,77 @@
 
     .container {
         position: relative;
+        padding: 0;
     }
 
-    .tile-info {
-        float: right;
-        margin: 10px 5px;
-        
+    .infoBar {
+        width: 100%;
+        height: 100px;
+        position: relative;
 
-        & + .tile-info {
-            border-right: 1px solid $colorLightGray;
+        .sideLeft {
+            position: absolute;
+            left: 0;
+            top: 10px;
+            text-align: left;
+            img {
+                width: 250px;
+            }
+        }
+        .sideRight {
+            position: absolute;
+            right: 0;
+            top: 25px;
+            text-align: right;
+        }
+
+        .tile {
+            display: inline-block;
             padding-right: 10px;
-        }
-
-        .icon {
-            display: inline-block;
-            color: $colorLightGray;
-            width: 30px;
-            // height: 45px;
-            -webkit-transition: all 0.3s;
-            -moz-transition: all 0.3s;
-            -o-transition: all 0.3s;
-            -ms-transition: all 0.3s;
-            transition: all 0.3s;
-        }
-
-        .desc {
-            display: inline-block;
-            height: 45px;
-            ul {
-                margin: 0;
-                padding: 0;
-                padding-left: 3px;
-                list-style-type: none;
-                li {
-                    text-align: left;
-                    &.rowTop {
-                        color: $white;;
-                    }
-                    &.rowBottom {
-                        color: $colorLightGray;
-                    }
-                }
-                
+            & + .tile {
+                border-left: 1px solid $colorLightGray;
             }
-        }
-        &:hover {
+
             .icon {
-                color: $white;
+                display: inline-block;
+                padding: 10px;
+                color: $colorLightGray;
+                -webkit-transition: all 0.3s;
+                -moz-transition: all 0.3s;
+                -o-transition: all 0.3s;
+                -ms-transition: all 0.3s;
+                transition: all 0.3s;
+                i {
+                    display: block;
+                }
+            }
+    
+            .desc {
+                display: inline-block;
+                height: 45px;
+                ul {
+                    margin: 0;
+                    padding: 0;
+                    padding-left: 3px;
+                    list-style-type: none;
+                    li {
+                        text-align: left;
+                        &.rowTop {
+                            color: $white;;
+                        }
+                        &.rowBottom {
+                            color: $colorLightGray;
+                        }
+                    }
+                    
+                }
+            }
+            &:hover {
+                .icon {
+                    color: $white;
+                }
             }
         }
-    }
-
-    .tile-logo {
-        width: 250px;
-        float: left;
-        margin: 10px 10px;
     }
 
     .menuBar {
@@ -69,8 +85,26 @@
         display: block;
         height: 80px;
         background-color: $colorWhite;
-
-        background: linear-gradient(to bottom, #ffffff 0%, #eeeeee 10);
+        background: linear-gradient(to bottom, $colorWhite 0%, #eeeeee 100%);
         box-shadow: 0 0 4px rgba(0, 0, 0, 0.25)        
+    }
+}
+
+        
+@media screen and (max-width: 991px) {
+    #header {
+        height: 210px;
+        .infoBar {
+            height: 170px;
+            .sideLeft {
+                position: relative;
+                text-align: center;
+            }
+            .sideRight {
+                position: relative;
+                text-align: center;
+            }
+        }
+
     }
 }

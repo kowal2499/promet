@@ -6,6 +6,10 @@ $white: #DDDDDD;
 
 @import "partials/header";
 
+* {
+    box-sizing: border-box;
+}
+
 [off-canvas] {
     background-color: pink;
 }
