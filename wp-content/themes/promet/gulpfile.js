@@ -18,15 +18,15 @@
 
     // configure sass task
     gulp.task('sass', function() {
-        return gulp.src('sass/*.scss')
+        return gulp.src('../../plugins/promet-plugins/public/sass/**/*.scss')
             .pipe(sass({
                 'outputStyle': 'compressed'
             }))
-            .pipe(gulp.dest('./'))
-            .pipe(browserSync.stream());
+            .pipe(gulp.dest('../../plugins/promet-plugins/public/css/'));
+            // .pipe(browserSync.stream());
     });
 
     // create the default task
-    gulp.task('default', ['sass', 'browser-sync'], function() {
-        gulp.watch("sass/**/*.scss", ['sass'])
+    gulp.task('default', ['sass'/*, 'browser-sync'*/], function() {
+        gulp.watch("../../plugins/promet-plugins/public/sass/**/*.scss", ['sass'])
     });
