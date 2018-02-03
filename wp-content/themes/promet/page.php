@@ -1,33 +1,69 @@
-<!doctype html>
-<html <?php language_attributes(); ?>>
-<head>
-	<meta charset="<?php bloginfo( 'charset' ); ?>">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="profile" href="http://gmpg.org/xfn/11">
-	<?php wp_head(); ?>
-</head>
-<body <?php body_class(); ?>>
-	<h2>Numer telefonu do nas: <?php echo get_option('phoneNumber01'); ?></h2>
+<?php get_header(); ?>
 
-	<table>
-		<?php 
-			$opt = get_option(slideshow01);
-			var_dump(json_decode(urldecode($opt), true));
-		?>
+	<header id="header">
+		<div class="container">
+			<div class="tile-logo">
+				<img src="http://promet.local/wp-content/uploads/2018/02/logo.png" alt="PROMET logo">
+			</div>
 
-	</table>
-<?php
-	ini_set('xdebug.var_display_max_depth', 5);
-	ini_set('xdebug.var_display_max_children', 256);
-	ini_set('xdebug.var_display_max_data', 1024);
-?>
+			<div class="tile-info">
+				<div class="icon">
+					<i class="far fa-clock fa-2x"></i>
+				</div>
+				<div class="desc">
+					<ul>
+						<li class="rowTop"><strong>Pon-Pt</strong></li>
+						<li class="rowBottom">8:00-16:00</li>
+					</ul>
+				</div>
+			</div>
 
-<?php
-	$research = Research::getInstance();
-	var_dump($research->getAll());
-?>
+			<div class="tile-info">
+				<div class="icon">
+					<i class="fas fa-globe fa-2x"></i>
+				</div>
+				<div class="desc">
+					<ul>
+						<li class="rowTop"><strong>78-200 Białogard</strong></li>
+						<li class="rowBottom">ul. Chocimska 5</li>
+					</ul>
+				</div>
+			</div>
 
+			<div class="tile-info">
+				<div class="icon">
+					<i class="fas fa-phone-volume fa-2x"></i>
+				</div>
+				<div class="desc">
+					<ul>
+						<li class="rowTop"><strong>1-888-123-4567</strong></li>
+						<li class="rowBottom">info@buildpress.com</li>
+					</ul>
+				</div>
+			</div>
 
-<?php wp_footer(); ?>
-</body>
-</html>
+			<div class="clearfix"></div>
+			
+			<div class="menuBar"></div>
+
+		</div>
+	</header>
+
+	<nav>
+
+	</nav>
+
+	<section>
+	<i class="fas fa-user"></i>
+		<heading></heading>
+		<article></article>
+
+		<heading></heading>
+		<article></article>
+
+		<heading></heading>
+		<article></article>
+	</section>
+
+	<footer></footer>
+<?php get_footer(); ?>
