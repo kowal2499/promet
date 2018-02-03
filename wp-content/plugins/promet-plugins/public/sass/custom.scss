@@ -7,9 +7,9 @@ $colorWhite: #FFF;
 $colorWhiteDarker: #DDDDDD;
 $cOrange: #EE740F;
 
-@import "partials/header";
-@import "partials/header_mobile";
-
 * {
     box-sizing: border-box;
 }
+
+@import "partials/header";
+@import "partials/header_mobile";
