@@ -9,8 +9,11 @@ $cOrange: #EE740F;
 $cGrayA: #a9a9a9;
 
 * {
+    // font-family: 'Open Sans', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     box-sizing: border-box;
     z-index: 10;
+    
 }
 
 @import "partials/header";
