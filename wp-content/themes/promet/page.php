@@ -1,9 +1,10 @@
 <?php
 	$settings = Settings::getInstance();
-	// var_dump($settings->getOption('addressVoivodeship'));
 ?>
 
 <?php get_header(); ?>
+
+	<?php get_template_part( 'template-parts/front-page/content-slider', get_post_format() ); ?>
 
 
 	<section>
