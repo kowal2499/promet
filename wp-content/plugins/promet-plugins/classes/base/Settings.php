@@ -5,6 +5,7 @@
     class Settings {
 
         private static $instance;
+        private $cache = array();
 
         private function __construct() {
             
@@ -66,6 +67,61 @@
                     )   // end inputs
                 ),
                 array(
+                    'title'         => 'Dane ogólne',
+                    'url'           => 'general',
+                    'inputs'        => array(
+                        array(
+                            'class' => 'TextInput',
+                            'id'    => 'phoneGeneral',
+                            'title' => 'Główny numer telefonu',
+                            'desc'  => 'Główny numer telefonu. Widoczny na stronie tytułowej w nagłówku i w stopce.'
+                        ),
+                        array(
+                            'class' => 'TextInput',
+                            'id'    => 'emailGeneral',
+                            'title' => 'Główny adres email',
+                            'desc'  => 'Główny adres email. Widoczny na stronie tytułowej w nagłówku i w stopce.'
+                        ),
+                        array(
+                            'class' => 'TextInput',
+                            'id'    => 'addressPostalColde',
+                            'title' => 'Kod pocztowy',
+                        ),
+                        array(
+                            'class' => 'TextInput',
+                            'id'    => 'addressCity',
+                            'title' => 'Miejscowość',
+                        ),
+                        array(
+                            'class' => 'TextInput',
+                            'id'    => 'addressVoivodeship',
+                            'title' => 'Województwo',
+                        ),
+                        array(
+                            'class' => 'TextInput',
+                            'id'    => 'addressCountry',
+                            'title' => 'Kraj',
+                        ),
+                        array(
+                            'class' => 'TextInput',
+                            'id'    => 'workingDays',
+                            'title' => 'Dni otwarcia firmy',
+                            'desc'  => 'Tekst opisujący dni w jakich firma jest otwarta'
+                        ),
+                        array(
+                            'class' => 'TextInput',
+                            'id'    => 'workingHours',
+                            'title' => 'Godziny otwarcia firmy',
+                            'desc'  => 'Tekst opisujący godziny w jakich firma jest otwarta'
+                        ),
+
+
+
+
+
+                    ) // end inputs
+                ),
+                array(
                     'title'         => 'Kontakt',
                     'url'           => 'kontakt',
                     'inputs'        => array()
@@ -75,6 +131,8 @@
             add_action('admin_menu', function() {
                 add_menu_page('Ustawienia', 'Ustawienia podstawowe', 'manage_options', 'ustawienia', array($this, 'pageContent'));
             });
+
+            $this->cacheKeys();
         }
 
         public function pageContent() {
@@ -116,20 +174,10 @@
                             foreach ($this->tabs as $tab) {
                                 if ($tab['url'] === $active_tab) {
                                     foreach ($tab['inputs'] as $input) {
-
-                                        switch ($input['class']) {
-                                            case 'Repeatable':
-                                                $item = new $input['class']($input['id'], $input['title'], $input['desc'], $input['recordDefinition']); // generate the Repeatable object
-                                                break;
-                                            
-                                            default:
-                                                $item = new $input['class']($input['id'], $input['title'], $input['desc']); // generate general object
-                                                break;
-                                        }
-
-                                        $val = (get_option($input['id']) !== false ? get_option($input['id']) : '');
-                                        $item->setValue($val);
-                                        $item->render();
+                                        $object = $this->factory($input);
+                                        $val = $object->getValue();//(get_option($input['id']) !== false ? get_option($input['id']) : '');
+                                        $object->setValue($val);
+                                        $object->render();
                                     }
                                 } else {
                                     continue;
@@ -143,6 +191,42 @@
 
             </div>
 <?php
+        }
+
+        private function factory(array $args) {
+            switch ($args['class']) {
+                case 'Repeatable':
+                    $item = new $args['class']($args['id'], $args['title'], $args['desc'], $args['recordDefinition']); // generate the Repeatable object
+                    break;
+                
+                default:
+                    $item = new $args['class']($args['id'], $args['title'], $args['desc']); // generate general object
+                    break;
+            }
+            return $item;
+        }
+
+        private function cacheKeys() {
+            foreach ($this->tabs as $tab) {
+                foreach ($tab["inputs"] as $input) {
+                    $this->cache[$input['id']] = $input;
+                }
+            }
+        }
+
+        public function getOption(string $id) {
+            if (isset($this->cache[$id]) && !empty($this->cache[$id])) {
+
+                // czy jest już utworzony objekt?
+                if (!isset($this->cache[$id]["object"]) or (empty($this->cache[$id]["object"]))) {
+                    $this->cache[$id]["object"] = $this->factory($this->cache[$id]);
+                    var_dump('zapisałem w cache');
+                }
+
+                if ($this->cache[$id]["object"]) {
+                    return $this->cache[$id]["object"]->getValue();
+                }
+            }
         }
 
         public static function getInstance() {

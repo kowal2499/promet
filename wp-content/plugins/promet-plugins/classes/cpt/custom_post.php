@@ -53,8 +53,10 @@ abstract class Custom_Post {
                         echo '<td>';
                         switch ($field['type']) {
                             case 'text':
-                                echo '<input type="text" name="'.$field['id'].'" id="'.$field['id'].'" value="'.$meta.'" size="30" />
-                                <br /><span class="description">'.$field['desc'].'</span>';
+                                echo '<input type="text" name="'.$field['id'].'" id="'.$field['id'].'" value="'.$meta.'" size="30" />';
+                                if (!empty($field['desc'])) {
+                                    echo '<br /><span class="description">'.$field['desc'].'</span>';
+                                }
                                 break;
                             case 'textarea':
                                 echo '<textarea name="'.$field['id'].'" id="'.$field['id'].'" cols="60" rows="4">'.$meta.'</textarea>
