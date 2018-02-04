@@ -72,6 +72,12 @@
                     'inputs'        => array(
                         array(
                             'class' => 'TextInput',
+                            'id'    => 'logoGeneral',
+                            'title' => 'Logo',
+                            'desc'  => 'Scieżka dostępu do pliku z logiem. Logo widoczne w nagłówku.'
+                        ),
+                        array(
+                            'class' => 'TextInput',
                             'id'    => 'phoneGeneral',
                             'title' => 'Główny numer telefonu',
                             'desc'  => 'Główny numer telefonu. Widoczny na stronie tytułowej w nagłówku i w stopce.'
@@ -91,6 +97,11 @@
                             'class' => 'TextInput',
                             'id'    => 'addressCity',
                             'title' => 'Miejscowość',
+                        ),
+                        array(
+                            'class' => 'TextInput',
+                            'id'    => 'addressStreet',
+                            'title' => 'Ulica',
                         ),
                         array(
                             'class' => 'TextInput',
@@ -220,7 +231,6 @@
                 // czy jest już utworzony objekt?
                 if (!isset($this->cache[$id]["object"]) or (empty($this->cache[$id]["object"]))) {
                     $this->cache[$id]["object"] = $this->factory($this->cache[$id]);
-                    var_dump('zapisałem w cache');
                 }
 
                 if ($this->cache[$id]["object"]) {

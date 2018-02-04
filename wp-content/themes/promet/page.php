@@ -1,6 +1,6 @@
 <?php
 	$settings = Settings::getInstance();
-	var_dump($settings->getOption('addressVoivodeship'));
+	// var_dump($settings->getOption('addressVoivodeship'));
 ?>
 
 <?php get_header(); ?>
