@@ -80,12 +80,11 @@
     }
 
     .menuBar {
-        position: absolute;
+        position: relative;
         left: 0;
         right: 0;
         width: 100%;
         display: block;
-        height: 80px;
         background-color: $colorWhite;
         background: linear-gradient(to bottom, $colorWhite 0%, #eeeeee 100%);
         box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
@@ -93,21 +92,22 @@
         
         ul.menu {
             margin: 0;
-            margin-top: 29px;
             padding: 0;
             list-style-type: none;
-            
+            font-size: 0;   // get rid of unwanted space between Inline-Block List Items
 
             li {
                 display: inline-block;
                 text-align: center;
                 a {
-                    padding: 20px 30px;
+                    display: block;
+                    padding: 26px 30px;
                     text-transform: uppercase;
                     font-weight: 700;
-                    font-size: 16px;
+                    font-size: 15px;
                     color: $cGrayA;
                     transition: all 0.4s;
+                    border-bottom: 4px solid transparent;
 
                     &:visited {
                         color: $cGrayA;
@@ -115,14 +115,23 @@
                     &:hover {
                         color: $colorGray;
                         text-decoration: none;
+                        border-bottom: 4px solid $cOrange;
                     }
                     &:active, &:focus, &:visited {
                         text-decoration: none;
                     }
+                    
                 }
                 & + li {
                     border-left: 1px solid $colorWhiteDarker;
-                } 
+                }
+                &.current-menu-item {
+                    background-color: rgba(0, 0, 0, 0.05);
+                    a {
+                        color: $colorGray;
+                    }
+                }
+
             }
         }
     }    
@@ -178,6 +187,10 @@ header, [off-canvas] {
                 text-align: center;
             }
         }
+        .menuBar ul.menu li a {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
     }
 }
 
@@ -189,6 +202,11 @@ header, [off-canvas] {
         .desc {
             padding-left: 10px;
         }
+    }
+    #header .menuBar ul.menu li a {
+        padding-left: 10px;
+        padding-right: 10px;
+        font-size: 13px;
     }
 }
 
