@@ -69,25 +69,6 @@
         }
     }
 
-    // ul.menu {
-    //     margin: 0;
-    //     padding: 0;
-        
-
-    //     li {
-    //         display: inline-block;
-    //         text-align: center;
-    //         a {
-    //             display: block;
-    //             padding: 26px 30px;
-    //             text-transform: uppercase;
-    //             font-weight: 700;
-    //             font-size: 15px;
-    //             color: $cGrayA;
-    //             transition: all 0.4s;
-    //             border-bottom: 4px solid transparent;
-    
-
     .contacts {
         
         .tile {
@@ -96,35 +77,41 @@
 
             .icon {
                 display: inline-block;
-                padding: 10px;
-                color: $colorLightGray;
-                -webkit-transition: all 0.3s;
-                -moz-transition: all 0.3s;
-                -o-transition: all 0.3s;
-                -ms-transition: all 0.3s;
-                transition: all 0.3s;
                 i {
-                    display: block;
+                    font-size: 1.5em;
+                    color: $colorLightGray;
+                    margin-right: 10px;
+                    @include transition(all, 0.3s);
+                }
+                &:hover i {
+                    color: $colorWhiteDarker;
                 }
             }
 
             .desc {
                 display: inline-block;
-                ul {
-                    margin: 0;
+                .rowTop {
+                    color: $colorWhiteDarker;
+                    text-align: left;
+                }
+                .rowBottom {
+                    color: $colorLightGray;
+                    text-align: center;
+                }
+                .dropdown {
                     padding: 0;
-                    padding-left: 3px;
-                    list-style-type: none;
-                    li {
-                        text-align: left;
-                        &.rowTop {
-                            color: $colorWhiteDarker;;
-                        }
-                        &.rowBottom {
-                            color: $colorLightGray;
-                        }
+                    button {
+                        border-color: $colorGrayLigher;
                     }
                 }
+            }
+
+            .dropdown-menu {
+                margin-right: 0;
+            }
+            
+            .valign {
+                height: 45px;
             }
         }
     }

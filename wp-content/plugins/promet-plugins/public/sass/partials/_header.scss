@@ -24,58 +24,58 @@
         .sideRight {
             position: absolute;
             right: 0;
-            top: 25px;
+            top: 0;
             text-align: right;
+            padding: 4px 30px;
+            background-color: $colorGrayLigher;
+            border-radius: 0 0 20px 20px;
         }
 
         .tile {
             display: inline-block;
             padding-right: 10px;
-            vertical-align: top;
+            height: 45px;
 
             & + .tile {
                 border-left: 1px solid $colorLightGray;
+                padding-left: 10px;
             }
 
             .icon {
                 display: inline-block;
-                padding: 10px;
-                color: $colorLightGray;
-                -webkit-transition: all 0.3s;
-                -moz-transition: all 0.3s;
-                -o-transition: all 0.3s;
-                -ms-transition: all 0.3s;
-                transition: all 0.3s;
                 i {
-                    display: block;
+                    font-size: 1.5em;
+                    color: $colorLightGray;
+                    margin-right: 10px;
+                    @include transition(all, 0.3s);
                 }
-            }
-    
-            .desc {
-                display: inline-block;
-                height: 45px;
-                ul {
-                    margin: 0;
-                    padding: 0;
-                    padding-left: 3px;
-                    list-style-type: none;
-                    li {
-                        text-align: left;
-                        &.rowTop {
-                            color: $colorWhiteDarker;
-                        }
-                        &.rowBottom {
-                            color: $colorLightGray;
-                        }
-                    }
-                    
-                }
-            }
-            &:hover {
-                .icon {
+                &:hover i {
                     color: $colorWhiteDarker;
                 }
             }
+
+            .desc {
+                display: inline-block;
+                .rowTop {
+                    color: $colorWhiteDarker;
+                    text-align: left;
+                }
+                .rowBottom {
+                    color: $colorLightGray;
+                    text-align: left;
+                }
+                .dropdown {
+                    padding: 0;
+                    button {
+                        border-color: $colorGrayLigher;
+                    }
+                }
+            }
+            
+            .valign {
+                height: 45px;
+            }
+
         }
     }
 
@@ -89,6 +89,7 @@
         background: linear-gradient(to bottom, $cWhite 0%, #eee 100%);
         box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
         text-align: center;
+        z-index: 5;
         
         ul.menu {
             margin: 0;
@@ -179,17 +180,27 @@ header, [off-canvas] {
         .infoBar {
             height: 170px;
             .sideLeft {
-                position: relative;
                 text-align: center;
+                left: 0;
+                right: 0;
+                top: 75px;
             }
             .sideRight {
-                position: relative;
                 text-align: center;
+                top: 0;
+                left: 0;
+                right: 0;
+                width: 100%;
+                padding-left: 0;
+                padding-right: 0;
+                font-size: 11px;
+                border-radius: 0;
             }
         }
         .menuBar ul.menu li a {
             padding-left: 20px;
             padding-right: 20px;
+            font-size: 12px;
         }
     }
 }

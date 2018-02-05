@@ -15,42 +15,69 @@
 
                 <div class="tile">
                     <div class="icon">
-                        <i class="fas fa-phone-volume fa-2x"></i>
+                        <div class="valign">
+                            <div class="valingContent">
+                                <i class="fas fa-phone-volume fa-1x"></i>
+                            </div>
+                        </div>
                     </div>
+
                     <div class="desc">
-                        <ul>
-                            <li class="rowTop"><strong><?php echo $settings->getOption('phoneGeneral'); ?></strong></li>
-                            <li class="rowBottom"><?php echo $settings->getOption('emailGeneral'); ?></li>
-                        </ul>
+                        <div class="valign">
+                            <div class="valingContent">
+                                <div class="rowTop"><strong><?php echo $settings->getOption('phoneGeneral'); ?></strong></div>
+                                <div class="rowBottom"><?php echo $settings->getOption('emailGeneral'); ?></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <div class="tile">
                     <div class="icon">
-                        <i class="fas fa-globe fa-2x"></i>
+                        <div class="valign">
+                            <div class="valingContent">
+                                <i class="fas fa-globe fa-1x"></i>
+                            </div>
+                        </div>
                     </div>
+
                     <div class="desc">
-                        <ul>
-                            <li class="rowTop"><strong><?php echo $settings->getOption('addressPostalColde') . ' ' . $settings->getOption('addressCity'); ?></strong></li>
-                            <li class="rowBottom"><?php echo $settings->getOption('addressStreet'); ?></li>
-                        </ul>
+                        <div class="valign">
+                            <div class="valingContent">
+                                <div class="rowTop"><strong><?php echo $settings->getOption('addressPostalColde') . ' ' . $settings->getOption('addressCity'); ?></strong></div>
+                                <div class="rowBottom"><?php echo $settings->getOption('addressStreet'); ?></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <div class="tile">
                     <div class="icon">
-                        <i class="fas fa-clock fa-2x"></i>
+                        <div class="valign">
+                            <div class="valingContent">
+                                <i class="fas fa-clock fa-1x"></i>
+                            </div>
+                        </div>
                     </div>
+
                     <div class="desc">
-                        <ul>
-                            <li class="rowTop"><strong><?php echo $settings->getOption('workingDays'); ?></strong></li>
-                            <li class="rowBottom"><?php echo $settings->getOption('workingHours'); ?></li>
-                        </ul>
+                        <div class="valign">
+                            <div class="valingContent">
+                                <div class="rowTop"><strong><?php echo $settings->getOption('workingDays'); ?></strong></div>
+                                <div class="rowBottom"><?php echo $settings->getOption('workingHours'); ?></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <div class="tile">
-                    <?php get_template_part( 'template-parts/content-langswitch', get_post_format() ); ?>
+                    <div class="desc">
+                        <div class="valign">
+                            <div class="valingContent">
+                                <?php get_template_part( 'template-parts/content-langswitch', get_post_format() ); ?> 
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
 
