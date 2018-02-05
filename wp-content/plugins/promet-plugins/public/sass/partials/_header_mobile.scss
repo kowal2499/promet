@@ -1,0 +1,132 @@
+#headerMobile {
+    background-color: $colorGray;
+    height: 50px;
+
+    button#sidebarToggle {
+        margin-top: 8px;
+        i {
+            color: $cOrange;
+        }
+    }
+    img.logo {
+        display: block;
+        height: 44px;
+        padding: 3px;
+    }
+}
+
+[off-canvas] {
+    background-color: $colorGray;
+    
+    border-right: 3px solid #000;
+
+    .menu {
+        background-color: $cWhite;
+        background: linear-gradient(to bottom, $cWhite 0%, #eeeeee 100%);
+        margin-bottom: 10px;
+        color: $cDark;
+        .logo img {
+            display: block;
+            margin: 0 auto;
+            width: 75%;
+        }
+
+        ul.menu {
+            margin: 0;
+            padding: 0;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            list-style-type: none;
+            font-size: 0;   // get rid of unwanted space between Inline-Block List Items
+            li {
+                text-align: center;
+                padding: 5px;
+                a {
+                    text-transform: uppercase;
+                    font-weight: 700;
+                    font-size: 15px;
+                    color: $cGrayA;
+                    &:visited {
+                        color: $cGrayA;
+                    }
+                    &:hover {
+                        color: $colorGray;
+                        text-decoration: none;
+                        border-bottom: 4px solid $cOrange;
+                    }
+                    &:active, &:focus, &:visited {
+                        text-decoration: none;
+                    }
+                }
+                
+                &.current-menu-item {
+                    background-color: rgba(0, 0, 0, 0.05);
+                    a {
+                        color: $colorGray;
+                    }
+                }
+            }
+        }
+    }
+
+    // ul.menu {
+    //     margin: 0;
+    //     padding: 0;
+        
+
+    //     li {
+    //         display: inline-block;
+    //         text-align: center;
+    //         a {
+    //             display: block;
+    //             padding: 26px 30px;
+    //             text-transform: uppercase;
+    //             font-weight: 700;
+    //             font-size: 15px;
+    //             color: $cGrayA;
+    //             transition: all 0.4s;
+    //             border-bottom: 4px solid transparent;
+    
+
+    .contacts {
+        
+        .tile {
+            text-align: center;
+            margin-bottom: 10px;
+
+            .icon {
+                display: inline-block;
+                padding: 10px;
+                color: $colorLightGray;
+                -webkit-transition: all 0.3s;
+                -moz-transition: all 0.3s;
+                -o-transition: all 0.3s;
+                -ms-transition: all 0.3s;
+                transition: all 0.3s;
+                i {
+                    display: block;
+                }
+            }
+
+            .desc {
+                display: inline-block;
+                ul {
+                    margin: 0;
+                    padding: 0;
+                    padding-left: 3px;
+                    list-style-type: none;
+                    li {
+                        text-align: left;
+                        &.rowTop {
+                            color: $colorWhiteDarker;;
+                        }
+                        &.rowBottom {
+                            color: $colorLightGray;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+}
