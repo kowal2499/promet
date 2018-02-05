@@ -14,55 +14,37 @@
                     'title'         => 'Pokaz slajdów',
                     'url'           => 'pokaz_slajdow',
                     'inputs'        => array(
-                        array(
-                            'class' => 'TextInput',
-                            'id'    => 'phoneNumber01',
-                            'title' => 'Numer Telefonu',
-                            'desc'  => 'Główny numer telefonu. Widoczny na stronie tytułowej w nagłówku i w stopce.'
-                        ),
+                        
                         array(
                             'class' => 'Repeatable',
-                            'id'    => 'slideshow01',
-                            'title' => 'Przewijak',
+                            'id'    => 'slideshowPrimary',
+                            'title' => 'Pokaz slajdów na stronie głównej',
                             'desc'  => 'Jakś tam opis',
                             'recordDefinition' => array(
                                 array(
                                     "type"  => "text",
-                                    "desc"  => "Obrazek",
-                                    "name"  => "image"
+                                    "desc"  => "Tło slajdu. Zalecana rozdzielczość: 1200x400px",
+                                    "name"  => "backgroundImage"
                                 ),
-                                array(
-                                    "type"  => "text",
-                                    "desc"  => "Opis numer 1",
-                                    "name"  => "desc01"
-                                ),
-                                array(
-                                    "type"  => "text",
-                                    "desc"  => "Opis numer 2",
-                                    "name"  => "desc02"
-                                )
-                            )
-                        ),
 
-                        array(
-                            'class' => 'Repeatable',
-                            'id'    => 'slideshow02',
-                            'title' => 'Przewijak numer dwa',
-                            'desc'  => 'Jakś tam opis 2',
-                            'recordDefinition' => array(
                                 array(
                                     "type"  => "text",
-                                    "desc"  => "Niesamowity opis numer 1",
+                                    "desc"  => "Aktor obrazek",
+                                    "name"  => "slideInImage"
+                                ),
+
+                                array(
+                                    "type"  => "text",
+                                    "desc"  => "Opis główny",
                                     "name"  => "txt01"
                                 ),
                                 array(
                                     "type"  => "text",
-                                    "desc"  => "Niesamowity opis numer 2",
-                                    "name"  => "txt02"
+                                    "desc"  => "Opis dodatkowy",
+                                    "name"  => "txt2"
                                 )
                             )
                         ),
-
 
                     )   // end inputs
                 ),

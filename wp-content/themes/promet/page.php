@@ -8,7 +8,8 @@
 
 
 	<section>
-		<heading></heading>
+		<heading>
+		</heading>
 		<article></article>
 
 		<heading></heading>
