@@ -1,0 +1,19 @@
+
+.valign {
+    display: table;
+
+    .valingContent {
+        display: table-cell;
+        vertical-align: middle;
+    }
+}
+
+// mixins
+
+@mixin transition($prop, $time) {
+    -webkit-transition: $prop $time;
+    -moz-transition: $prop $time;
+    -o-transition: $prop $time;
+    -ms-transition: $prop $time;
+    transition: $prop $time;
+  }

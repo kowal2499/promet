@@ -10,14 +10,24 @@ class Promet_Products_Widget extends WP_Widget {
 
         Widget_Setup::getInstance()
             ->enqueue_style('bootstrap', plugins_url('/promet-plugins/public/css/vendor/bootstrap.min.css'))
+            ->enqueue_style('owl.carousel.base', plugins_url('/promet-plugins/public/css/vendor/slick.css'))
+            ->enqueue_style('owl.carousel.theme', plugins_url('/promet-plugins/public/css/vendor/slick-theme.css'))
+
             ->enqueue_style('owl.carousel.base', plugins_url('/promet-plugins/public/css/vendor/owl.carousel.min.css'))
+            ->enqueue_style('owl.carousel.theme', plugins_url('/promet-plugins/public/css/vendor/owl.theme.default.min.css'))
             ->enqueue_style('slidebars', plugins_url('/promet-plugins/public/css/vendor/slidebars.min.css'))
-            ->enqueue_style('google-fonts', 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700&subset=latin-ext')
+
+            ->enqueue_style('google-fonts', 'https://fonts.googleapis.com/css?family=Montserrat:400,700,900&amp;subset=latin-ext')
+            // ->enqueue_style('google-fonts', 'https://fonts.googleapis.com/css?family=Open+Sans:400,700,800&amp;subset=latin-ext')
+            // ->enqueue_style('google-fonts', 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700&subset=latin-ext')
+
             ->enqueue_style('fontawsome', plugins_url('/promet-plugins/public/css/vendor/fontawesome-all.css'))
+            ->enqueue_style('animate', plugins_url('/promet-plugins/public/css/vendor/animate.css'))
 
             ->enqueue_style('css.custom', plugins_url('/promet-plugins/public/css/custom.css'))
 
             ->enqueue_script('jQuery3', plugins_url('/promet-plugins/public/js/vendor/jquery-3.3.1.min.js'), '', '1.0.0', true)
+            ->enqueue_script('owl.carousel', plugins_url('/promet-plugins/public/js/vendor/slick.min.js'), 'jQuery3', '1.0.0', true)
             ->enqueue_script('owl.carousel', plugins_url('/promet-plugins/public/js/vendor/owl.carousel.min.js'), 'jQuery3', '1.0.0', true)
             ->enqueue_script('bootstrap', plugins_url('/promet-plugins/public/js/vendor/bootstrap.min.js'), 'jQuery3', '1.0.0', true)
             ->enqueue_script('slidebars', plugins_url('/promet-plugins/public/js/vendor/slidebars.min.js'), 'jQuery3', '1.0.0', true)

@@ -7,6 +7,7 @@
         
         protected function __construct($id, $title, $desc) {
             $this->id = 'options[' . $id . ']';
+            $this->wpId = $id;
             $this->title = $title;
             $this->desc = $desc;
         }
@@ -31,7 +32,8 @@
         }
 
         public function getValue() {
-            return $this->value ?? 0;
+            $value = get_option($this->wpId);
+            return $value ?? ''; 
         }
 
         public function getId() {
