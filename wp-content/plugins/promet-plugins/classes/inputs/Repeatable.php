@@ -34,9 +34,9 @@
             
         }
 
-        public function getValue() {
-            $value = json_decode(rawurldecode(get_option($this->wpId)), $assoc=true);
-            return $value ?? array(); 
-        }
+        // public function getValue() {
+        //     $value = json_decode(rawurldecode(get_option($this->wpId)), $assoc=true);
+        //     return $value ?? array(); 
+        // }
 
     }
