@@ -27,18 +27,46 @@
                     "name"      =>  "Obrazki",
                     "fields"    =>  array(
                         array(
-                            'label' => 'Text Input',
-                            'desc'  => 'A description for the field.',
-                            'id'    => 'item01',
+                            'label' => 'Zdjęcie główne',
+                            'desc'  => 'Wyświetlane na stronie głównej',
+                            'id'    => 'photoMain',
                             'type'  => 'text' 
                         ),
 
                         array(
-                            'label' => 'Repeatable',
+                            'label' => 'Galeria produktu',
                             'desc'  => 'A description for the field.',
-                            'id'    => 'repeatable01',
+                            'id'    => 'productGallery01',
                             'type'  => 'repeatable'
-                        )
+                        ),
+
+                        array(
+                            'label' => 'Zdjęcie do opisu 1',
+                            'desc'  => 'A description for the field.',
+                            'id'    => 'photoDesc01',
+                            'type'  => 'text'
+                        ),
+
+                        array(
+                            'label' => 'Tekst pod zdjęciem do opisu 1',
+                            'desc'  => 'A description for the field.',
+                            'id'    => 'txtDesc01',
+                            'type'  => 'text'
+                        ),
+
+                        array(
+                            'label' => 'Zdjęcie do opisu 2',
+                            'desc'  => 'A description for the field.',
+                            'id'    => 'photoDesc02',
+                            'type'  => 'text'
+                        ),
+
+                        array(
+                            'label' => 'Tekst pod zdjęciem do opisu 2',
+                            'desc'  => 'A description for the field.',
+                            'id'    => 'txtDesc02',
+                            'type'  => 'text'
+                        ),
                     )
                 )
             );
