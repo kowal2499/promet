@@ -16,4 +16,28 @@
     -o-transition: $prop $time;
     -ms-transition: $prop $time;
     transition: $prop $time;
-  }
+}
+
+@mixin transform($trans) {
+    -moz-transform: $trans;
+        -o-transform: $trans;
+        -ms-transform: $trans;
+    -webkit-transform: $trans;
+        transform: $trans;
+}
+
+@mixin scale($scale) {
+    @include transform(scale($scale));
+} 
+
+@mixin rotate ($deg) {
+    @include transform(rotate(#{$deg}deg));
+}
+
+@mixin translate ($x, $y) {
+    @include transform(translate($x, $y));
+}
+
+@mixin skew ($x, $y) {
+    @include transform(skew(#{$x}deg, #{$y}deg));
+}
