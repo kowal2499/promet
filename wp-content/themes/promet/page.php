@@ -10,6 +10,8 @@
 
 	<?php get_template_part( 'template-parts/front-page/content-section', get_post_format() ); ?>
 
+	
+
 
 	<section>
 		<heading>
@@ -29,5 +31,5 @@
 		<article></article>
 	</section>
 
-	<footer></footer>
+	
 <?php get_footer(); ?>
