@@ -59,12 +59,13 @@
                     echo '</div>';
                     echo '</div>';
                     echo '<hr>';
-                    echo '<h4>'. $product[title] .'</h4>';
+                    echo '<h3>'. $product[title] .'</h3>';
                     echo '</a>';
                     echo '</div>';
                 endforeach;
             endforeach;
         ?>
         </div><!-- showcase -->
+
     <div>
 </section>
