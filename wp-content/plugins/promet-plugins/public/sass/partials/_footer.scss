@@ -1,0 +1,54 @@
+footer#footer {
+    background-color: $colorGray;
+    color: $cFooter;
+
+    .history {
+        margin-top: 30px;
+        padding-bottom: 30px;
+        img {
+            border-right: 1px solid $cFooter;
+            padding-right: 30px;
+        }
+    }
+
+    h5 {
+        font-weight: bold;
+        color: $cOrange;
+    }
+
+
+    .tile {
+        margin-bottom: 10px;
+        padding-left: 20px;
+
+        .icon {
+            display: inline-block;
+            i {
+                font-size: 1.5em;
+                color: $colorLightGray;
+                margin-right: 10px;
+                @include transition(all, 0.3s);
+            }
+            &:hover i {
+                color: $colorWhiteDarker;
+            }
+        }
+
+        .desc {
+            display: inline-block;
+            .rowTop {
+                color: $colorWhiteDarker;
+                text-align: left;
+            }
+            .rowBottom {
+                color: $colorLightGray;
+                text-align: center;
+            }
+        }
+
+        .valign {
+            height: 45px;
+        }
+    }
+
+}

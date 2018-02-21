@@ -89,3 +89,62 @@ section#slider {
         
     }
 }
+
+@media screen and (max-width: 1199px) {
+    section#slider {
+        .imgWrapper .slideContent {
+            .actor {
+                width: 35%;
+            }
+            .dialogue {
+                h1 {
+                    font-size: 28px;
+                    width: 70%;
+                }
+                p.lead {
+                    width: 70%;
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 700px) {
+    section#slider {
+        .imgWrapper .slideContent {
+            .actor {
+                width: 50%;
+                display: none;
+            }
+            .dialogue {
+                h1 {
+                    width: 100%;
+                }
+                p.lead {
+                    width: 100%;
+                }
+            }
+            
+        }
+
+        .imgWrapper {
+            height: 350px;
+        }
+    }
+}
+
+
+// @media screen and (max-width: 991px) {
+//     section#slider {
+//         .imgWrapper .slideContent {
+//             .actor {
+//                 width: 80%;
+//             }
+//             .dialogue {
+//                 h1, p.lead {
+//                     width: 80%;
+//                 }
+//             }
+//         }
+//     }
+// }
