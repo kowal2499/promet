@@ -1,4 +1,4 @@
-$cBackgroundDark: #272727;
+
 
 footer#footer {
     background-color: $colorGray;
@@ -40,7 +40,7 @@ footer#footer {
     }
 
     .black-footer {
-        background-color: $cBackgroundDark;
+        background-color: $colorGrayLigher;
         p {
             color: $cFooter;
             text-align: center;
