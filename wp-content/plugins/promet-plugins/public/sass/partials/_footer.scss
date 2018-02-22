@@ -1,3 +1,5 @@
+
+
 footer#footer {
     background-color: $colorGray;
     color: $cFooter;
@@ -11,43 +13,77 @@ footer#footer {
         }
     }
 
-    h5 {
+    h5, h5 a {
         font-weight: bold;
         color: $cOrange;
     }
 
+    nav .menuBar {
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            li {
+                padding-bottom: 3px;
+                a {
+                    color: $cFooter;
+                }
 
-    .tile {
-        margin-bottom: 10px;
-        padding-left: 20px;
-
-        .icon {
-            display: inline-block;
-            i {
-                font-size: 1.5em;
-                color: $colorLightGray;
-                margin-right: 10px;
-                @include transition(all, 0.3s);
+                &.current-menu-item a {
+                    font-weight: bold;
+                }
             }
-            &:hover i {
-                color: $colorWhiteDarker;
+        }
+    }
+    p.notify {
+        font-size: 11px;
+    }
+
+    .black-footer {
+        background-color: $colorGrayLigher;
+        p {
+            color: $cFooter;
+            text-align: center;
+            padding: 7px 0;
+            margin: 0;
+        }
+        
+    }
+
+    @media screen and (max-width: 767px) {
+        .history {
+            margin-top: 15px;
+            padding-bottom: 10px;
+
+            img {
+                border-right: none;
+                width: 40%;
+                margin: 0 auto;
+                display: block;
+            }
+            p {
+                font-size: 12px;
+                margin-top: 10px;
             }
         }
 
-        .desc {
-            display: inline-block;
-            .rowTop {
-                color: $colorWhiteDarker;
-                text-align: left;
-            }
-            .rowBottom {
-                color: $colorLightGray;
-                text-align: center;
-            }
+        .tile {
+            text-align: center;
+        }
+        h5 {
+            text-align: center;
         }
 
-        .valign {
-            height: 45px;
+        p.notify {
+            text-align: center;
+        }
+
+        .form-inline {
+            text-align: center;
+        }
+
+        .footer-menu {
+            display: none;
         }
     }
 
