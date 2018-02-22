@@ -9,6 +9,10 @@ wp-content/plugins/*
 wp-content/plugins/promet-plugins/public/*
 !wp-content/plugins/promet-plugins/public/sass/
 
+wp-content/plugins/promet-plugins/public/js/vendor/*
+!wp-content/plugins/promet-plugins/public/js/
+
+
 
 !wp-content/themes/
 
@@ -18,6 +22,7 @@ wp-content/themes/*
 wp-content/themes/promet/node_modules/*
 wp-content/themes/promet/sass/*
 !wp-content/themes/promet/sass/specific
+
 
 # how it works?
 # ignore all files in /, then exclude wp-content folder in /
