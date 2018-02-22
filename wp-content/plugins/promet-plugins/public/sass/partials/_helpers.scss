@@ -1,12 +1,5 @@
 
-.valign {
-    display: table;
 
-    .valingContent {
-        display: table-cell;
-        vertical-align: middle;
-    }
-}
 
 // mixins
 
@@ -41,3 +34,49 @@
 @mixin skew ($x, $y) {
     @include transform(skew(#{$x}deg, #{$y}deg));
 }
+
+.valign {
+    display: table;
+
+    .valingContent {
+        display: table-cell;
+        vertical-align: middle;
+    }
+}
+
+// ikonka po lewej i dwa wiersze tekstu po prawej
+
+.tile {
+    margin-bottom: 10px;
+    padding-left: 20px;
+
+    .icon {
+        display: inline-block;
+        i {
+            font-size: 1.5em;
+            color: $colorLightGray;
+            margin-right: 10px;
+            @include transition(all, 0.3s);
+        }
+        &:hover i {
+            color: $colorWhiteDarker;
+        }
+    }
+
+    .desc {
+        display: inline-block;
+        .rowTop {
+            color: $colorWhiteDarker;
+            text-align: left;
+        }
+        .rowBottom {
+            color: $colorLightGray;
+            text-align: center;
+        }
+    }
+
+    .valign {
+        height: 45px;
+    }
+}
+

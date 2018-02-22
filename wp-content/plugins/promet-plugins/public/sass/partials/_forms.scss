@@ -1,0 +1,20 @@
+$cInputBackground: rgb(250, 255, 189);
+
+input[type="email"] {
+    color: #666;
+    background-color: $cInputBackground;
+    border: 1px solid #ccc;
+    border-radius: 1px;
+    padding: 4px;
+    margin-top: 5px;
+}
+
+.btn {
+    border-radius: 1px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    outline: medium none !important;
+    text-transform: uppercase !important;
+    margin-top: 5px;
+}

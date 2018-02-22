@@ -6,17 +6,17 @@
     <div class="container">
 
         <div class="row history">
-            <div class="col-md-3">
-                <img src="<?php echo $settings->getOption('logoGeneral'); ?>" class="img-responsive" alt="PROMET logo">
+            <div class="col-sm-3">
+                <img src="<?php echo $settings->getOption('logoGeneral'); ?>" class="" alt="PROMET logo">
             </div>
 
-            <div class="col-md-9">
+            <div class="col-sm-9">
                 <p>Działamy na rynku już od 1990 roku i ipsum dolor sit amet consectetur adipisicing elit. Iste, laudantium accusantium? Aliquam necessitatibus commodi laudantium nostrum quia alias fugiat placeat adipisci vitae recusandae, quos doloribus tempora iusto officiis asperiores assumenda a libero voluptate veniam consectetur non? Modi amet eveniet tenetur in voluptates rerum, a aliquid iusto beatae odio vitae error.</p>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-sm-4">
 
 
                 <h5>Kontakt</h5>
@@ -80,9 +80,9 @@
 
             </div>
 
-
-            <div class="col-md-4">
-                <h5>Menu</h5>
+            <div class="col-sm-4">
+                <div class="footer-menu">
+                    <h5>Menu</h5>
 
                     <nav>
                         <?php wp_nav_menu( array(
@@ -90,9 +90,33 @@
                             'container_class' => 'menuBar'
                         ) ); ?>
                     </nav>
+                </div>
+            </div>
+            
+            <div class="col-sm-4">
+                <h5>Newsletter</h5>
+                <p class="notify">Zapisz się, aby otrzymywać na bieżąco informacje o naszej działaności.</p>
+
+                <div class="form-inline">
+                    <div class="form-group">
+                        <input type="email" placeholder="Podaj e-mail">
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary">Zapisz się</button>
+                    </div>
+                </div>
+
+                <br>
+                <h5><a href="#">Polityka cookies</a></h5>
+                
                 
             </div>
-            <div class="col-md-4"><h5>Newsletter</h5></div>
+        
         </div>
     </div>
+
+    <div class="container-fluid black-footer">
+        <p>&copy; <?php echo date("Y"); ?> PROMET</p>
+    </div>
+
 </footer>

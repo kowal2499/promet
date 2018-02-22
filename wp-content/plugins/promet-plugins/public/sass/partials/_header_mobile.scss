@@ -73,31 +73,8 @@
         
         .tile {
             text-align: center;
-            margin-bottom: 10px;
-
-            .icon {
-                display: inline-block;
-                i {
-                    font-size: 1.5em;
-                    color: $colorLightGray;
-                    margin-right: 10px;
-                    @include transition(all, 0.3s);
-                }
-                &:hover i {
-                    color: $colorWhiteDarker;
-                }
-            }
-
+            
             .desc {
-                display: inline-block;
-                .rowTop {
-                    color: $colorWhiteDarker;
-                    text-align: left;
-                }
-                .rowBottom {
-                    color: $colorLightGray;
-                    text-align: center;
-                }
                 .dropdown {
                     padding: 0;
                     button {
@@ -108,10 +85,6 @@
 
             .dropdown-menu {
                 margin-right: 0;
-            }
-            
-            .valign {
-                height: 45px;
             }
         }
     }
