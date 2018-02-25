@@ -13,9 +13,9 @@ $cFooter: #ccc;
 * {
     font-family: 'Montserrat', sans-serif;
     box-sizing: border-box;
-    z-index: 10;
-    
+    z-index: 10; 
 }
+
 
 @import "partials/helpers";
 @import "partials/header";
@@ -25,7 +25,8 @@ $cFooter: #ccc;
 @import "partials/home-products";
 @import "partials/home-section";
 
-@import "partials/footer";
+@import "partials/page-title.scss";
 
+@import "partials/footer";
 @import "partials/forms";
 

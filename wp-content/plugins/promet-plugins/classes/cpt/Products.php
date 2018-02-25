@@ -157,6 +157,38 @@
             }
             echo "</ul>";
         }
+
+        public function getProducts() {
+            // generowanie listy produktów
+            $productData = [];
+            $custom_query = new WP_Query(array(
+                'post_type' => $this->name
+            ));
+            while($custom_query->have_posts()) : $custom_query->the_post(); 
+                
+                // category
+                $category = get_the_category();
+                $category_id = (isset($category[0]) && !empty($category[0])) ? ($category[0]->cat_ID) : 0;
+
+                // photoMain
+                $photoMain = get_post_meta(get_the_ID(), 'photoMain');
+                $photoMain = (isset($photoMain[0]) && !empty($photoMain[0])) ? $photoMain[0] : '';
+
+                $productsData[$category_id][$this->name][get_the_ID()] = array(
+                    'title' => get_the_title(),
+                    'link'  => get_the_permalink(),
+                    'photoMain' => $photoMain,
+                    'excerpt'   => get_the_excerpt()
+                );
+                $productsData[$category_id]['name'] = (isset($category[0]) && !empty($category[0])) ? ($category[0]->cat_name) : 0;;
+            endwhile;
+            wp_reset_postdata();
+            
+            // posortuj proszę
+            ksort($productsData);
+
+            return $productsData;
+        }
         
         public static function getInstance() {
             if (empty(self::$instance)) {
