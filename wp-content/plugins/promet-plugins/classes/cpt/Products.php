@@ -158,6 +158,10 @@
             echo "</ul>";
         }
 
+        /**
+         * Zwraca tabelę wszystkich produktów posortowaną rosnąco wg kategorii
+         */
+
         public function getProducts() {
             // generowanie listy produktów
             $productData = [];
@@ -188,6 +192,17 @@
             ksort($productsData);
 
             return $productsData;
+        }
+
+        /**
+         * Zwraca dane pojedyńczego produktu
+         */
+        public function getSingle($id) {
+
+            $custom_query = new WP_Query(array(
+                'post_type' => $this->name
+            ));
+
         }
         
         public static function getInstance() {

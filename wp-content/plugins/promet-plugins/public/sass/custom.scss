@@ -7,6 +7,7 @@ $colorLightGray: #999999;
 $cWhite: #FFF;
 $colorWhiteDarker: #DDDDDD;
 $cOrange: #EE740F;
+$cOrangeLight: #eed3bd;
 $cGrayA: #a9a9a9;
 $cFooter: #ccc;
 
@@ -26,6 +27,9 @@ $cFooter: #ccc;
 @import "partials/home-section";
 
 @import "partials/page-title.scss";
+
+@import "partials/single-product.scss";
+@import "partials/lightbox";
 
 @import "partials/footer";
 @import "partials/forms";

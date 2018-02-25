@@ -7,8 +7,22 @@
             slidebarsController: undefined,
             slidebarName: 'mobileSidebar',
 
-            FrontPage: {Products: {
-            }}
+            FrontPage: {Products: {} },
+            SingleProduct: {Thumbnails: {}}
+        }
+
+        App.SingleProduct.Thumbnails.click = function(e) {
+            // get id of clicked element
+            var id = $(e.target).data('id');
+            $('#single-product .thumbnails .tile .blend').removeClass('active');
+            $(e.target).addClass('active');
+            // hide all on scene
+            $('#single-product .scene img').css('display', 'none');
+            $('#single-product .scene img[data-id="' + id + '"]').css('display', 'block');
+            $('#single-product .scene img[data-id="' + id + '"]').addClass('animated fadeIn');            
+
+            // console.log('#single-product .scene img[data-id="' + id + '"]');
+
         }
 
 
@@ -64,7 +78,6 @@
 
             this.slick.on('init', function(event, slick, currentSlide, nextSlide){
                 App.addAnimation();
-                console.log('init')
               });
 
             this.slick.on('afterChange init', function(event, slick, currentSlide, nextSlide){
@@ -76,6 +89,9 @@
                 $('.slideContent p.lead').removeClass('visible');
                 $('.slideContent .actor').removeClass('visible');
               });
+
+            // lightbox
+            $('#single-product .scene a').simpleLightbox({});
         }
 
         App.events = function() {
@@ -93,7 +109,10 @@
             });
 
             $(document).on('click', '#home-products .menu .valingContent', App.FrontPage.Products.click);
+            $(document).on('click', '#single-product .thumbnails .blend', App.SingleProduct.Thumbnails.click);
+
             $('#home-products ul li:first-child .valingContent').trigger('click');
+            $('#single-product .thumbnails .blend').first().trigger('click');
 
         }
     
