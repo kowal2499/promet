@@ -28,6 +28,7 @@
             </div>
         </div>
 
+        <?php if (!empty($images)): ?>
         <div class="row gallery">
             <div class="col-xs-10">
                 <div class="scene">
@@ -51,6 +52,7 @@
                 </div>
             </div>
         </div>
+        <?php endif; ?>
 
         <div class="row">
             <div class="col-xs-12">
