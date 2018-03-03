@@ -121,10 +121,9 @@ section#single-product {
 aside {
     .panel {
         border-radius: 0;
-        border: 1px solid $cFooter;
-
+        border: none;
         .panel-heading {
-            
+            border: 1px solid $cFooter;
             border-bottom: 1px solid $cFooter;
             border-top-left-radius: 0px;
             border-top-right-radius: 0px;
