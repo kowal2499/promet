@@ -1,5 +1,27 @@
 $cInputBackground: rgb(250, 255, 189);
 
+.form-group label {
+    color: #444;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 8px;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    font-size: 13px;
+}
+
+.form-control, .input-group-addon {
+    border: 2px solid #ebebeb;
+}
+
+.form-control {
+    border-radius: 0;
+    box-shadow: none;
+    height: auto;
+    line-height: 1.33333;
+    padding: 12px 18px;
+}
+
 input[type="email"] {
     color: #666;
     background-color: $cInputBackground;
