@@ -1,15 +1,25 @@
 section#single-product {
 
     .heading {
-        margin: 20px;
-        padding: 10px 15px;
-        border-left: 3px solid $cOrange;
-        h2, p {
+        margin: 10px;
+        
+        
+        h2 {
             margin: 0;
+            padding-left: 15px;
         }
 
         h2 {
             margin-bottom: 5px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border-left: 6px solid $cOrange;
+            background-color: $colorGray2;
+            color: #fff;
+        }
+        p {
+            color: $cBlue;
+            font-size: 16px;
         }
         
     }
@@ -28,13 +38,18 @@ section#single-product {
         }
 
         .thumbnails {
-            .tile {
+
+            padding: 20px 10px;
+            border: 1px solid $cFooter;
+
+        .tile {
                 position: relative;
                 padding: 0;
                 img {
                     display: block;
                     width: 100%;
                     max-width: 120px;
+                    margin: 0 auto;
                     
                     &+img {
                         margin-top: 5px;
@@ -66,8 +81,11 @@ section#single-product {
     }
 
     .well {
-        border: 1px solid $cOrangeLight;
+        border: 1px solid $cFooter;
+        background-color: #f5f5f5;
+        border-radius: 0;
         font-size: 15px;
+        box-shadow: 0 1px 1px rgba(0,0,0,.05);
     }
 
     thead {
@@ -76,5 +94,126 @@ section#single-product {
     }
     td {
         text-align: center;
+    }
+
+    @media screen and (max-width: 768px) {
+        & > .row {
+            margin: 0
+        }
+    }
+
+    @media screen and (max-width: 580px) {
+        .gallery .scene {
+            height: 380px;
+        }
+    }
+
+    @media screen and (max-width: 425px) {
+        .gallery {
+            .scene {
+                height: 235px;
+            }
+        }
+    }
+
+}
+
+aside {
+    .panel {
+        border-radius: 0;
+        border: 1px solid $cFooter;
+
+        .panel-heading {
+            
+            border-bottom: 1px solid $cFooter;
+            border-top-left-radius: 0px;
+            border-top-right-radius: 0px;
+            padding: 0;
+            
+            a {
+                h4 {
+                    position: relative;
+                    color: $colorGray2;
+                    background-color: #f5f5f5;
+                    border-left: 5px solid $cOrange;
+                    text-transform: uppercase;
+                    font-weight: bold;
+                    padding: 20px;
+                    margin-right: 40px;
+                    font-size: 17px;
+                    border-right: 1px solid $cFooter;
+                }
+
+                &.collapsed h4:before {
+                    @include transform(rotate(90deg));
+                }
+                h4:before{
+                    font-family: 'Font Awesome 5 Free';
+                    cursor: pointer;
+                    position: absolute;
+                    right: -30px;
+                    display: block;
+                    padding: 3px 6px 2px;
+                    color: $cBlue;
+                    content: "\f105";
+                    font-size: 18px;
+                    font-weight: 800;
+                    transition: all 0.25s ease-in-out 0s;
+                    // @include transform(rotate(00deg));
+                    
+                }
+            }
+            a:hover, a:focus {
+                text-decoration: none;
+            }
+        }
+
+        .panel-body {
+            ul {
+                padding: 0;
+                margin: 0;
+                list-style-type: none;
+                
+                li {
+                    height: 90px;
+                    overflow: hidden;
+                    &+li {
+                        border-top: 1px solid $cOrange;
+                    }
+
+                    img {
+                        width: 90px;
+                        max-width: 40%;
+                        transition: all 0.25s ease-in-out 0s;
+                    }
+                    h5 {
+                        width: 60%;
+                        display: inline-block;
+                        margin: 0;
+                        padding-left: 20px; 
+                        font-size: 16px;
+                        vertical-align: middle;
+                        line-height: 1.3em;
+                    }
+                    a {
+                        color: $cDark;
+                        transition: all 0.25s ease-in-out 0s;
+                        height: 100%;
+                        display: block;
+                    }
+
+                    a:hover {
+                        img {
+                            @include scale(1.15);
+                        }
+                        h5 {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+
+                
+            }
+        }
     }
 }

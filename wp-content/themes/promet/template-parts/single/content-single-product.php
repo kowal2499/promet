@@ -13,7 +13,6 @@
                     ];
                     $images[] = $img;
                 }
-                // var_dump($images);
             }
         ?>
 
@@ -21,16 +20,14 @@
 
     <div class="row">
 
-        <div class="row">
-            <div class="heading">
-                <h2><?php the_title(); ?></h2>
-                <p><?php the_excerpt(); ?></p>
-            </div>
+       <div class="heading">
+            <h2><?php the_title(); ?></h2>
+            <p><?php the_excerpt(); ?></p>
         </div>
 
         <?php if (!empty($images)): ?>
         <div class="row gallery">
-            <div class="col-xs-10">
+            <div class="col-xs-9">
                 <div class="scene">
                     <?php foreach ($images as $image): ?>
                     <a href="<?php echo $image['full']; ?>">
@@ -40,7 +37,7 @@
                 </div>
             </div>
 
-            <div class="col-xs-2">
+            <div class="col-xs-3">
                 <div class="thumbnails">
                     <?php foreach ($images as $image): ?>
                         <div class="tile">
@@ -59,9 +56,7 @@
                 <div class="well">
                     <?php the_content(); ?> 
                 </div>
-            
             </div>
-            
         </div>
 
     </div>

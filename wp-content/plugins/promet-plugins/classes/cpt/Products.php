@@ -181,15 +181,20 @@
                 $productsData[$category_id][$this->name][get_the_ID()] = array(
                     'title' => get_the_title(),
                     'link'  => get_the_permalink(),
-                    'photoMain' => $photoMain,
-                    'excerpt'   => get_the_excerpt()
+                    'photoMain' => wp_get_attachment_image_src($photoMain, '')[0],
+                    'excerpt'   => get_the_excerpt(),
+                    'thumbnail' => wp_get_attachment_image_src($photoMain, 'thumbnail-products')[0],
                 );
                 $productsData[$category_id]['name'] = (isset($category[0]) && !empty($category[0])) ? ($category[0]->cat_name) : 0;;
             endwhile;
             wp_reset_postdata();
             
             // posortuj proszę
-            ksort($productsData);
+
+            ksort($productsData); // kategorie
+            foreach ($productsData as $id => $category) {
+                ksort($productsData[$id]['products']); // produkty
+            }
 
             return $productsData;
         }
