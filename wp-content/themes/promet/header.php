@@ -7,6 +7,9 @@
         <?php wp_head(); ?>
     </head>
     <body <?php body_class(); ?>>
+        <div class="preloader">
+            tak, to ja czyli preloader
+        </div>
         <div canvas="container">
             <?php get_template_part( 'template-parts/header/content-header', get_post_format() ); ?>
             <?php get_template_part( 'template-parts/header/content-header_mobile', get_post_format() ); ?>

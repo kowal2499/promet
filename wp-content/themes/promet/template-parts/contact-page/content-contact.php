@@ -1,10 +1,13 @@
-
+<?php
+    $settings = Settings::getInstance();
+?>
+<section id="contact">
 <div class="col-md-6">
     <h3>
-        Kontakt z firmą
+        <?php echo $settings->getOption('contactFormHeader'); ?>
     </h3>
 
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid atque eum earum voluptate voluptas quisquam, magni provident quasi quos fuga sunt error modi sint, soluta vitae aut numquam mollitia voluptates maxime? Distinctio quam veritatis rem animi nemo mollitia commodi iure?</p>
+    <p><?php echo $settings->getOption('contactFormDescription'); ?></p>
 
     <form action="">
         <div class="row">
@@ -45,5 +48,30 @@
 
 
 <div class="col-md-6">
+    
+    <?php
+        $map_data = [
+            'apiKey' => $settings->getOption('mapAPIKey'),
+            'coordX' => $settings->getOption('mapCoordinateX'),
+            'coordY' => $settings->getOption('mapCoordinateY'),
+            'zoom' => $settings->getOption('mapZoom')
+        ];
+    ?>
+
+    <h3>
+        <?php echo $settings->getOption('addressDataHeader'); ?>
+    </h3>
+    <p>
+        <strong><?php echo $settings->getOption('addressLegalName'); ?></strong><br>
+        <?php echo $settings->getOption('addressStreet'); ?><br>
+        <?php echo $settings->getOption('addressPostalColde') . ' ' . $settings->getOption('addressCity'); ?><br><br>
+        <?php echo $settings->getOption('addressVoivodeship') . ', ' . $settings->getOption('addressCountry'); ?><br>
+        <?php echo 'NIP: ' . $settings->getOption('companyNIP'); ?>
+    </p>
+
+    <input type="hidden" id="googleMapData" data-settings="<?php echo urlencode(json_encode($map_data)); ?>">
+    <div id="map"></div>
 
 </div>
+
+</section>
