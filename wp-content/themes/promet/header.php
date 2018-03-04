@@ -8,7 +8,7 @@
     </head>
     <body <?php body_class(); ?>>
         <div class="preloader">
-            tak, to ja czyli preloader
+            <i class="fas fa-cog fa-spin fa-3x"></i>
         </div>
         <div canvas="container">
             <?php get_template_part( 'template-parts/header/content-header', get_post_format() ); ?>

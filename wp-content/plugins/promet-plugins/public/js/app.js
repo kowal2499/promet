@@ -24,7 +24,7 @@ var PROMET = {};
     //----------------------------------------------------/
     PROMET.loader = function () {
         if (!$preloader.length) return;
-        $preloader.css('display', 'none');
+        $preloader.fadeOut(400);
     }
 
     //Document ready functions
