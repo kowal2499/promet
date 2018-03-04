@@ -33,6 +33,12 @@
             </div>
         </div>
 
+        <div class="row">
+            <div class="form-group col-md-12">
+                <button class="btn btn-primary">Wyślij wiadomość</button>
+            </div>
+        </div>
+
     </form>
 </div>
 
