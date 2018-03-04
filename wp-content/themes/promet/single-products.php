@@ -10,13 +10,13 @@
             <div class="col-md-4">
                 <p>
                 <?php
-                    get_template_part('template-parts\single\content-sidebar', get_post_format());
+                    get_template_part('template-parts/single/content-sidebar', get_post_format());
                 ?>
                 </p>
             </div>
 
             <div class="col-md-8">
-                <?php get_template_part('template-parts\single\content-single-product', get_post_format()); ?>
+                <?php get_template_part('template-parts/single/content-single-product', get_post_format()); ?>
             </div>
 
             
