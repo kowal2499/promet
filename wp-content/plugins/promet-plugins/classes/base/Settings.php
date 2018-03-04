@@ -72,6 +72,11 @@
                         ),
                         array(
                             'class' => 'TextInput',
+                            'id'    => 'addressLegalName',
+                            'title' => 'Pełna nazwa firmy',
+                        ),
+                        array(
+                            'class' => 'TextInput',
                             'id'    => 'addressPostalColde',
                             'title' => 'Kod pocztowy',
                         ),
@@ -107,6 +112,12 @@
                             'title' => 'Godziny otwarcia firmy',
                             'desc'  => 'Tekst opisujący godziny w jakich firma jest otwarta'
                         ),
+                        array(
+                            'class' => 'TextInput',
+                            'id'    => 'companyNIP',
+                            'title' => 'Numer NIP firmy',
+                            'desc'  => ''
+                        ),
 
 
 
@@ -117,7 +128,50 @@
                 array(
                     'title'         => 'Kontakt',
                     'url'           => 'kontakt',
-                    'inputs'        => array()
+                    'inputs'        => array(
+                        array(
+                            'class' => 'TextInput',
+                            'id'    => 'mapAPIKey',
+                            'title' => 'Mapa google: klucz API',
+                            'desc'  => ''
+                        ),
+                        array(
+                            'class' => 'TextInput',
+                            'id'    => 'mapCoordinateX',
+                            'title' => 'Mapa google: współrzędna X',
+                            'desc'  => ''
+                        ),
+                        array(
+                            'class' => 'TextInput',
+                            'id'    => 'mapCoordinateY',
+                            'title' => 'Mapa google: współrzędna Y',
+                            'desc'  => ''
+                        ),
+                        array(
+                            'class' => 'TextInput',
+                            'id'    => 'mapZoom',
+                            'title' => 'Mapa google: zoom',
+                            'desc'  => ''
+                        ),
+                        array(
+                            'class' => 'TextInput',
+                            'id'    => 'contactFormHeader',
+                            'title' => 'Nagłówek nad formularzem kontaktowym',
+                            'desc'  => ''
+                        ),
+                        array(
+                            'class' => 'TextInput',
+                            'id'    => 'contactFormDescription',
+                            'title' => 'Tekst nad formularzem kontaktowym',
+                            'desc'  => ''
+                        ),
+                        array(
+                            'class' => 'TextInput',
+                            'id'    => 'addressDataHeader',
+                            'title' => 'Nagłówek nad danymi teleadresowymi',
+                            'desc'  => ''
+                        ),
+                    )
                 )
             );
 

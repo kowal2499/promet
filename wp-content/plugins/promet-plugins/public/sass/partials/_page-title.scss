@@ -1,0 +1,63 @@
+
+section#page-title {
+    padding-top: 100px;
+    padding-bottom: 30px;
+
+    background: url('../../imgs/patterns/noisy.png');
+    
+    background-repeat: repeat;
+    border-bottom: 1px solid $cFooter;
+
+    .title {
+        padding-left: 0px;
+        padding-right: 0px;
+        text-align: center;
+        h1 {
+            display: inline-block;
+            margin: 0 auto;
+            padding-left: 20px;
+            padding-right: 20px;
+            
+            font-size: 36px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            background-color: rgba(238, 116, 15, 0.15);
+        }
+
+        .breadcrumb {
+            text-align: center;
+
+            background-color: transparent;
+            ul {
+                padding: 0;
+                margin: 0;
+                list-style-type: none;
+                
+                li {
+                    display: inline-block;
+                
+                    & + li:before {
+                        content: '\3E';
+                        padding: 0 5px;
+                    }
+                }
+            }
+        }
+
+        a {
+            color: $cDark;
+        }
+    }
+
+    @media screen and (max-width: 458px) {
+        padding-top: 50px;
+        padding-bottom: 20px;
+        .title {
+            h1 {
+                font-size: 30px;
+            }
+        }
+    }
+}

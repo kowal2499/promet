@@ -7,25 +7,33 @@ $colorLightGray: #999999;
 $cWhite: #FFF;
 $colorWhiteDarker: #DDDDDD;
 $cOrange: #EE740F;
+$cOrangeLight: #eed3bd;
 $cGrayA: #a9a9a9;
 $cFooter: #ccc;
+$cBlue: #337AB7;
 
 * {
     font-family: 'Montserrat', sans-serif;
     box-sizing: border-box;
-    z-index: 10;
-    
+    z-index: 10; 
 }
+
 
 @import "partials/helpers";
 @import "partials/header";
 @import "partials/header_mobile";
+@import "partials/preloader";
 @import "partials/slider";
 
 @import "partials/home-products";
 @import "partials/home-section";
 
-@import "partials/footer";
+@import "partials/page-title.scss";
+@import "partials/page-kontakt.scss";
 
+@import "partials/single-product.scss";
+@import "partials/lightbox";
+
+@import "partials/footer";
 @import "partials/forms";
 

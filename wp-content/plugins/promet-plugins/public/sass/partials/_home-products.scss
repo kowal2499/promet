@@ -1,5 +1,6 @@
-section#home-products {
-   
+section#home-products,
+section#archive-products
+{
     .menu {
         position: relative;
         display: block;
@@ -132,6 +133,10 @@ section#home-products {
                 }
             }
         }
+    }
+
+    article {
+        border-bottom: 1px solid $cFooter;
     }
 
 

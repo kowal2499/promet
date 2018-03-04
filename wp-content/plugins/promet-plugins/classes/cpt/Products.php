@@ -157,6 +157,58 @@
             }
             echo "</ul>";
         }
+
+        /**
+         * Zwraca tabelę wszystkich produktów posortowaną rosnąco wg kategorii
+         */
+
+        public function getProducts() {
+            // generowanie listy produktów
+            $productData = [];
+            $custom_query = new WP_Query(array(
+                'post_type' => $this->name
+            ));
+            while($custom_query->have_posts()) : $custom_query->the_post(); 
+                
+                // category
+                $category = get_the_category();
+                $category_id = (isset($category[0]) && !empty($category[0])) ? ($category[0]->cat_ID) : 0;
+
+                // photoMain
+                $photoMain = get_post_meta(get_the_ID(), 'photoMain');
+                $photoMain = (isset($photoMain[0]) && !empty($photoMain[0])) ? $photoMain[0] : '';
+
+                $productsData[$category_id][$this->name][get_the_ID()] = array(
+                    'title' => get_the_title(),
+                    'link'  => get_the_permalink(),
+                    'photoMain' => wp_get_attachment_image_src($photoMain, '')[0],
+                    'excerpt'   => get_the_excerpt(),
+                    'thumbnail' => wp_get_attachment_image_src($photoMain, 'thumbnail-products')[0],
+                );
+                $productsData[$category_id]['name'] = (isset($category[0]) && !empty($category[0])) ? ($category[0]->cat_name) : 0;;
+            endwhile;
+            wp_reset_postdata();
+            
+            // posortuj proszę
+
+            ksort($productsData); // kategorie
+            foreach ($productsData as $id => $category) {
+                ksort($productsData[$id]['products']); // produkty
+            }
+
+            return $productsData;
+        }
+
+        /**
+         * Zwraca dane pojedyńczego produktu
+         */
+        public function getSingle($id) {
+
+            $custom_query = new WP_Query(array(
+                'post_type' => $this->name
+            ));
+
+        }
         
         public static function getInstance() {
             if (empty(self::$instance)) {

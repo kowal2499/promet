@@ -1,0 +1,24 @@
+.sl-overlay {
+    background-color: $colorGrayLigher;
+    
+}
+
+
+.sl-wrapper {
+    .sl-close, .sl-counter {
+        color: $cWhite;
+    }    
+    .sl-counter {
+        font-size: 2rem;
+    }
+
+    .sl-navigation {
+        button.sl-next, button.sl-prev {
+            color: $cWhite;
+            font-size: 5rem;
+        } 
+    }
+}
+
+
+

@@ -16,6 +16,7 @@ class Promet_Products_Widget extends WP_Widget {
             ->enqueue_style('owl.carousel.base', plugins_url('/promet-plugins/public/css/vendor/owl.carousel.min.css'))
             ->enqueue_style('owl.carousel.theme', plugins_url('/promet-plugins/public/css/vendor/owl.theme.default.min.css'))
             ->enqueue_style('slidebars', plugins_url('/promet-plugins/public/css/vendor/slidebars.min.css'))
+            ->enqueue_style('simplelightbox', plugins_url('/promet-plugins/public/css/vendor/simplelightbox.min.css'))
 
             ->enqueue_style('google-fonts', 'https://fonts.googleapis.com/css?family=Montserrat:400,700,900&amp;subset=latin-ext')
             // ->enqueue_style('google-fonts', 'https://fonts.googleapis.com/css?family=Open+Sans:400,700,800&amp;subset=latin-ext')
@@ -31,12 +32,16 @@ class Promet_Products_Widget extends WP_Widget {
             ->enqueue_script('owl.carousel', plugins_url('/promet-plugins/public/js/vendor/owl.carousel.min.js'), 'jQuery3', '1.0.0', true)
             ->enqueue_script('bootstrap', plugins_url('/promet-plugins/public/js/vendor/bootstrap.min.js'), 'jQuery3', '1.0.0', true)
             ->enqueue_script('slidebars', plugins_url('/promet-plugins/public/js/vendor/slidebars.min.js'), 'jQuery3', '1.0.0', true)
-
+            ->enqueue_script('simplelightbox', plugins_url('/promet-plugins/public/js/vendor/simple-lightbox.min.js'), 'jQuery3', '1.0.0', true)
+            
             ->enqueue_script('app', plugins_url('/promet-plugins/public/js/app.js'), 'jQuery3', '1.0.0', true)
             ->enqueue_script_admin('core-admin.js', plugins_url('/promet-plugins/public/js/admin.js'), 'jQuery', '1.0', true)
             ->enqueue_script_admin('inputs-admin.js', plugins_url('/promet-plugins/admin/js/inputs.js'), 'jQuery', '1.0', true)
             ->enqueue_script_admin('bootstrap_admin.js', plugins_url('/promet-plugins/public/js/bootstrap.min.js'), 'jQuery', '1.0', true)
             ->add_actions();
+
+        // rozmiar ikonek w galerii produktu
+        add_image_size('thumbnail-products', 120, 120, array ('center', 'center'));
 
         $research = Research::getInstance();
         $products = Products::getInstance();
