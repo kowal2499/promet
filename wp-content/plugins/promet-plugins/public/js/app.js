@@ -1,8 +1,4 @@
-'use strict'
-
-
 var PROMET = {};
-
 
 (function ($) {
     'use strict'
@@ -17,80 +13,131 @@ var PROMET = {};
 
         // elements
         $preloader = $('.preloader'),
-        $map = $('#googleMapData');
+        $mapData = $('#googleMapData'),
+        $slider = $('.slick-slider'),
+        $sidebarToggle = $('#sidebarToggle')
 
     //----------------------------------------------------/
     // PAGE LOADER
     //----------------------------------------------------/
+
     PROMET.loader = function () {
         if (!$preloader.length) return;
         $preloader.fadeOut(400);
     }
 
-    //Document ready functions
-    $document.ready(function() {
-        PROMET.loader();
-    });
+    //----------------------------------------------------/
+    // GOOGLE MAPS
+    //----------------------------------------------------/
 
-})(jQuery);
+    PROMET.googleMaps = function() {
+        if (!$mapData.length) return;
 
-
-// (function (jQuery) {
-    
-    // jQuery(document).ready(function () {
-
-    var App = {
-        slidebarsController: undefined,
-        slidebarName: 'mobileSidebar',
-
-        FrontPage: { Products: {} },
-        SingleProduct: { Thumbnails: {} },
-        GoogleMaps: {}
-    }
-
-    App.GoogleMaps.init = function() {
-        var elm = jQuery('#googleMapData');
-        if (elm.length == 0) return;
-
-        var rawSettings = elm.data('settings');
-        this.mapSettings = JSON.parse(decodeURIComponent(rawSettings));
+        var rawSettings = $mapData.data('settings');
+        PROMET.mapSettings = JSON.parse(decodeURIComponent(rawSettings));
 
         // load external js
         var scriptTag = document.createElement('script');
-        scriptTag.src = "https://maps.googleapis.com/maps/api/js?key=" + this.mapSettings.apiKey + "&callback=App.GoogleMaps.initMap";
+        scriptTag.src = "https://maps.googleapis.com/maps/api/js?key=" + PROMET.mapSettings.apiKey + "&callback=PROMET.callbackMap";
         document.head.appendChild(scriptTag);
-    }
+    };
 
-    App.GoogleMaps.initMap = function() {
+    PROMET.callbackMap = function() {
         // new map
         var map = new google.maps.Map(
             document.getElementById('map'),
             {
-                zoom: parseInt(this.mapSettings.zoom),
-                center: {lat: parseFloat(this.mapSettings.coordX), lng: parseFloat(this.mapSettings.coordY)},
+                zoom: parseInt(PROMET.mapSettings.zoom),
+                center: {lat: parseFloat(PROMET.mapSettings.coordX), lng: parseFloat(PROMET.mapSettings.coordY)},
                 scrollwheel: false
             }
         );
 
         // add marker
         var marker = new google.maps.Marker({
-            position: {lat: parseFloat(this.mapSettings.coordX), lng: parseFloat(this.mapSettings.coordY)},
+            position: {lat: parseFloat(PROMET.mapSettings.coordX), lng: parseFloat(PROMET.mapSettings.coordY)},
             map: map
+        });
+    };
+
+    //----------------------------------------------------/
+    // SLICK SLIDER
+    //----------------------------------------------------/
+
+    PROMET.slider = function() {
+        if (!$slider.length) return;
+        $slider.slick({
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 3500,
+            fade: true,
+            cssEase: 'linear',
+            pauseOnHover: false,
+            arrows: false
+        });
+
+        PROMET.sliderAddAnimation();
+
+        $slider.on('init', function (event, slick, currentSlide, nextSlide) {
+            PROMET.sliderAddAnimation();
+        });
+
+        $slider.on('afterChange init', function (event, slick, currentSlide, nextSlide) {
+            PROMET.sliderAddAnimation();
+        });
+
+        $slider.on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+            $('.slideContent h1').removeClass('visible');
+            $('.slideContent p.lead').removeClass('visible');
+            $('.slideContent .actor').removeClass('visible');
+        });
+    };
+
+    PROMET.sliderAddAnimation = function() {
+        $('.slideContent h1').addClass('animated fadeInDown visible').one('animationend oAnimationEnd mozAnimationEnd webkitAnimationEnd', function () {
+            $(this).removeClass('animated fadeInDown');
+        });
+
+        $('.slideContent p.lead').addClass('animated fadeInUp visible ').one('animationend oAnimationEnd mozAnimationEnd webkitAnimationEnd', function () {
+            $(this).removeClass('animated fadeInUp');
+        });
+
+        $('.slideContent .actor').addClass('animated fadeInLeft visible').one('animationend oAnimationEnd mozAnimationEnd webkitAnimationEnd', function () {
+            $(this).removeClass('animated fadeInLeft');
+        });
+    };
+
+    //----------------------------------------------------/
+    // SLIDEBARS
+    //----------------------------------------------------/
+
+    PROMET.slidebars = function() {
+        PROMET.slidebarsController = new slidebars();
+        PROMET.slidebarsController.init();
+
+        $sidebarToggle.on('click', function (event) {
+            event.stopPropagation();
+            event.preventDefault();
+
+            PROMET.slidebarsController.toggle('mobileSidebar');
+        });
+
+        jQuery(window).on('resize', function () {
+            // close mobile sidebars
+            PROMET.slidebarsController.close('mobileSidebar');
         });
     }
 
-    App.SingleProduct.Thumbnails.click = function (e) {
-        // get an id of the clicked element
-        var id = jQuery(e.target).data('id');
-        jQuery('#single-product .thumbnails .tile .blend').removeClass('active');
-        jQuery(e.target).addClass('active');
-        // hide all on scene
-        jQuery('#single-product .scene img').css('display', 'none');
-        jQuery('#single-product .scene img[data-id="' + id + '"]').css('display', 'block');
-        jQuery('#single-product .scene img[data-id="' + id + '"]').addClass('animated fadeIn');
+    //----------------------------------------------------/
+    // HOME PRODUCTS WIDGET
+    //----------------------------------------------------/
+
+    PROMET.homeProductsWidget = function() {
+        $document.on('click', '#home-products .menu .valingContent', PROMET.homeProductsWidgetClick);
+        $('#home-products ul li:first-child .valingContent').trigger('click');
     }
 
-    App.FrontPage.Products.click = function (e) {
+    PROMET.homeProductsWidgetClick = function(e) {
         // ustaw aktywny element w menu
         jQuery(e.target).closest('ul').find('li').removeClass('active');
         jQuery(e.target).closest('li').addClass('active');
@@ -107,83 +154,43 @@ var PROMET = {};
         }
     }
 
-    App.addAnimation = function (e) {
-        jQuery('.slideContent h1').addClass('animated fadeInDown visible').one('animationend oAnimationEnd mozAnimationEnd webkitAnimationEnd', function () {
-            jQuery(this).removeClass('animated fadeInDown');
-        });
+    //----------------------------------------------------/
+    // SINGLE PRODUCT
+    //----------------------------------------------------/
 
-        jQuery('.slideContent p.lead').addClass('animated fadeInUp visible ').one('animationend oAnimationEnd mozAnimationEnd webkitAnimationEnd', function () {
-            jQuery(this).removeClass('animated fadeInUp');
-        });
+    PROMET.singleProduct = function() {
+        if (!$('#single-product').length) return;
 
-        jQuery('.slideContent .actor').addClass('animated fadeInLeft visible').one('animationend oAnimationEnd mozAnimationEnd webkitAnimationEnd', function () {
-            jQuery(this).removeClass('animated fadeInLeft');
-        });
-    }
-
-    App.init = function () {
-        // Initialize Slidebars
-        this.slidebarsController = new slidebars();
-        this.slidebarsController.init();
-
-        this.slick = jQuery('.slick-slider').slick({
-            slidesToScroll: 1,
-            autoplay: true,
-            autoplaySpeed: 3500,
-            fade: true,
-            cssEase: 'linear',
-            pauseOnHover: false,
-            arrows: false
-        });
-
-        // comment
-
-        App.addAnimation();
-
-        this.slick.on('init', function (event, slick, currentSlide, nextSlide) {
-            App.addAnimation();
-        });
-
-        this.slick.on('afterChange init', function (event, slick, currentSlide, nextSlide) {
-            App.addAnimation();
-        });
-
-        this.slick.on('beforeChange', function (event, slick, currentSlide, nextSlide) {
-            jQuery('.slideContent h1').removeClass('visible');
-            jQuery('.slideContent p.lead').removeClass('visible');
-            jQuery('.slideContent .actor').removeClass('visible');
-        });
-
-        // lightbox
-        jQuery('#single-product .scene a').simpleLightbox({});
-
-        // google maps
-        this.GoogleMaps.init();
-    }
-
-    App.events = function () {
-        var el = this;
-        jQuery('#sidebarToggle').on('click', function (event) {
-            event.stopPropagation();
-            event.preventDefault();
-
-            el.slidebarsController.toggle(el.slidebarName);
-        });
-
-        jQuery(window).on('resize', function () {
-            // close mobile sidebars
-            el.slidebarsController.close(el.slidebarName);
-        });
-
-        jQuery(document).on('click', '#home-products .menu .valingContent', App.FrontPage.Products.click);
-        jQuery(document).on('click', '#single-product .thumbnails .blend', App.SingleProduct.Thumbnails.click);
-
-        jQuery('#home-products ul li:first-child .valingContent').trigger('click');
+        jQuery(document).on('click', '#single-product .thumbnails .blend', PROMET.singleProductThumbnailClick);
         jQuery('#single-product .thumbnails .blend').first().trigger('click');
+
+        // enable lightbox
+        jQuery('#single-product .scene a').simpleLightbox({});
     }
 
-    App.init();
-    App.events();
-    // });
+    PROMET.singleProductThumbnailClick = function(e) {
+        // get an id of the clicked element
+        var id = jQuery(e.target).data('id');
+        jQuery('#single-product .thumbnails .tile .blend').removeClass('active');
+        jQuery(e.target).addClass('active');
+        // hide all on scene
+        jQuery('#single-product .scene img').css('display', 'none');
+        jQuery('#single-product .scene img[data-id="' + id + '"]').css('display', 'block');
+        jQuery('#single-product .scene img[data-id="' + id + '"]').addClass('animated fadeIn');
+    }
 
-// })(jQuery);
+
+    //----------------------------------------------------/
+    // DOM READY
+    //----------------------------------------------------/
+
+    $document.ready(function() {
+        PROMET.loader();
+        PROMET.slidebars();
+        PROMET.slider();
+        PROMET.homeProductsWidget(),
+        PROMET.singleProduct();
+        PROMET.googleMaps();
+    });
+
+})(jQuery);
