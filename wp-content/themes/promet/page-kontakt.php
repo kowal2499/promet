@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <?php
-                get_template_part('template-parts\contact-page\content-contact', get_post_format());
+                get_template_part('template-parts/contact-page/content-contact', get_post_format());
             ?>
         </div>
     </div>
