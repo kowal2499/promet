@@ -1,10 +1,24 @@
 
+<?php
+  $archiveName = '';
+  if (is_archive()) {
+    switch (get_queried_object()->name) {
+      case 'research':
+        $archiveName = "Badania";
+        break;
+      case 'products':
+        $archiveName = "Produkty";
+        break;
+    }
+  }
+?>
+
 <section id="page-title">
     <div class="container">
         <div class="title">
             <h1><?php 
             if (is_archive()) {
-                echo 'Produkty';
+              echo $archiveName;
             } else {
                 echo get_the_title();
             } ?></h1>
@@ -22,9 +36,9 @@
                     ?>">
                     <?php 
                     if (is_archive()) {
-                        echo 'Produkty';
+                      echo $archiveName;
                     } else {
-                        echo get_the_title();
+                      echo get_the_title();
                     } 
                     ?></a></li>
                 </ul>
