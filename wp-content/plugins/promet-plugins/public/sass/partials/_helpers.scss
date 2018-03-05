@@ -80,3 +80,9 @@
     }
 }
 
+.in-progress {
+    display: inline-block;
+    background-color: $cOrange;
+    padding: 5px 10px;
+    border: 1px solid yellow;
+}

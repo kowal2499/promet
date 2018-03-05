@@ -3,6 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
+            <p class="in-progress">w relizacji</p>
             <?php
                 // Start the loop.
                 while ( have_posts() ) : the_post();
