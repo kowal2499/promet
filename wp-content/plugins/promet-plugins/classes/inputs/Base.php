@@ -4,12 +4,14 @@
         protected $id;
         protected $title;
         protected $desc;
+        protected $attributes;
         
-        protected function __construct($id, $title, $desc) {
+        protected function __construct($id, $title, $desc=null, $attr=null) {
             $this->id = 'options[' . $id . ']';
             $this->wpId = $id;
             $this->title = $title;
             $this->desc = $desc;
+            $this->attributes = $attr;
         }
 
         abstract public function render();

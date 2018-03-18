@@ -30,7 +30,7 @@
                             'label' => 'Zdjęcie główne',
                             'desc'  => 'Wyświetlane na stronie głównej, zalecana rozdzieczość 480x480px',
                             'id'    => 'photoMain',
-                            'type'  => 'text' 
+                            'type'  => 'text'
                         ),
 
                         array(

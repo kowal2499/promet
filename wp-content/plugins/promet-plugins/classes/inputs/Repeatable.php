@@ -17,8 +17,8 @@
 
             echo '<div class="repeatable-head">';
             // hidden main field
-            echo '<input type="hidden" class="repeatable-row-def" value="'.htmlspecialchars(json_encode($this->record)).'" size="60" />';
-            echo '<input type="hidden" class="repeatable-value" name="'.$this->id.'" id="'.$this->id.'" value="'.$this->value.'" size="60" />';
+            echo '<input type="hidden" class="repeatable-row-def" value="'.htmlspecialchars(json_encode($this->record)).'">';
+            echo '<input type="hidden" class="repeatable-value" name="'.$this->id.'" id="'.$this->id.'" value="'.$this->value.'">';
             echo '<br>';
 
             // add new button

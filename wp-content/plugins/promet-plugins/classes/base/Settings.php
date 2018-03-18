@@ -22,26 +22,28 @@
                             'desc'  => 'Jakś tam opis',
                             'recordDefinition' => array(
                                 array(
-                                    "type"  => "text",
-                                    "desc"  => "Tło slajdu. Zalecana rozdzielczość: 1200x400px",
-                                    "name"  => "backgroundImage"
+                                    'type'  => 'text',
+                                    'desc'  => 'Tło slajdu. Zalecana rozdzielczość: 1200x400px',
+                                    'name'  => 'backgroundImage'
                                 ),
 
                                 array(
-                                    "type"  => "text",
-                                    "desc"  => "Aktor obrazek",
-                                    "name"  => "slideInImage"
+                                    'type'  => 'text',
+                                    'desc'  => 'Aktor obrazek',
+                                    'name'  => 'slideInImage'
                                 ),
 
                                 array(
-                                    "type"  => "text",
-                                    "desc"  => "Opis główny",
-                                    "name"  => "txt01"
+                                    'type'  => 'text',
+                                    'desc'  => 'Opis główny',
+                                    'name'  => 'txt01',
+                                    'attr'  => ['size'=>'50']
                                 ),
                                 array(
-                                    "type"  => "text",
-                                    "desc"  => "Opis dodatkowy",
-                                    "name"  => "txt2"
+                                    'type'  => 'text',
+                                    'desc'  => 'Opis dodatkowy',
+                                    'name'  => 'txt2',
+                                    'attr'  => ['size'=>'50']
                                 )
                             )
                         ),
@@ -163,7 +165,8 @@
                             'class' => 'TextInput',
                             'id'    => 'contactFormDescription',
                             'title' => 'Tekst nad formularzem kontaktowym',
-                            'desc'  => ''
+                            'desc'  => '',
+                            'attr' => ['size' => 120]
                         ),
                         array(
                             'class' => 'TextInput',
@@ -247,7 +250,7 @@
                     break;
                 
                 default:
-                    $item = new $args['class']($args['id'], $args['title'], $args['desc']); // generate general object
+                    $item = new $args['class']($args['id'], $args['title'], $args['desc'], $args['attr'] ?? null); // generate general object
                     break;
             }
             return $item;

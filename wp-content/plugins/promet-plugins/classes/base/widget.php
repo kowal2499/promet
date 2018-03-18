@@ -43,9 +43,11 @@ class Promet_Products_Widget extends WP_Widget {
         // rozmiar ikonek w galerii produktu
         add_image_size('thumbnail-products', 120, 120, array ('center', 'center'));
 
+        // add custom posts
         $research = Research::getInstance();
         $products = Products::getInstance();
 
+        // add settings in admin area
         $settings = Settings::getInstance();
         
     }
