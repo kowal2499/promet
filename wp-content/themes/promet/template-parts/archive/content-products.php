@@ -1,6 +1,6 @@
 <?php
-    $settings = Settings::getInstance();
-    $productsData = Products::getInstance()->getProducts();
+    $settings = Base\Settings::getInstance();
+    $productsData = Base\CPT\Products::getInstance()->getProducts();
 ?>
 
 <section id="archive-products">

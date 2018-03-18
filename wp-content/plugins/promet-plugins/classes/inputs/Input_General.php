@@ -1,12 +1,13 @@
 <?php
-    abstract class Base {
+    abstract class Input_General {
         protected $value;
         protected $id;
         protected $title;
         protected $desc;
         protected $attributes;
         
-        protected function __construct($id, $title, $desc=null, $attr=null) {
+        protected function __construct($id, $title, $desc = null, $attr = null)
+        {
             $this->id = 'options[' . $id . ']';
             $this->wpId = $id;
             $this->title = $title;

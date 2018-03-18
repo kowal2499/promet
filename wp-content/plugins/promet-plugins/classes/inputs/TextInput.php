@@ -1,6 +1,6 @@
 <?php
 
-    class TextInput extends Base {
+    class TextInput extends Input_General {
 
         public function __construct($id, $title, $desc, $attr) {
             parent::__construct($id, $title, $desc, $attr);

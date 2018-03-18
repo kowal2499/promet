@@ -1,5 +1,5 @@
 <?php
-	$settings = Settings::getInstance();
+	$settings = Base\Settings::getInstance();
 ?>
 
 <section id="slider">

@@ -1,0 +1,37 @@
+{
+    "inputs": {
+        "slideshowPrimary": {
+            "class": "Repeatable",
+            "title": "Pokaz slajdów na stronie głównej",
+            "desc": "Tutaj jakiś opis",
+            "recordDefinition": [
+                {
+                    "type": "text",
+                    "desc": "Tło slajdu. Zalecana rozdzielczość: 1200x400px",
+                    "name": "backgroundImage"
+                },
+                {
+                    "type": "text",
+                    "desc": "Aktor obrazek",
+                    "name": "slideInImage"
+                },
+                {
+                    "type": "text",
+                    "desc": "Opis główny",
+                    "name": "txt01",
+                    "attr": {
+                        "size": "50"
+                    }
+                },
+                {
+                    "type": "text",
+                    "desc": "Opis dodatkowy",
+                    "name": "txt2",
+                    "attr": {
+                        "size": "50"
+                    }
+                }
+            ]
+        }
+    }
+}

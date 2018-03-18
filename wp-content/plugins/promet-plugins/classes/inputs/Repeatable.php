@@ -1,6 +1,6 @@
 <?php
 
-    class Repeatable extends Base {
+    class Repeatable extends Input_General {
 
         public function __construct($id, $title, $desc, $recordDefinition) {
             parent::__construct($id, $title, $desc);

@@ -1,5 +1,6 @@
 <?php
-    class Products extends Custom_Post {
+namespace Base\CPT;
+    class Products extends CustomPost {
         
         private static $instance;
 
@@ -165,7 +166,7 @@
         public function getProducts() {
             // generowanie listy produktów
             $productData = [];
-            $custom_query = new WP_Query(array(
+            $custom_query = new \WP_Query(array(
                 'post_type' => $this->name
             ));
             while($custom_query->have_posts()) : $custom_query->the_post(); 

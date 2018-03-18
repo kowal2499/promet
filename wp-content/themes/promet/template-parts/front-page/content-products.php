@@ -1,7 +1,7 @@
 <?php
-    $settings = Settings::getInstance();
+    $settings = Base\Settings::getInstance();
     
-    $productsData = Products::getInstance()->getProducts();
+    $productsData = Base\CPT\Products::getInstance()->getProducts();
 ?>
 
 <section id="home-products">

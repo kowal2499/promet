@@ -20,7 +20,7 @@ include_once( plugin_dir_path( __FILE__ ) . 'classes/cpt/Products.php');
 
 
 
-include_once( plugin_dir_path( __FILE__ ) . 'classes/inputs/Base.php');
+include_once( plugin_dir_path( __FILE__ ) . 'classes/inputs/Input_General.php');
 include_once( plugin_dir_path( __FILE__ ) . 'classes/inputs/TextInput.php');
 include_once( plugin_dir_path( __FILE__ ) . 'classes/inputs/Repeatable.php');
 include_once( plugin_dir_path( __FILE__ ) . 'classes/inputs/SlideshowConfig.php');

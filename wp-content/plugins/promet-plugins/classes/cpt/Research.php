@@ -1,6 +1,8 @@
 <?php
+namespace Base\CPT;
 
-    class Research extends Custom_Post {
+class Research extends CustomPost
+{
 
         private static $instance;
         

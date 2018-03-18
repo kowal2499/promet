@@ -1,0 +1,58 @@
+{
+    "inputs": {
+        "logoGeneral": {
+            "class": "TextInput",
+            "title": "Logo główne",
+            "desc": "Scieżka dostępu do pliku z logiem. Logo widoczne w nagłówku."
+        },
+        "phoneGeneral": {
+            "class": "TextInput",
+            "title": "Główny numer telefonu",
+            "desc": "Główny numer telefonu. Widoczny na stronie tytułowej w nagłówku i w stopce."
+        },
+        "emailGeneral": {
+            "class": "TextInput",
+            "title": "Główny adres email",
+            "desc": "Główny adres email. Widoczny na stronie tytułowej w nagłówku i w stopce."
+        },
+        "addressLegalName": {
+            "class": "TextInput",
+            "title": "Pełna nazwa firmy"
+        },
+        "addressPostalColde": {
+            "class": "TextInput",
+            "title": "Kod pocztowy"
+        },
+        "addressCity": {
+            "class": "TextInput",
+            "title": "Miejscowość"
+        },
+        "addressStreet": {
+            "class": "TextInput",
+            "title": "Ulica"
+        },
+        "addressVoivodeship": {
+            "class": "TextInput",
+            "title": "Województwo"
+        },
+        "addressCountry": {
+            "class": "TextInput",
+            "title": "Kraj"
+        },
+        "workingDays": {
+            "class": "TextInput",
+            "title": "Dni otwarcia firmy",
+            "desc": "Tekst opisujący dni w jakich firma jest otwarta"
+        },
+        "workingHours": {
+            "class": "TextInput",
+            "title": "Godziny otwarcia firmy",
+            "desc": "Tekst opisujący godziny w jakich firma jest otwarta"
+        },
+        "companyNIP": {
+            "class": "TextInput",
+            "title": "Numer NIP firmy",
+            "desc": ""
+        }
+    }
+}

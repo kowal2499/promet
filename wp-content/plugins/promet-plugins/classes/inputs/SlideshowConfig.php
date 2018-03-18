@@ -1,6 +1,6 @@
 <?php
 
-    class SlideshowConfig extends Base {
+    class SlideshowConfig extends Input_General {
         
         public function __construct($id, $title, $desc) {
             parent::__construct($id, $title, $desc);

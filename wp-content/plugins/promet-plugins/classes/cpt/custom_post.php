@@ -1,14 +1,17 @@
 <?php
 
-abstract class Custom_Post {
-    
+namespace Base\CPT;
+
+abstract class CustomPost
+{
 
     protected $name;
     protected $names;
     protected $args;
     protected $metaboxes;
     
-    protected function __construct() {
+    protected function __construct()
+    {
         $this->register();
 
         if (isset($this->metaboxes)) {

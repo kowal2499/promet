@@ -4,6 +4,7 @@
 wp-content/*
 !wp-content/plugins/
 wp-content/plugins/*
+!wp-content/plugins/classes
 !wp-content/plugins/promet-plugins/
 
 wp-content/plugins/promet-plugins/public/*

@@ -1,6 +1,6 @@
 <?php
-    $settings = Settings::getInstance();
-    $products = Products::getInstance()->getProducts();
+    $settings = Base\Settings::getInstance();
+    $products = Base\CPT\Products::getInstance()->getProducts();
     $this_product = get_the_ID();
 ?>
 
