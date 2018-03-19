@@ -1,0 +1,38 @@
+{
+    "inputs": {
+        "cert03": {
+            "label": "Is valid?",
+            "desc": "A description for the field.",
+            "type": "checkbox" 
+        },
+        "cert02": {
+            "label": "Text Input",
+            "desc": "A description for the field.",
+            "type": "text" 
+        },
+        "sel01": {
+            "label": "Select box",
+            "desc": "A description for the field.",
+            "id": "sel01",
+            "type": "select",
+            "options": {
+                "one": {
+                    "label": "option one",
+                    "value": "one"
+                },
+                "two": {
+                    "label": "option two",
+                    "value": "two"
+                },
+                "three": {
+                    "label": "option three",
+                    "value": "three"
+                }
+            }
+        }
+    }
+}
+
+                        
+
+

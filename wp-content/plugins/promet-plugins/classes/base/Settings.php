@@ -17,7 +17,8 @@ class Settings
                 'manager' => new InputsManager(plugin_dir_path(__DIR__)
                     . '../conf/inputs_settings_slideshow.json')
             ],
-            [   'title' => 'Dane ogólne',
+            [
+                'title' => 'Dane ogólne',
                 'url' => 'general_data',
                 'manager' => new InputsManager(plugin_dir_path(__DIR__)
                     . '../conf/inputs_settings_general.json')
@@ -104,7 +105,7 @@ class Settings
     }
 
     /*
-     * Tworzy tablicę id-ików i zarządzających nim managerów.
+     * Tworzy tablicę id-ików i zarządzających nimi managerów.
      * W trakcie działania skryptu dopisywane też są referencje utworzonych obiektów.
      */
     private function cacheKeys()
@@ -116,6 +117,9 @@ class Settings
         }
     }
 
+    /*
+     * Zwraca wartość z danego obiektu formularza
+     */
     public function getOption(string $id)
     {
         if (isset($this->cache[$id]) && !empty($this->cache[$id])) {

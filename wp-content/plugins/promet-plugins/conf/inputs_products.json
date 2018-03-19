@@ -1,0 +1,37 @@
+{
+    "inputs": {
+        "photoMain": {
+            "class": "TextInput",
+            "title": "Zdjęcie główne",
+            "desc": "Wyświetlane na stronie głównej, zalecana rozdzieczość 480x480px"
+        },
+        
+        "photoDesc01": {
+            "class": "TextInput",
+            "title": "Zdjęcie do opisu 1",
+            "desc": "A description for the field."
+        },
+
+        "txtDesc01": {
+            "class": "TextInput",
+            "title": "Tekst pod zdjęciem do opisu 1",
+            "desc": "A description for the field."
+        },
+
+        "photoDesc02": {
+            "class": "TextInput",
+            "title": "Zdjęcie do opisu 2",
+            "desc": "A description for the field.",
+            "type": "text"
+        },
+
+        "txtDesc02": {
+            "class": "TextInput",
+            "title": "Tekst pod zdjęciem do opisu 2",
+            "desc": "A description for the field."
+        }
+    }
+}
+
+
+                    

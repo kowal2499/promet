@@ -6,11 +6,11 @@ namespace Base;
  * Zarządza inputami użytymi w panelu administracyjnym
  *
  * @author Roman Kowalski
- *
  */
 class InputsManager
 {
     private $fields;
+    private $varWrapper = 'options';
 
     public function __construct($arg_fields)
     {
@@ -49,13 +49,18 @@ class InputsManager
         $item = null;
         switch ($input['class']) {
             case 'Repeatable':
-                $item = new $input['class']($id, $input['title'], $input['desc'], $input['recordDefinition']); // generate the Repeatable object
+                $item = new $input['class']($id, $input['title'], $this->varWrapper, $input['desc'], $input['recordDefinition']); // generate the Repeatable object
                 break;
             
             default:
-                $item = new $input['class']($id, $input['title'], $input['desc'], $input['attr'] ?? null); // generate general object
+                $item = new $input['class']($id, $input['title'], $this->varWrapper, $input['desc'], $input['attr'] ?? null); // generate general object
                 break;
         }
         return $item;
+    }
+
+    public function getVarWrapper()
+    {
+        return $this->varWrapper;
     }
 }

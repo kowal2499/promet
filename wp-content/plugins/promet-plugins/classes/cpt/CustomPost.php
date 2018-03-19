@@ -4,7 +4,6 @@ namespace Base\CPT;
 
 abstract class CustomPost
 {
-
     protected $name;
     protected $names;
     protected $args;
@@ -16,17 +15,21 @@ abstract class CustomPost
 
         if (isset($this->metaboxes)) {
             foreach ($this->metaboxes as $metabox) {
-                if (isset($metabox["name"]) && isset($metabox["fields"])) {
-                    $this->add_meta_box($metabox["name"], $metabox["fields"]);
+                if (isset($metabox['name']) && isset($metabox['manager'])) {
+                    $this->addMetaBox(
+                        $metabox['name'],
+                        $metabox['manager']
+                    );
                 }
             }
         }
         $this->save();
     }
 
-    protected function register() {
+    protected function register()
+    {
         if (!post_type_exists($this->name)) {
-            add_action('init', function() {
+            add_action('init', function () {
                 $args = array_merge(
                     array('labels' => $this->names),
                     $this->args
@@ -37,23 +40,31 @@ abstract class CustomPost
     }
 
     
-    private function add_meta_box($title, $fields = array(), $context = 'normal', $priority = 'default') {
-        add_action('add_meta_boxes', function() use( $title, $fields, $context, $priority ) {
+    private function addMetaBox($title, $fieldsManager, $context = 'normal', $priority = 'default')
+    {
+        add_action('add_meta_boxes', function () use ($title, $fieldsManager, $context, $priority) {
             $id = strtolower(str_replace(' ', '_', $title));
             add_meta_box(
                 $id,
-                ucwords(str_replace('_', ' ', $title)), // title;
-                
-                function() use ($fields, $id) {
+                ucwords($title),
+                function () use ($fieldsManager, $id) {
                     global $post;
-                    echo '<input type="hidden" name="custom_meta_box_nonce" value="'.wp_create_nonce(basename(__FILE__)).'" />';
-                    echo '<table class="form-table">';
+                    echo '<input type="hidden" name="custom_meta_box_nonce" value="'.wp_create_nonce(basename(__FILE__)).'">';
 
-                    foreach ($fields as $field) {
-                        $meta = get_post_meta($post->ID, $field['id'], true);
-                        echo '<tr>';
-                        echo '<th><label for="'.$field['label'].'">'.$field['label'].'</label></th>';
-                        echo '<td>';
+                    // echo '<table class="form-table">';
+                    
+                    foreach ($fieldsManager->getFields() as $fieldID => $fieldArgs) {
+                        $meta = get_post_meta($post->ID, $fieldID, true);
+                        // narysuj element formularza za pomocą managera
+                        $object = $fieldsManager->factory($fieldID);
+                        
+                        $object->setValue($meta);
+                        $object->render();
+
+                        // echo '<tr>';
+                        // echo '<th><label for="'.$fieldArgs['label'].'">'.$fieldArgs['label'].'</label></th>';
+                        // echo '<td>';
+                        /*
                         switch ($field['type']) {
                             case 'text':
                                 echo '<input type="text" name="'.$field['id'].'" id="'.$field['id'].'" value="'.$meta.'" size="30" />';
@@ -95,13 +106,12 @@ abstract class CustomPost
                                 echo '</ul>
                                     <span class="description">'.$field['desc'].'</span>';
                                 break;
-                        }
-                        echo '</td>';
-                        echo '</tr>';
+                        } */
+                        // echo '</td>';
+                        // echo '</tr>';
                     }
-                    echo '</table>';
+                    // echo '</table>';
                 },
-                
                 $this->name, // post type name
                 $context,
                 $priority
@@ -109,44 +119,47 @@ abstract class CustomPost
         });
     }
 
-    private function save() {
-
-        add_action('save_post', function() use ($post_id) {
+    private function save()
+    {
+        add_action('save_post', function () use ($post_id) {
             global $post;
             // verify nonce
-            if (!wp_verify_nonce($_POST['custom_meta_box_nonce'], basename(__FILE__)))
+            if (!wp_verify_nonce($_POST['custom_meta_box_nonce'], basename(__FILE__))) {
                 return $post->ID;
+            }
 
-            if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE)
+            if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
                 return $post->ID;
+            }
 
             foreach ($this->metaboxes as $metabox) {
-                foreach ($metabox['fields'] as $field) {
-                    update_post_meta($post->ID, $field['id'], $_POST[$field['id']]);
-               }
+                foreach ($metabox['manager']->getFields() as $id => $field) {
+                    update_post_meta(
+                        $post->ID,
+                        $id,
+                        $_POST[$metabox['manager']->getVarWrapper()][$id]
+                    );
+                }
             }
-            
         });
-        
     }
 
-
-    public function getAll(): array {
+    /*
+     * poniższe funkcje do sprawdzenia i ew. odstrzału
+     */
+    public function getAll(): array
+    {
         $items = array();
 
-        $loop = new WP_Query( array( 'post_type' => $this->name, 'posts_per_page' => -1 ) );
-        while ($loop->have_posts()): $loop->the_post();
+        $loop = new WP_Query(array('post_type' => $this->name, 'posts_per_page' => -1));
+        while ($loop->have_posts()) :
+            $loop->the_post();
             $item = [];
             $item["general"] = get_post(null, ARRAY_A);
             $item["meta"] = get_post_meta(get_the_ID());
             $items[] = $item;
         endwhile;
         wp_reset_query();
-
         return $items;
     }
-
-    
-
-    
 }

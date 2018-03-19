@@ -1,0 +1,26 @@
+{
+    "inputs": {
+        "item01": {
+            "class": "TextInput",
+            "desc": "A description for the field.",
+            "title": "Jakiś text input" 
+        },
+
+        "item02": {
+            "class": "Textarea",
+            "desc": "A description for the field.",
+            "title": "Jakiś textarea"  
+        },
+
+        "repeatable": {
+            "class": "Repeatable",
+            "desc": "A description for the field.",
+            "title": "Jakiś repeat" 
+        }
+    }
+}
+
+                        
+
+
+                    
