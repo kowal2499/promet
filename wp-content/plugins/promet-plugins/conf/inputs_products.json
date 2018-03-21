@@ -69,6 +69,12 @@
                     {"name": "zielony", "value": "zielony"}
                 ]
             }
+        },
+
+        "photoTest01": {
+            "class": "Image",
+            "title": "Obrazek tytułowy",
+            "desc": "Opis pod obrazkiem"
         }
     }
 }

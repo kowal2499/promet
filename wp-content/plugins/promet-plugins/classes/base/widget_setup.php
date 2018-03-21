@@ -94,7 +94,7 @@ class Widget_Setup {
             // die();
         }
         // odpal style
-        add_action('wp_enqueue_scripts', function() {
+        add_action('wp_enqueue_scripts', function () {
             foreach ($this->front_styles as $style) {
                 wp_enqueue_style(
                     $style['handle'],
@@ -107,7 +107,7 @@ class Widget_Setup {
             return true;
         });
         // odpal skrypty
-        add_action('wp_enqueue_scripts', function() {
+        add_action('wp_enqueue_scripts', function () {
             if (is_admin()) return;
             $scripts = $this->front_scripts;
 
@@ -124,7 +124,7 @@ class Widget_Setup {
         });
 
         // odpal style admina
-        add_action('admin_enqueue_scripts', function() {
+        add_action('admin_enqueue_scripts', function () {
             foreach ($this->admin_styles as $style) {
                 wp_enqueue_style(
                     $style['handle'],
@@ -138,8 +138,10 @@ class Widget_Setup {
         });
 
         // odpal skrypty admina
-        add_action('admin_enqueue_scripts', function() {
-            if (!is_admin()) return;
+        add_action('admin_enqueue_scripts', function () {
+            if (!is_admin()) {
+                return;
+            }
             $scripts = $this->admin_scripts;
 
             foreach ($scripts as $script) {
@@ -151,6 +153,9 @@ class Widget_Setup {
                     $script['inFooter']
                 );
             }
+
+            wp_enqueue_media();
+
             return true;
         });
 

@@ -28,4 +28,5 @@ include_once(plugin_dir_path(__FILE__) . 'classes/inputs/Textarea.php');
 include_once(plugin_dir_path(__FILE__) . 'classes/inputs/Select.php');
 include_once(plugin_dir_path(__FILE__) . 'classes/inputs/Checkbox.php');
 include_once(plugin_dir_path(__FILE__) . 'classes/inputs/Radio.php');
+include_once(plugin_dir_path(__FILE__) . 'classes/inputs/Image.php');
 include_once(plugin_dir_path(__FILE__) . 'classes/inputs/SlideshowConfig.php');

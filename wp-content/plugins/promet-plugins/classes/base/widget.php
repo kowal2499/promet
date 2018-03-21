@@ -36,6 +36,7 @@ class Promet_Products_Widget extends WP_Widget
             ->enqueue_script('app', plugins_url('/promet-plugins/public/js/app.js'), 'jQuery3', '1.0.0', true)
             ->enqueue_script_admin('core-admin.js', plugins_url('/promet-plugins/public/js/admin.js'), 'jQuery', '1.0', true)
             ->enqueue_script_admin('inputs-admin.js', plugins_url('/promet-plugins/admin/js/inputs.js'), 'jQuery', '1.0', true)
+            ->enqueue_script_admin('img-uploader-admin.js', plugins_url('/promet-plugins/admin/js/img-uploader.js'), 'jQuery', '1.0', true)
             ->add_actions();
 
         // rozmiar ikonek w galerii produktu
