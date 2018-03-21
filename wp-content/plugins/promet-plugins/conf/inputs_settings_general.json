@@ -1,56 +1,56 @@
 {
     "inputs": {
         "logoGeneral": {
-            "class": "TextInput",
+            "class": "Text",
             "title": "Logo główne",
             "desc": "Scieżka dostępu do pliku z logiem. Logo widoczne w nagłówku."
         },
         "phoneGeneral": {
-            "class": "TextInput",
+            "class": "Text",
             "title": "Główny numer telefonu",
             "desc": "Główny numer telefonu. Widoczny na stronie tytułowej w nagłówku i w stopce."
         },
         "emailGeneral": {
-            "class": "TextInput",
+            "class": "Text",
             "title": "Główny adres email",
             "desc": "Główny adres email. Widoczny na stronie tytułowej w nagłówku i w stopce."
         },
         "addressLegalName": {
-            "class": "TextInput",
+            "class": "Text",
             "title": "Pełna nazwa firmy"
         },
         "addressPostalColde": {
-            "class": "TextInput",
+            "class": "Text",
             "title": "Kod pocztowy"
         },
         "addressCity": {
-            "class": "TextInput",
+            "class": "Text",
             "title": "Miejscowość"
         },
         "addressStreet": {
-            "class": "TextInput",
+            "class": "Text",
             "title": "Ulica"
         },
         "addressVoivodeship": {
-            "class": "TextInput",
+            "class": "Text",
             "title": "Województwo"
         },
         "addressCountry": {
-            "class": "TextInput",
+            "class": "Text",
             "title": "Kraj"
         },
         "workingDays": {
-            "class": "TextInput",
+            "class": "Text",
             "title": "Dni otwarcia firmy",
             "desc": "Tekst opisujący dni w jakich firma jest otwarta"
         },
         "workingHours": {
-            "class": "TextInput",
+            "class": "Text",
             "title": "Godziny otwarcia firmy",
             "desc": "Tekst opisujący godziny w jakich firma jest otwarta"
         },
         "companyNIP": {
-            "class": "TextInput",
+            "class": "Text",
             "title": "Numer NIP firmy",
             "desc": ""
         }

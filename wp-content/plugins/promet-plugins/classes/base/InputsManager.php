@@ -2,6 +2,8 @@
 
 namespace Base;
 
+use Inputs;
+
 /**
  * Zarządza inputami użytymi w panelu administracyjnym
  *
@@ -47,13 +49,14 @@ class InputsManager
     {
         $input = $this->fields['inputs'][$id];
         $item = null;
+        $className = 'Inputs\\' . $input['class'];
         switch ($input['class']) {
             case 'Repeatable':
-                $item = new $input['class']($id, $input['title'], $this->varWrapper, $input['desc'], $input['recordDefinition']); // generate the Repeatable object
+                $item = new $className($id, $input['title'], $this->varWrapper, $input['desc'], $input['recordDefinition']); // generate the Repeatable object
                 break;
-            
+
             default:
-                $item = new $input['class']($id, $input['title'], $this->varWrapper, $input['desc'], $input['attr'] ?? null); // generate general object
+                $item = new $className($id, $input['title'], $this->varWrapper, $input['desc'], $input['attr'] ?? null); // generate general object
                 break;
         }
         return $item;

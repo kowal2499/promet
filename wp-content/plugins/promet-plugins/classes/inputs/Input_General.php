@@ -1,4 +1,7 @@
 <?php
+
+namespace Inputs;
+
 abstract class Input_General
 {
     protected $value;
@@ -21,29 +24,34 @@ abstract class Input_General
 
     abstract public function render();
     
-    protected function beforeRender() {
+    protected function beforeRender()
+    {
         echo '<table class="form-table">';
         echo '<tr>';
         echo '<th><label for="'.$this->id.'">'.$this->title.'</label></th>';
         echo '<td>';
     }
 
-    protected function afterRender() {
+    protected function afterRender()
+    {
         echo '</td>';
         echo '</tr>';
         echo '</table>';
     }
 
-    public function setValue($value) {
+    public function setValue($value)
+    {
         $this->value = $value;
     }
 
-    public function getValue() {
+    public function getValue()
+    {
         $value = get_option($this->wpId);
         return $value ?? '';
     }
 
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 }

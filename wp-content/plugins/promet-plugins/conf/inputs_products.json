@@ -1,34 +1,74 @@
 {
     "inputs": {
         "photoMain": {
-            "class": "TextInput",
+            "class": "Text",
             "title": "Zdjęcie główne",
             "desc": "Wyświetlane na stronie głównej, zalecana rozdzieczość 480x480px"
         },
         
         "photoDesc01": {
-            "class": "TextInput",
+            "class": "Text",
             "title": "Zdjęcie do opisu 1",
             "desc": "A description for the field."
         },
 
         "txtDesc01": {
-            "class": "TextInput",
+            "class": "Text",
             "title": "Tekst pod zdjęciem do opisu 1",
             "desc": "A description for the field."
         },
 
         "photoDesc02": {
-            "class": "TextInput",
+            "class": "Text",
             "title": "Zdjęcie do opisu 2",
             "desc": "A description for the field.",
             "type": "text"
         },
 
         "txtDesc02": {
-            "class": "TextInput",
+            "class": "Text",
             "title": "Tekst pod zdjęciem do opisu 2",
             "desc": "A description for the field."
+        },
+
+        "select01": {
+            "class": "Select",
+            "title": "Grubość blachy",
+            "desc": "A description",
+            "attr": {
+                "options": [
+                    {"name": "0.8mm", "value": "1"},
+                    {"name": "1.1mm", "value": "2"},
+                    {"name": "1.5mm", "value": "3"}
+                ]
+            }
+        },
+
+        "check01": {
+            "class": "Checkbox",
+            "title": "Dostępne kolory",
+            "desc": "A description",
+            "attr": {
+                "options": [
+                    {"name": "czerwony", "value": "czerwony"},
+                    {"name": "pomarańczowy", "value": "pomarańczowy"},
+                    {"name": "niebieski", "value": "niebieski"},
+                    {"name": "czarny", "value": "czarny"}
+                ]
+            }
+        },
+
+        "radio01": {
+            "class": "Radio",
+            "title": "Kolor oczu",
+            "desc": "A description",
+            "attr": {
+                "options": [
+                    {"name": "niebieski", "value": "niebieski"},
+                    {"name": "brązowy", "value": "brązowy"},
+                    {"name": "zielony", "value": "zielony"}
+                ]
+            }
         }
     }
 }

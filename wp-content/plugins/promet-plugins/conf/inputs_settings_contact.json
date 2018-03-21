@@ -2,7 +2,7 @@
     "inputs": {
 
         "mapAPIKey": {
-            "class": "TextInput",
+            "class": "Text",
             "title": "Mapa google: klucz API",
             "desc": "",
             "attr": {
@@ -10,35 +10,39 @@
             }
         },
         "mapCoordinateX": {
-            "class": "TextInput",
+            "class": "Text",
             "title": "Mapa google: współrzędna X",
             "desc": ""
         },
         "mapCoordinateY": {
-            "class": "TextInput",
+            "class": "Text",
             "title": "Mapa google: współrzędna Y",
             "desc": ""
         },
         "mapZoom": {
-            "class": "TextInput",
+            "class": "Number",
             "title": "Mapa google: zoom",
-            "desc": ""
+            "desc": "Im niższa wartość tym większe oddalenie",
+            "attr": {
+                "min": 0
+            }
         },
         "contactFormHeader": {
-            "class": "TextInput",
+            "class": "Text",
             "title": "Nagłówek nad formularzem kontaktowym",
             "desc": ""
         },
         "contactFormDescription": {
-            "class": "TextInput",
+            "class": "Textarea",
             "title": "Tekst nad formularzem kontaktowym",
             "desc": "",
             "attr": {
-                "size": 120
+                "rows": 8,
+                "cols": 80
             }
         },
         "addressDataHeader": {
-            "class": "TextInput",
+            "class": "Text",
             "title": "Nagłówek nad danymi teleadresowymi",
             "desc": ""
         }
