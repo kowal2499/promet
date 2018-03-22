@@ -15,7 +15,10 @@ class Checkbox extends Input_General
         $this->beforeRender();
 
         foreach ($options as $option) {
-            $checked = in_array($option['value'], $this->value) ? ' checked' : '';
+            $checked = '';
+            if (is_array($this->value)) {
+                $checked = in_array($option['value'], $this->value) ? ' checked' : '';
+            }
             echo '<input type="checkbox" name="' . $this->id . '[]" value="' . $option['value'] . '"' . $checked . '>';
             echo $option['name'];
             echo '</input><br>';

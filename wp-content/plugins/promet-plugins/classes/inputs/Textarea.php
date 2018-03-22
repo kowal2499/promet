@@ -21,7 +21,7 @@ class Textarea extends Input_General
             ' id="'.$this->id.'"'.
             (is_null($rows) ? '' : ' rows="'.intval($rows).'"').
             (is_null($cols) ? '' : ' cols="'.intval($cols).'"').
-            '>'.$this->value.'</textarea><span class="description">'.$this->desc.'</span>';
+            '>'.$this->value.'</textarea><br><span class="description">'.$this->desc.'</span>';
 
         $this->afterRender();
     }

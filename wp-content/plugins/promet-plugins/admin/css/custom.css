@@ -1,0 +1,16 @@
+.img-upload img {
+    display: inline-block;
+    width: 130px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.img-buttons {
+    display: inline-block;
+    width: 110px;
+    vertical-align: top;
+}
+
+.img-buttons input[type="button"] {
+    margin-bottom: 5px;
+}

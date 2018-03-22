@@ -25,6 +25,7 @@ class Promet_Products_Widget extends WP_Widget
             ->enqueue_style('animate', plugins_url('/promet-plugins/public/css/vendor/animate.css'))
 
             ->enqueue_style('css.custom', plugins_url('/promet-plugins/public/css/custom.css'))
+            ->enqueue_style_admin('css.custom.admin', plugins_url('/promet-plugins/admin/css/custom.css'))
 
             ->enqueue_script('jQuery3', plugins_url('/promet-plugins/public/js/vendor/jquery-3.3.1.min.js'), '', '1.0.0', true)
             ->enqueue_script('owl.carousel', plugins_url('/promet-plugins/public/js/vendor/slick.min.js'), 'jQuery3', '1.0.0', true)

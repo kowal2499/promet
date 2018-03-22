@@ -1,34 +1,41 @@
 {
     "inputs": {
         "photoMain": {
-            "class": "Text",
+            "class": "Image",
             "title": "Zdjęcie główne",
-            "desc": "Wyświetlane na stronie głównej, zalecana rozdzieczość 480x480px"
+            "desc": "Wyświetlane na stronie głównej, zalecana rozdzielczość 480x480px"
         },
         
         "photoDesc01": {
-            "class": "Text",
+            "class": "Image",
             "title": "Zdjęcie do opisu 1",
             "desc": "A description for the field."
         },
 
         "txtDesc01": {
-            "class": "Text",
+            "class": "Textarea",
             "title": "Tekst pod zdjęciem do opisu 1",
-            "desc": "A description for the field."
+            "desc": "A description for the field.",
+            "attr": {
+                "rows": 3,
+                "cols": 80
+            }
         },
 
         "photoDesc02": {
-            "class": "Text",
+            "class": "Image",
             "title": "Zdjęcie do opisu 2",
-            "desc": "A description for the field.",
-            "type": "text"
+            "desc": "A description for the field."
         },
 
         "txtDesc02": {
-            "class": "Text",
+            "class": "Textarea",
             "title": "Tekst pod zdjęciem do opisu 2",
-            "desc": "A description for the field."
+            "desc": "A description for the field.",
+            "attr": {
+                "rows": 3,
+                "cols": 80
+            }
         },
 
         "select01": {
@@ -69,12 +76,6 @@
                     {"name": "zielony", "value": "zielony"}
                 ]
             }
-        },
-
-        "photoTest01": {
-            "class": "Image",
-            "title": "Obrazek tytułowy",
-            "desc": "Opis pod obrazkiem"
         }
     }
 }
