@@ -85,7 +85,7 @@ class Settings
                     foreach ($this->tabs as $tab) {
                         if ($tab['url'] === $active_tab) {
                             foreach ($tab['manager']->getFields() as $id => $input) {
-                                $object = $tab['manager']->factory($id);
+                                $object = $tab['manager']->factory($id, $input);
                                 $val = $object->getValue();
                                 $object->setValue($val);
                                 $object->render();

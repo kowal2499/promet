@@ -34,3 +34,19 @@ var uploader = {
 }
 
 uploader.init();
+
+var repeatable = {
+    init: function() {
+        jQuery(document).on('click', '.addRow', function() {
+            var template = jQuery(this).closest('.rptContainer').find('.rowTemplate');
+            var rowsDiv = jQuery(this).closest('.rptContainer').find('.rows');
+            var quantity = parseInt(jQuery(this).data('qty'));
+
+            console.log(quantity)
+            rowsDiv.html(rowsDiv.html() + template.val().replace(/%index%/g, quantity));
+            jQuery(this).data('qty', quantity+1);
+        });
+    }
+}
+
+repeatable.init();

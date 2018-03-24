@@ -54,4 +54,14 @@ abstract class Input_General
     {
         return $this->id;
     }
+
+    public function getWpId()
+    {
+        return $this->wpId;
+    }
+
+    public function setId($newId)
+    {
+        $this->id = $newId;
+    }
 }

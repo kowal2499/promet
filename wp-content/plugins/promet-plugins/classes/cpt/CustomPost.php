@@ -56,7 +56,7 @@ abstract class CustomPost
                     foreach ($fieldsManager->getFields() as $fieldID => $fieldArgs) {
                         $meta = get_post_meta($post->ID, $fieldID, true);
                         // narysuj element formularza za pomocą managera
-                        $object = $fieldsManager->factory($fieldID);
+                        $object = $fieldsManager->factory($fieldID, $fieldArgs);
                         
                         $object->setValue($meta);
                         $object->render();

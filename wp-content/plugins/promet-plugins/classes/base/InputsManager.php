@@ -2,8 +2,6 @@
 
 namespace Base;
 
-use Inputs;
-
 /**
  * Zarządza inputami użytymi w panelu administracyjnym
  *
@@ -45,14 +43,24 @@ class InputsManager
      * @input array
      * @return object
      */
-    public function factory($id)
+    public function factory($id, $input)
     {
-        $input = $this->fields['inputs'][$id];
+        // $input = $this->fields['inputs'][$id];
         $item = null;
         $className = 'Inputs\\' . $input['class'];
         switch ($input['class']) {
+            
             case 'Repeatable':
                 $item = new $className($id, $input['title'], $this->varWrapper, $input['desc'], $input['recordDefinition']); // generate the Repeatable object
+                break;
+
+            case 'Repeatable2':
+                $item = new $className($id, $input['title'], $this->varWrapper, $input['desc']); // generate the Repeatable object
+                // add elements to the object
+                foreach ($input['elements'] as $elementId => $elementBody) {
+                    $repeatableObject = $this->factory($elementId, $elementBody);
+                    $item->addElement($repeatableObject);
+                }
                 break;
 
             default:
