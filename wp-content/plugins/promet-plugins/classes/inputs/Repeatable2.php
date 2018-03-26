@@ -54,7 +54,7 @@ class Repeatable2 extends Input_General
         echo '<input type="hidden" disabled="disabled" class="rowTemplate" value="'.htmlspecialchars($output).'">';
         echo '<input type="button" class="button addRow" value="Dodaj element" data-qty="'. count($this->value) .'">';
         
-        echo '<table class="form-table">';
+        echo '<table class="form-table" data-inner-id="' . $this->getWpId() . '">';
 
         foreach ($this->value as $rowId => $row) {
             echo '<tr>';

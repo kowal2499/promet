@@ -43,7 +43,7 @@ var repeatable = {
     },
 
     onAddRow: function(e) {
-        console.log(this)
+        
         var template = jQuery(e.srcElement).closest('.rptContainer').find('.rowTemplate');
         var records = jQuery(e.srcElement).closest('.rptContainer').find('table.form-table');
         var qty = this.getQuantity(e.srcElement);
@@ -53,13 +53,13 @@ var repeatable = {
     onDelRow: function(e) {
         // znajdź najbliższy <tr>
         var myRow = jQuery(e.srcElement).closest('tr');
-        var self = this;
-        myRow.fadeOut(500, function(self) {
-            var parent = myRow.closest('.rptContainer');
+        
+        myRow.fadeOut(500, function() {
+            var parent = myRow.closest('table.form-table');
             // usuń rząd
             myRow.remove();
-            self.updateIds(parent);
-        }.bind(myRow, this));
+            this.updateIds(parent);
+        }.bind(this));
     },
 
     getQuantity: function(obj) {
@@ -69,9 +69,26 @@ var repeatable = {
     },
 
     updateIds: function(parent) {
-        console.log(parent);
-    }
+        console.log('doing update')
+        var repeatableName = parent.data('inner-id');
+        // get all first level tr-s. There may be some nested repeatable structures, we do not want to loop through them
+        var rows = parent.find('tr').first().parent().children();
+        for (var rowNumber=0; rowNumber < rows.length; rowNumber++) {
+            // prepare regex
+            var replaceRegex = "\\[" + repeatableName + "\\]\\[\\d\\]";
+            var re = new RegExp(replaceRegex, "g");
 
+            var allInputs = jQuery(rows[rowNumber]).find('[name*="[' + repeatableName + ']"]');
+
+            for (var input=0; input<allInputs.length; input++) {
+                var oldName = jQuery(allInputs[input]).attr('name');
+
+                var newName = oldName.replace(re, "[" + repeatableName + "][" + rowNumber + "]"); // <-- fun part
+                jQuery(allInputs[input]).attr('name', newName);
+                jQuery(allInputs[input]).attr('id', newName);
+            }
+        }   
+    }
 }
 
 repeatable.init();
