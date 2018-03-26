@@ -9,7 +9,7 @@ class SlideshowConfig extends Input_General
         parent::__construct($id, $title, $desc);
     }
 
-    public function render()
+    public function render($entire = true)
     {
         echo "hello, I am SlideshowConfig<br>";
     }

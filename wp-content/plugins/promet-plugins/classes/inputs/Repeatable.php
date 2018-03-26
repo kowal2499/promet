@@ -10,9 +10,9 @@ class Repeatable extends Input_General
         $this->record = $recordDefinition;
     }
 
-    public function render()
+    public function render($entire = false)
     {
-        $this->beforeRender();
+        $this->beforeRender($entire);
         
         echo '<div class="repeatable" data-related="'.$this->id.'">';
 
@@ -31,6 +31,6 @@ class Repeatable extends Input_General
     
         echo '</div>';
 
-        $this->afterRender();
+        $this->afterRender($entire);
     }
 }

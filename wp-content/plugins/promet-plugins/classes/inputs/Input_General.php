@@ -22,18 +22,24 @@ abstract class Input_General
         $this->attributes = $attr;
     }
 
-    abstract public function render();
+    abstract public function render($entire = true);
     
-    protected function beforeRender()
+    protected function beforeRender($entire = true)
     {
+        if ($entire === false) {
+            return;
+        }
         echo '<table class="form-table">';
         echo '<tr>';
         echo '<th><label for="'.$this->id.'">'.$this->title.'</label></th>';
         echo '<td>';
     }
 
-    protected function afterRender()
+    protected function afterRender($entire = true)
     {
+        if ($entire === false) {
+            return;
+        }
         echo '</td>';
         echo '</tr>';
         echo '</table>';

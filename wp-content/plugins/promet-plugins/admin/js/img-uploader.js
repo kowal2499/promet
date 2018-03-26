@@ -36,17 +36,42 @@ var uploader = {
 uploader.init();
 
 var repeatable = {
-    init: function() {
-        jQuery(document).on('click', '.addRow', function() {
-            var template = jQuery(this).closest('.rptContainer').find('.rowTemplate');
-            var rowsDiv = jQuery(this).closest('.rptContainer').find('.rows');
-            var quantity = parseInt(jQuery(this).data('qty'));
 
-            console.log(quantity)
-            rowsDiv.html(rowsDiv.html() + template.val().replace(/%index%/g, quantity));
-            jQuery(this).data('qty', quantity+1);
-        });
+    init: function() {
+        jQuery(document).on('click', '.addRow', this.onAddRow.bind(this));
+        jQuery(document).on('click', '.deleteRow', this.onDelRow.bind(this));
+    },
+
+    onAddRow: function(e) {
+        console.log(this)
+        var template = jQuery(e.srcElement).closest('.rptContainer').find('.rowTemplate');
+        var records = jQuery(e.srcElement).closest('.rptContainer').find('table.form-table');
+        var qty = this.getQuantity(e.srcElement);
+        records.append(template.val().replace(/%index%/g, qty));
+    },
+
+    onDelRow: function(e) {
+        // znajdź najbliższy <tr>
+        var myRow = jQuery(e.srcElement).closest('tr');
+        var self = this;
+        myRow.fadeOut(500, function(self) {
+            var parent = myRow.closest('.rptContainer');
+            // usuń rząd
+            myRow.remove();
+            self.updateIds(parent);
+        }.bind(myRow, this));
+    },
+
+    getQuantity: function(obj) {
+        var parent = jQuery(obj).closest('.rptContainer');
+        var rows = parent.find('table.form-table tr')
+        return rows.length;
+    },
+
+    updateIds: function(parent) {
+        console.log(parent);
     }
+
 }
 
 repeatable.init();

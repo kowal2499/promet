@@ -9,7 +9,6 @@ class Repeatable2 extends Input_General
         parent::__construct($id, $title, $wrapper, $desc);
 
         $this->templates = [];
-        $this->records = [];
     }
 
     public function addElement($element)
@@ -24,23 +23,64 @@ class Repeatable2 extends Input_General
         $this->templates[] = $element;
     }
 
-    public function render()
+    public function render($entire = true)
     {
-        $this->beforeRender();
+        var_dump($this->value);
+        $this->beforeRender($entire);
 
-        echo 'Mam takie elementy<br>';
-
+        // wygeneruj szablon wiersza (będzie z niego korzystał JS)
         ob_start();
+        if (!empty($this->templates)) {
+            echo '<tr>';
+        }
         foreach ($this->templates as $element) {
-            $element->render();
+            echo '<td>';
+            echo '<label for="'.$element->id.'"><strong>'.$element->title.'</strong></label><br><br>';
+            $element->render($entire = false);
+            echo '</td>';
+        }
+        if (!empty($this->templates)) {
+            // config row
+            echo '<td class="row-config">';
+            echo '<input type="button" class="button deleteRow" value="Usuń element">';
+            echo '</td>';
+            echo '</tr>';
         }
         $output = ob_get_clean();
 
+
+
         echo '<div class="rptContainer">';
         echo '<input type="hidden" disabled="disabled" class="rowTemplate" value="'.htmlspecialchars($output).'">';
-        echo '<input type="button" class="button addRow" value="Dodaj element" data-qty="'. count($this->records) .'">';
-        echo '<div class="rows"></div>';
+        echo '<input type="button" class="button addRow" value="Dodaj element" data-qty="'. count($this->value) .'">';
+        
+        echo '<table class="form-table">';
+
+        foreach ($this->value as $rowId => $row) {
+            echo '<tr>';
+            foreach ($this->templates as $element) {
+                $element->setId($this->id . '[' . $rowId . '][' . $element->wpId . ']');
+                $element->setValue($row[$element->wpId]);
+                echo '<td>';
+                echo '<label for="'.$element->id.'"><strong>'.$element->title.'</strong></label><br><br>';
+                $element->render($entire = false);
+                echo '</td>';
+            }
+            echo '<td class="row-config">';
+            echo '<input type="button" class="button deleteRow" value="Usuń element">';
+            echo '</td>';
+            echo '</tr>';
+        }
+
+        echo '</table>';
+
         echo '</div>';
-        $this->afterRender();
+
+
+
+
+
+
+        $this->afterRender($entire);
     }
 }

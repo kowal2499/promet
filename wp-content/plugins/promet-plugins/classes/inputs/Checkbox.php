@@ -9,10 +9,10 @@ class Checkbox extends Input_General
         parent::__construct($id, $title, $wrapper, $desc, $attr);
     }
 
-    public function render()
+    public function render($entire = true)
     {
         $options = isset($this->attributes['options']) ? $this->attributes['options'] : [];
-        $this->beforeRender();
+        $this->beforeRender($entire);
 
         foreach ($options as $option) {
             $checked = '';
@@ -26,6 +26,6 @@ class Checkbox extends Input_General
         echo '<br><span class="description">'.$this->desc.'</span>';
 
 
-        $this->afterRender();
+        $this->afterRender($entire);
     }
 }

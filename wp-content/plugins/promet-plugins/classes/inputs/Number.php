@@ -9,13 +9,13 @@ class Number extends Input_General
         parent::__construct($id, $title, $wrapper, $desc, $attr);
     }
 
-    public function render()
+    public function render($entire = true)
     {
         $size = isset($this->attributes['size']) ? $this->attributes['size'] : '30';
         $min = isset($this->attributes['min']) ? $this->attributes['min'] : null;
         $max = isset($this->attributes['max']) ? $this->attributes['max'] : null;
 
-        $this->beforeRender();
+        $this->beforeRender($entire);
 
         echo '<input type="number"'.
             ' name="'.$this->id.'"'.
@@ -26,6 +26,6 @@ class Number extends Input_General
             (is_null($max) ? '' : ' max="'.intval($max).'"').
             '><br /><span class="description">'.$this->desc.'</span>';
 
-        $this->afterRender();
+        $this->afterRender($entire);
     }
 }

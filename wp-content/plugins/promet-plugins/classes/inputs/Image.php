@@ -13,13 +13,13 @@ class Image extends Input_General
         parent::__construct($id, $title, $wrapper, $desc, $attr);
     }
 
-    public function render()
+    public function render($entire = true)
     {
         $size = isset($this->attributes['size']) ? $this->attributes['size'] : '30';
         $min = isset($this->attributes['min']) ? $this->attributes['min'] : null;
         $max = isset($this->attributes['max']) ? $this->attributes['max'] : null;
 
-        $this->beforeRender();
+        $this->beforeRender($entire);
         echo '<div class="img-upload">';
 
         $noimage = true;
@@ -47,6 +47,6 @@ class Image extends Input_General
         echo '</div><!-- img-upload -->';
         echo '<div class="description">'.$this->desc.'</div>';
 
-        $this->afterRender();
+        $this->afterRender($entire);
     }
 }

@@ -14,3 +14,24 @@
 .img-buttons input[type="button"] {
     margin-bottom: 5px;
 }
+
+/* Repeatable2 */
+
+.rptContainer .form-table td {
+    vertical-align: top;
+}
+
+.rptContainer .form-table tr {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-bottom: 10px solid #F1F1F1;
+}
+
+.rptContainer .form-table .row-config {
+    background-color: rgba(0, 0, 0, 0.3);
+    vertical-align: middle;
+    text-align: center;
+}
+
+.rptContainer .form-table .row-config input {
+    margin-bottom: 5px;
+}

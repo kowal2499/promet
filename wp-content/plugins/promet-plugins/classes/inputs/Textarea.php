@@ -9,12 +9,12 @@ class Textarea extends Input_General
         parent::__construct($id, $title, $wrapper, $desc, $attr);
     }
 
-    public function render()
+    public function render($entire = true)
     {
         $rows = isset($this->attributes['rows']) ? $this->attributes['rows'] : null;
         $cols = isset($this->attributes['cols']) ? $this->attributes['cols'] : null;
 
-        $this->beforeRender();
+        $this->beforeRender($entire);
 
         echo '<textarea'.
             ' name="'.$this->id.'"'.
@@ -23,6 +23,6 @@ class Textarea extends Input_General
             (is_null($cols) ? '' : ' cols="'.intval($cols).'"').
             '>'.$this->value.'</textarea><br><span class="description">'.$this->desc.'</span>';
 
-        $this->afterRender();
+        $this->afterRender($entire);
     }
 }

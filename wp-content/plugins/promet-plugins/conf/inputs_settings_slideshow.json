@@ -54,8 +54,8 @@
                     "title": "Tekst duży",
                     "desc": "A description for the field.",
                     "attr": {
-                        "rows": 2,
-                        "cols": 80
+                        "rows": 5,
+                        "cols": 25
                     }
                 },
                 "txtDesc02": {
@@ -63,8 +63,8 @@
                     "title": "Tekst mniejszy",
                     "desc": "A description for the field.",
                     "attr": {
-                        "rows": 3,
-                        "cols": 80
+                        "rows": 5,
+                        "cols": 25
                     }
                 }
             }
