@@ -35,3 +35,11 @@
 .rptContainer .form-table .row-config input {
     margin-bottom: 5px;
 }
+
+.rptContainer table.form-table tr:first-child > .row-config .upRow {
+    display: none;
+}
+
+.rptContainer table.form-table tr:last-child > .row-config .downRow {
+    display: none;
+}

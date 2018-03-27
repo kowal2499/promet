@@ -35,41 +35,104 @@ var uploader = {
 
 uploader.init();
 
+/**
+ * 
+ * 
+ * Repeatables
+ * 
+ * 
+ */
+
 var repeatable = {
 
+    /**
+     * Przypnij obsługę eventów
+     */
     init: function() {
         jQuery(document).on('click', '.addRow', this.onAddRow.bind(this));
         jQuery(document).on('click', '.deleteRow', this.onDelRow.bind(this));
+        jQuery(document).on('click', '.upRow', this.onUpRow.bind(this));
+        jQuery(document).on('click', '.downRow', this.onDownRow.bind(this));
     },
 
+    /**
+     * Dodanie nowego wiersza na podstawie szablonu
+     */
     onAddRow: function(e) {
-        
         var template = jQuery(e.srcElement).closest('.rptContainer').find('.rowTemplate');
         var records = jQuery(e.srcElement).closest('.rptContainer').find('table.form-table');
         var qty = this.getQuantity(e.srcElement);
         records.append(template.val().replace(/%index%/g, qty));
     },
 
+    /**
+     * Usunięcie istniejącego wiersza
+     */
     onDelRow: function(e) {
         // znajdź najbliższy <tr>
-        var myRow = jQuery(e.srcElement).closest('tr');
+        var thisRow = jQuery(e.srcElement).closest('tr');
         
-        myRow.fadeOut(500, function() {
-            var parent = myRow.closest('table.form-table');
+        thisRow.fadeOut(500, function() {
+            var parent = thisRow.closest('table.form-table');
             // usuń rząd
-            myRow.remove();
+            thisRow.remove();
             this.updateIds(parent);
         }.bind(this));
     },
 
+    /**
+     * Zmiana pozycji wiersza o 1 w górę
+     */
+    onUpRow: function(e) {
+        var thisRow = jQuery(e.srcElement).closest('tr');
+        var previous = thisRow.prev('tr');
+        if (previous.length === 0) {
+            return;
+        }
+
+        thisRow.fadeOut(300, function() {
+            var tmp = thisRow
+            thisRow.remove();
+            previous.before(tmp);
+            tmp.fadeIn(300);
+            var parent = thisRow.closest('table.form-table');
+            this.updateIds(parent);
+        }.bind(this, previous));
+    },
+
+    /**
+     * Zmiana pozycji wiersza o 1 w dół
+     */
+    onDownRow: function(e) {
+        var thisRow = jQuery(e.srcElement).closest('tr');
+        var next = thisRow.next('tr');
+        if (next.length === 0) {
+            return;
+        }
+
+        thisRow.fadeOut(300, function() {
+            var tmp = thisRow
+            thisRow.remove();
+            next.after(tmp);
+            tmp.fadeIn(300);
+            var parent = thisRow.closest('table.form-table');
+            this.updateIds(parent);
+        }.bind(this, next));
+    },
+
+    /**
+     * Liczy wiersze
+     */
     getQuantity: function(obj) {
         var parent = jQuery(obj).closest('.rptContainer');
         var rows = parent.find('table.form-table tr')
         return rows.length;
     },
 
+    /**
+     * Aktualizuje indeksy wiersza (wywołanie po każdym usunięciu albo zmianie pozycji)
+     */
     updateIds: function(parent) {
-        console.log('doing update')
         var repeatableName = parent.data('inner-id');
         // get all first level tr-s. There may be some nested repeatable structures, we do not want to loop through them
         var rows = parent.find('tr').first().parent().children();

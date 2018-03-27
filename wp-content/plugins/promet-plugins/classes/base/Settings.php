@@ -113,6 +113,7 @@ class Settings
         foreach ($this->tabs as $tab) {
             foreach ($tab['manager']->getFields() as $id => $input) {
                 $this->cache[$id]['manager'] = $tab['manager'];
+                $this->cache[$id]['inputs'] = $input;
             }
         }
     }
@@ -126,8 +127,9 @@ class Settings
             // czy jest już utworzony objekt?
             if (!isset($this->cache[$id]['object']) or (empty($this->cache[$id]['object']))) {
                 $manager = $this->cache[$id]['manager'];
+                $inputs = $this->cache[$id]['inputs'];
                 // utwórz obiekt formularza i zapisz w cache
-                $object = $manager->factory($id);
+                $object = $manager->factory($id, $inputs);
                 $this->cache[$id]['object'] = $object;
             }
 

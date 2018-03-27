@@ -25,7 +25,6 @@ class Repeatable2 extends Input_General
 
     public function render($entire = true)
     {
-        var_dump($this->value);
         $this->beforeRender($entire);
 
         // wygeneruj szablon wiersza (będzie z niego korzystał JS)
@@ -43,16 +42,16 @@ class Repeatable2 extends Input_General
             // config row
             echo '<td class="row-config">';
             echo '<input type="button" class="button deleteRow" value="Usuń element">';
+            echo '<input type="button" class="button upRow" value="Do góry">';
+            echo '<input type="button" class="button downRow" value="W dół">';
             echo '</td>';
             echo '</tr>';
         }
         $output = ob_get_clean();
 
-
-
         echo '<div class="rptContainer">';
         echo '<input type="hidden" disabled="disabled" class="rowTemplate" value="'.htmlspecialchars($output).'">';
-        echo '<input type="button" class="button addRow" value="Dodaj element" data-qty="'. count($this->value) .'">';
+        echo '<input type="button" class="button addRow" value="Dodaj element">';
         
         echo '<table class="form-table" data-inner-id="' . $this->getWpId() . '">';
 
@@ -68,18 +67,14 @@ class Repeatable2 extends Input_General
             }
             echo '<td class="row-config">';
             echo '<input type="button" class="button deleteRow" value="Usuń element">';
+            echo '<input type="button" class="button upRow" value="Do góry">';
+            echo '<input type="button" class="button downRow" value="W dół">';
             echo '</td>';
             echo '</tr>';
         }
 
         echo '</table>';
-
         echo '</div>';
-
-
-
-
-
 
         $this->afterRender($entire);
     }
