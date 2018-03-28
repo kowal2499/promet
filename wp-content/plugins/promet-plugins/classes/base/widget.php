@@ -6,7 +6,7 @@ class Promet_Products_Widget extends WP_Widget
     public function __construct()
     {
         parent::__construct('promet_products_widget', 'Promet Products', array(
-            'description' => 'Widget pokazuje produkty firmy'
+            'description' => 'Widget pokazuje produkty firmy',
         ));
 
         Widget_Setup::getInstance()
@@ -33,7 +33,7 @@ class Promet_Products_Widget extends WP_Widget
             ->enqueue_script('bootstrap', plugins_url('/promet-plugins/public/js/vendor/bootstrap.min.js'), 'jQuery3', '1.0.0', true)
             ->enqueue_script('slidebars', plugins_url('/promet-plugins/public/js/vendor/slidebars.min.js'), 'jQuery3', '1.0.0', true)
             ->enqueue_script('simplelightbox', plugins_url('/promet-plugins/public/js/vendor/simple-lightbox.min.js'), 'jQuery3', '1.0.0', true)
-            
+
             ->enqueue_script('app', plugins_url('/promet-plugins/public/js/app.js'), 'jQuery3', '1.0.0', true)
             ->enqueue_script_admin('core-admin.js', plugins_url('/promet-plugins/public/js/admin.js'), 'jQuery', '1.0', true)
             ->enqueue_script_admin('inputs-admin.js', plugins_url('/promet-plugins/admin/js/inputs.js'), 'jQuery', '1.0', true)
@@ -41,17 +41,15 @@ class Promet_Products_Widget extends WP_Widget
             ->add_actions();
 
         // rozmiar ikonek w galerii produktu
-        add_image_size('thumbnail-products', 120, 120, array ('center', 'center'));
+        add_image_size('thumbnail-products', 120, 120, array('center', 'center'));
 
         // add custom posts
-        $research = Base\CPT\Research::getInstance();
         $products = Base\CPT\Products::getInstance();
+        $research = Base\CPT\Research::getInstance();
 
         // add settings in admin area
         $settings = Base\Settings::getInstance();
-        
     }
-
 }
 
 // globals

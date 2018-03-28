@@ -60,57 +60,7 @@ abstract class CustomPost
                         
                         $object->setValue($meta);
                         $object->render();
-
-                        // echo '<tr>';
-                        // echo '<th><label for="'.$fieldArgs['label'].'">'.$fieldArgs['label'].'</label></th>';
-                        // echo '<td>';
-                        /*
-                        switch ($field['type']) {
-                            case 'text':
-                                echo '<input type="text" name="'.$field['id'].'" id="'.$field['id'].'" value="'.$meta.'" size="30" />';
-                                if (!empty($field['desc'])) {
-                                    echo '<br /><span class="description">'.$field['desc'].'</span>';
-                                }
-                                break;
-                            case 'textarea':
-                                echo '<textarea name="'.$field['id'].'" id="'.$field['id'].'" cols="60" rows="4">'.$meta.'</textarea>
-                                <br /><span class="description">'.$field['desc'].'</span>';
-                                break;
-                            case 'checkbox':
-                                echo '<input type="checkbox" name="'.$field['id'].'" id="'.$field['id'].'" ', $meta ? ' checked="checked"' : '','/>
-                                    <label for="'.$field['id'].'">'.$field['desc'].'</label>';
-                                break;
-                            case 'select':
-                                echo '<select name="'.$field['id'].'" id="'.$field['id'].'">';
-                                foreach ($field['options'] as $option) {
-                                    echo '<option', $meta == $option['value'] ? ' selected="selected"' : '', ' value="'.$option['value'].'">'.$option['label'].'</option>';
-                                }
-                                echo '</select><br /><span class="description">'.$field['desc'].'</span>';
-                                break;
-                            case 'repeatable':
-                                echo '<a class="repeatable-add button" href="#">+</a>
-                                    <ul id="'.$field['id'].'-repeatable" class="custom_repeatable">';
-                                $i = 0;
-                                if ($meta) {
-                                    foreach($meta as $row) {
-                                        echo '<li><span class="sort hndle">|||</span>
-                                                    <input type="text" name="'.$field['id'].'['.$i.']" id="'.$field['id'].'" value="'.$row.'" size="30" />
-                                                    <a class="repeatable-remove button" href="#">-</a></li>';
-                                        $i++;
-                                    }
-                                } else {
-                                    echo '<li><span class="sort hndle">|||</span>
-                                                <input type="text" name="'.$field['id'].'['.$i.']" id="'.$field['id'].'" value="" size="30" />
-                                                <a class="repeatable-remove button" href="#">-</a></li>';
-                                }
-                                echo '</ul>
-                                    <span class="description">'.$field['desc'].'</span>';
-                                break;
-                        } */
-                        // echo '</td>';
-                        // echo '</tr>';
                     }
-                    // echo '</table>';
                 },
                 $this->name, // post type name
                 $context,
