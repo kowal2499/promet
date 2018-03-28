@@ -1,0 +1,39 @@
+{
+    "inputs": {
+        "slider2": {
+            "class": "Repeatable2",
+            "title": "Elementy slidera strony tytułowej",
+            "desc": "Ustaw proszę co tylko chcesz",
+            "elements": {
+                "background": {
+                    "class": "Image",
+                    "title": "Obraz tła",
+                    "desc": "Zalecana rozdzielczość 1200x400px, rozmiar pliku max 150kB"
+                },
+                "actor": {
+                    "class": "Image",
+                    "title": "Animowany obraz",
+                    "desc": "Zalecana rozdzielczość 400x400px, png, przeźroczyste tło"
+                },
+                "txtDesc01": {
+                    "class": "Textarea",
+                    "title": "Tekst duży",
+                    "desc": "A description for the field.",
+                    "attr": {
+                        "rows": 5,
+                        "cols": 25
+                    }
+                },
+                "txtDesc02": {
+                    "class": "Textarea",
+                    "title": "Tekst mniejszy",
+                    "desc": "A description for the field.",
+                    "attr": {
+                        "rows": 5,
+                        "cols": 25
+                    }
+                }
+            }
+        }
+    }
+}

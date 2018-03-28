@@ -1,0 +1,96 @@
+{
+    "inputs": {
+        "photoMain": {
+            "class": "Image",
+            "title": "Zdjęcie główne",
+            "desc": "Wyświetlane na stronie głównej, zalecana rozdzielczość 480x480px"
+        },
+
+        "productsPhotoGallery": {
+            "class": "Repeatable2",
+            "title": "Galeria zdjęć na stronie produktu",
+            "elements": {
+                "productPhoto": {
+                    "class": "Image",
+                    "title": "Zdjęcie/Obraz",
+                    "desc": "Zalecana rozdzielczość do 1200x800px. Zalecana wielkość pliku do 150kB."
+                }
+            }
+        },
+        
+        "photoDesc01": {
+            "class": "Image",
+            "title": "Zdjęcie do opisu 1",
+            "desc": "A description for the field."
+        },
+
+        "txtDesc01": {
+            "class": "Textarea",
+            "title": "Tekst pod zdjęciem do opisu 1",
+            "desc": "A description for the field.",
+            "attr": {
+                "rows": 3,
+                "cols": 80
+            }
+        },
+
+        "photoDesc02": {
+            "class": "Image",
+            "title": "Zdjęcie do opisu 2",
+            "desc": "A description for the field."
+        },
+
+        "txtDesc02": {
+            "class": "Textarea",
+            "title": "Tekst pod zdjęciem do opisu 2",
+            "desc": "A description for the field.",
+            "attr": {
+                "rows": 3,
+                "cols": 80
+            }
+        },
+
+        "select01": {
+            "class": "Select",
+            "title": "Grubość blachy",
+            "desc": "A description",
+            "attr": {
+                "options": [
+                    {"name": "0.8mm", "value": "1"},
+                    {"name": "1.1mm", "value": "2"},
+                    {"name": "1.5mm", "value": "3"}
+                ]
+            }
+        },
+
+        "check01": {
+            "class": "Checkbox",
+            "title": "Dostępne kolory",
+            "desc": "A description",
+            "attr": {
+                "options": [
+                    {"name": "czerwony", "value": "czerwony"},
+                    {"name": "pomarańczowy", "value": "pomarańczowy"},
+                    {"name": "niebieski", "value": "niebieski"},
+                    {"name": "czarny", "value": "czarny"}
+                ]
+            }
+        },
+
+        "radio01": {
+            "class": "Radio",
+            "title": "Kolor oczu",
+            "desc": "A description",
+            "attr": {
+                "options": [
+                    {"name": "niebieski", "value": "niebieski"},
+                    {"name": "brązowy", "value": "brązowy"},
+                    {"name": "zielony", "value": "zielony"}
+                ]
+            }
+        }
+    }
+}
+
+
+                    

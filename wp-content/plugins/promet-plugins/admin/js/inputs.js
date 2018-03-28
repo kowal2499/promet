@@ -55,6 +55,10 @@ jQuery(function(jQuery) {
                         newElement.type = 'text';
                         newElement.name = element.name;
                         newElement.value = repeatables[related].value[pos][element.name];
+                        if ('attr' in element) {
+                            var size = element.attr.size || 30;
+                            newElement.setAttribute("size", size);
+                        }
                         break;
                 
                     default:

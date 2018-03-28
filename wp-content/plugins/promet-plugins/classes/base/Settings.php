@@ -1,236 +1,100 @@
 <?php
+namespace Base;
 
-// include_once( plugin_dir_path( __FILE__ ) . '../inputs/SlideshowConfig.php');
+include_once(plugin_dir_path(__FILE__) . 'InputsManager.php');
+class Settings
+{
+    private static $instance;
+    private $cache = array();
 
-    class Settings {
+    private function __construct()
+    {
 
-        private static $instance;
-        private $cache = array();
+        $this->tabs = [
+            [
+                'title' => 'Pokaz slajdów',
+                'url' => 'slideshow',
+                'manager' => new InputsManager(plugin_dir_path(__DIR__)
+                    . '../conf/inputs_settings_slideshow.json')
+            ],
+            [
+                'title' => 'Dane ogólne',
+                'url' => 'general_data',
+                'manager' => new InputsManager(plugin_dir_path(__DIR__)
+                    . '../conf/inputs_settings_general.json')
+            ],
+            [
+                'title' => 'Kontakt',
+                'url' => 'kontakt',
+                'manager' => new InputsManager(plugin_dir_path(__DIR__)
+                    . '../conf/inputs_settings_contact.json')
+            ]
+        ];
 
-        private function __construct() {
-            
-            $this->tabs = array(
-                array(
-                    'title'         => 'Pokaz slajdów',
-                    'url'           => 'pokaz_slajdow',
-                    'inputs'        => array(
-                        
-                        array(
-                            'class' => 'Repeatable',
-                            'id'    => 'slideshowPrimary',
-                            'title' => 'Pokaz slajdów na stronie głównej',
-                            'desc'  => 'Jakś tam opis',
-                            'recordDefinition' => array(
-                                array(
-                                    "type"  => "text",
-                                    "desc"  => "Tło slajdu. Zalecana rozdzielczość: 1200x400px",
-                                    "name"  => "backgroundImage"
-                                ),
+        add_action('admin_menu', function () {
+            add_menu_page('Ustawienia', 'Ustawienia podstawowe', 'manage_options', 'ustawienia', array($this, 'pageContent'));
+        });
 
-                                array(
-                                    "type"  => "text",
-                                    "desc"  => "Aktor obrazek",
-                                    "name"  => "slideInImage"
-                                ),
+        $this->cacheKeys();
+    }
 
-                                array(
-                                    "type"  => "text",
-                                    "desc"  => "Opis główny",
-                                    "name"  => "txt01"
-                                ),
-                                array(
-                                    "type"  => "text",
-                                    "desc"  => "Opis dodatkowy",
-                                    "name"  => "txt2"
-                                )
-                            )
-                        ),
-
-                    )   // end inputs
-                ),
-                array(
-                    'title'         => 'Dane ogólne',
-                    'url'           => 'general',
-                    'inputs'        => array(
-                        array(
-                            'class' => 'TextInput',
-                            'id'    => 'logoGeneral',
-                            'title' => 'Logo',
-                            'desc'  => 'Scieżka dostępu do pliku z logiem. Logo widoczne w nagłówku.'
-                        ),
-                        array(
-                            'class' => 'TextInput',
-                            'id'    => 'phoneGeneral',
-                            'title' => 'Główny numer telefonu',
-                            'desc'  => 'Główny numer telefonu. Widoczny na stronie tytułowej w nagłówku i w stopce.'
-                        ),
-                        array(
-                            'class' => 'TextInput',
-                            'id'    => 'emailGeneral',
-                            'title' => 'Główny adres email',
-                            'desc'  => 'Główny adres email. Widoczny na stronie tytułowej w nagłówku i w stopce.'
-                        ),
-                        array(
-                            'class' => 'TextInput',
-                            'id'    => 'addressLegalName',
-                            'title' => 'Pełna nazwa firmy',
-                        ),
-                        array(
-                            'class' => 'TextInput',
-                            'id'    => 'addressPostalColde',
-                            'title' => 'Kod pocztowy',
-                        ),
-                        array(
-                            'class' => 'TextInput',
-                            'id'    => 'addressCity',
-                            'title' => 'Miejscowość',
-                        ),
-                        array(
-                            'class' => 'TextInput',
-                            'id'    => 'addressStreet',
-                            'title' => 'Ulica',
-                        ),
-                        array(
-                            'class' => 'TextInput',
-                            'id'    => 'addressVoivodeship',
-                            'title' => 'Województwo',
-                        ),
-                        array(
-                            'class' => 'TextInput',
-                            'id'    => 'addressCountry',
-                            'title' => 'Kraj',
-                        ),
-                        array(
-                            'class' => 'TextInput',
-                            'id'    => 'workingDays',
-                            'title' => 'Dni otwarcia firmy',
-                            'desc'  => 'Tekst opisujący dni w jakich firma jest otwarta'
-                        ),
-                        array(
-                            'class' => 'TextInput',
-                            'id'    => 'workingHours',
-                            'title' => 'Godziny otwarcia firmy',
-                            'desc'  => 'Tekst opisujący godziny w jakich firma jest otwarta'
-                        ),
-                        array(
-                            'class' => 'TextInput',
-                            'id'    => 'companyNIP',
-                            'title' => 'Numer NIP firmy',
-                            'desc'  => ''
-                        ),
-
-
-
-
-
-                    ) // end inputs
-                ),
-                array(
-                    'title'         => 'Kontakt',
-                    'url'           => 'kontakt',
-                    'inputs'        => array(
-                        array(
-                            'class' => 'TextInput',
-                            'id'    => 'mapAPIKey',
-                            'title' => 'Mapa google: klucz API',
-                            'desc'  => ''
-                        ),
-                        array(
-                            'class' => 'TextInput',
-                            'id'    => 'mapCoordinateX',
-                            'title' => 'Mapa google: współrzędna X',
-                            'desc'  => ''
-                        ),
-                        array(
-                            'class' => 'TextInput',
-                            'id'    => 'mapCoordinateY',
-                            'title' => 'Mapa google: współrzędna Y',
-                            'desc'  => ''
-                        ),
-                        array(
-                            'class' => 'TextInput',
-                            'id'    => 'mapZoom',
-                            'title' => 'Mapa google: zoom',
-                            'desc'  => ''
-                        ),
-                        array(
-                            'class' => 'TextInput',
-                            'id'    => 'contactFormHeader',
-                            'title' => 'Nagłówek nad formularzem kontaktowym',
-                            'desc'  => ''
-                        ),
-                        array(
-                            'class' => 'TextInput',
-                            'id'    => 'contactFormDescription',
-                            'title' => 'Tekst nad formularzem kontaktowym',
-                            'desc'  => ''
-                        ),
-                        array(
-                            'class' => 'TextInput',
-                            'id'    => 'addressDataHeader',
-                            'title' => 'Nagłówek nad danymi teleadresowymi',
-                            'desc'  => ''
-                        ),
-                    )
-                )
-            );
-
-            add_action('admin_menu', function() {
-                add_menu_page('Ustawienia', 'Ustawienia podstawowe', 'manage_options', 'ustawienia', array($this, 'pageContent'));
-            });
-
-            $this->cacheKeys();
+    public function pageContent()
+    {
+        if (!current_user_can('manage_options')) {
+            wp_die(__('Nie posiadasz wystarczających uprawnień.'));
         }
 
-        public function pageContent() {
-            if (!current_user_can('manage_options')) {
-                wp_die(__('Nie posiadasz wystarczających uprawnień.'));
+        // save
+        if ($_REQUEST['action'] == 'save') {
+            foreach ($_REQUEST['options'] as $key => $value) {
+                update_option($key, $value);
             }
+            ?>
+            <div class="notice updated">
+                <p>Zmiany zostały zapisane.</p>
+            </div>
+            <?php
+        }
+        
+        // display
+            ?>
+            
+        <div class="admin-options-wrapper">
+            <form class="wrap" method="post">
+                <h2>Podstawowe dane prezentowane na stronie</h2>
 
-            // save
-            if($_REQUEST['action'] == 'save') {
-                foreach ($_REQUEST['options'] as $key => $value) {
-                    update_option($key, $value);
-                }
-                ?>
-                  <div class="notice updated">
-                    <p>Zmiany zostały zapisane.</p>
-                  </div>
-                <?php
-           }
-           // display
-?>
-            <div class="admin-options-wrapper">
-                <form class="wrap" method="post">
-                    <h2>Podstawowe dane prezentowane na stronie</h2>
-
+                    <?php
+                        $active_tab = isset($_GET['tab']) ? $_GET['tab'] : 'slideshow';
+                    ?>
+                    <h2 class="nav-tab-wrapper">
                         <?php
-                            $active_tab = isset($_GET['tab']) ? $_GET['tab'] : 'pokaz_slajdow'; 
+                        // generate tabs
+                        foreach ($this->tabs as $tab) {
+                        ?> 
+                            <a href="?page=ustawienia&tab=<?php echo $tab['url']; ?>"
+                            class="nav-tab <?php echo $active_tab == $tab['url'] ? 'nav-tab-active' : ''; ?>">
+                            <?php echo $tab['title']; ?>
+                            </a>
+                        <?php
+                        }
                         ?>
-                        <h2 class="nav-tab-wrapper">
-                            <?php 
-                            // generate tabs
-                                foreach ($this->tabs as $tab) {
-                                   ?> <a href="?page=ustawienia&tab=<?php echo $tab['url']; ?>" class="nav-tab <?php echo $active_tab == $tab['url'] ? 'nav-tab-active' : ''; ?>"><?php echo $tab['title']; ?></a><?php
-                                }    
-                            ?>
-                        </h2>
+                    </h2>
 
-                        <?php
-                            // generate inputs
-                            foreach ($this->tabs as $tab) {
-                                if ($tab['url'] === $active_tab) {
-                                    foreach ($tab['inputs'] as $input) {
-                                        $object = $this->factory($input);
-                                        $val = $object->getValue();//(get_option($input['id']) !== false ? get_option($input['id']) : '');
-                                        $object->setValue($val);
-                                        $object->render();
-                                    }
-                                } else {
-                                    continue;
-                                }
+                    <?php
+                    // generate inputs
+                    foreach ($this->tabs as $tab) {
+                        if ($tab['url'] === $active_tab) {
+                            foreach ($tab['manager']->getFields() as $id => $input) {
+                                $object = $tab['manager']->factory($id, $input);
+                                $val = $object->getValue();
+                                $object->setValue($val);
+                                $object->render();
                             }
-                        ?>
+                        } else {
+                            continue;
+                        }
+                    }
+                    ?>
                     <br>
                     <input type="hidden" name="action" value="save">
                     <input type="submit" class="button button-primary" value="Zapisz zmiany">
@@ -238,47 +102,48 @@
 
             </div>
 <?php
-        }
+    }
 
-        private function factory(array $args) {
-            switch ($args['class']) {
-                case 'Repeatable':
-                    $item = new $args['class']($args['id'], $args['title'], $args['desc'], $args['recordDefinition']); // generate the Repeatable object
-                    break;
-                
-                default:
-                    $item = new $args['class']($args['id'], $args['title'], $args['desc']); // generate general object
-                    break;
+    /*
+     * Tworzy tablicę id-ików i zarządzających nimi managerów.
+     * W trakcie działania skryptu dopisywane też są referencje utworzonych obiektów.
+     */
+    private function cacheKeys()
+    {
+        foreach ($this->tabs as $tab) {
+            foreach ($tab['manager']->getFields() as $id => $input) {
+                $this->cache[$id]['manager'] = $tab['manager'];
+                $this->cache[$id]['inputs'] = $input;
             }
-            return $item;
-        }
-
-        private function cacheKeys() {
-            foreach ($this->tabs as $tab) {
-                foreach ($tab["inputs"] as $input) {
-                    $this->cache[$input['id']] = $input;
-                }
-            }
-        }
-
-        public function getOption(string $id) {
-            if (isset($this->cache[$id]) && !empty($this->cache[$id])) {
-
-                // czy jest już utworzony objekt?
-                if (!isset($this->cache[$id]["object"]) or (empty($this->cache[$id]["object"]))) {
-                    $this->cache[$id]["object"] = $this->factory($this->cache[$id]);
-                }
-
-                if ($this->cache[$id]["object"]) {
-                    return $this->cache[$id]["object"]->getValue();
-                }
-            }
-        }
-
-        public static function getInstance() {
-            if (!isset(self::$instance)) {
-                self::$instance = new Settings();
-            }
-            return self::$instance;
         }
     }
+
+    /*
+     * Zwraca wartość z danego obiektu formularza
+     */
+    public function getOption(string $id)
+    {
+        if (isset($this->cache[$id]) && !empty($this->cache[$id])) {
+            // czy jest już utworzony objekt?
+            if (!isset($this->cache[$id]['object']) or (empty($this->cache[$id]['object']))) {
+                $manager = $this->cache[$id]['manager'];
+                $inputs = $this->cache[$id]['inputs'];
+                // utwórz obiekt formularza i zapisz w cache
+                $object = $manager->factory($id, $inputs);
+                $this->cache[$id]['object'] = $object;
+            }
+
+            if ($this->cache[$id]['object']) {
+                return $this->cache[$id]['object']->getValue();
+            }
+        }
+    }
+
+    public static function getInstance()
+    {
+        if (!isset(self::$instance)) {
+            self::$instance = new Settings();
+        }
+        return self::$instance;
+    }
+}

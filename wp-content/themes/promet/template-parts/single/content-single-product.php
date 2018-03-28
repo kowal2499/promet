@@ -1,15 +1,15 @@
 <?php
             $meta = get_post_meta(get_the_ID());
 
-            if (isset($meta['productGallery01'][0])) {
-                $gallery = unserialize($meta['productGallery01'][0]);
+            if (isset($meta['productsPhotoGallery'][0])) {
+                $gallery = unserialize($meta['productsPhotoGallery'][0]);
                 $images = [];
                 $id = 1;
-                foreach ($gallery as $image) {
+                foreach ($gallery as $key => $image) {
                     $img = [
                         'id' => $id++,
-                        'thumbnail' => wp_get_attachment_image_src($image, 'thumbnail-products')[0],
-                        'full'  =>  wp_get_attachment_image_src($image, '')[0]
+                        'thumbnail' => wp_get_attachment_image_src($image['productPhoto'], 'thumbnail-products')[0],
+                        'full'  =>  wp_get_attachment_image_src($image['productPhoto'], '')[0]
                     ];
                     $images[] = $img;
                 }

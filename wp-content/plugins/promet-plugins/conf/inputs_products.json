@@ -1,0 +1,24 @@
+{
+    "inputs": {
+        "photoMain": {
+            "class": "Image",
+            "title": "Zdjęcie główne",
+            "desc": "Wyświetlane na stronie głównej, zalecana rozdzielczość 480x480px"
+        },
+
+        "productsPhotoGallery": {
+            "class": "Repeatable2",
+            "title": "Galeria zdjęć na stronie produktu",
+            "elements": {
+                "productPhoto": {
+                    "class": "Image",
+                    "title": "Zdjęcie/Obraz",
+                    "desc": "Zalecana rozdzielczość do 1200x800px. Zalecana wielkość pliku do 150kB."
+                }
+            }
+        }
+    }
+}
+
+
+                    

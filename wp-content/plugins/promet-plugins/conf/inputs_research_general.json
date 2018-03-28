@@ -1,0 +1,20 @@
+{
+    "inputs": {
+        "researchGeneralText": {
+            "class": "Text",
+            "desc": "A description for the field.",
+            "title": "Jakiś text input" 
+        },
+
+        "researchGeneralTextarea": {
+            "class": "Textarea",
+            "desc": "A description for the field.",
+            "title": "Jakiś textarea"  
+        }
+    }
+}
+
+                        
+
+
+                    
