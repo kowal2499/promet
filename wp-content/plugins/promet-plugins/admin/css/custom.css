@@ -17,6 +17,10 @@
 
 /* Repeatable2 */
 
+.rptContainer {
+    border: 1px solid #BBB;
+    padding: 10px;
+}
 .rptContainer .form-table td {
     vertical-align: top;
 }
@@ -27,12 +31,13 @@
 }
 
 .rptContainer .form-table .row-config {
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: #BBB;
     vertical-align: middle;
-    text-align: center;
 }
 
 .rptContainer .form-table .row-config input {
+    display: block;
+    margin: 0 auto;
     margin-bottom: 5px;
 }
 

@@ -1,33 +1,31 @@
 {
     "inputs": {
-        "cert03": {
-            "label": "Is valid?",
+        "researchCertificateCheck": {
+            "class": "Checkbox",
+            "title": "Wariant koloru",
             "desc": "A description for the field.",
-            "type": "checkbox" 
+            "attr": {
+                "options": [
+                    {"name": "czerwony", "value": "czerwony"},
+                    {"name": "pomarańczowy", "value": "pomarańczowy"}
+                ]
+            }
         },
-        "cert02": {
-            "label": "Text Input",
-            "desc": "A description for the field.",
-            "type": "text" 
+        "researchCertificateText": {
+            "class": "Text",
+            "title": "Some text here",
+            "desc": "A description for the field."
         },
-        "sel01": {
-            "label": "Select box",
-            "desc": "A description for the field.",
-            "id": "sel01",
-            "type": "select",
-            "options": {
-                "one": {
-                    "label": "option one",
-                    "value": "one"
-                },
-                "two": {
-                    "label": "option two",
-                    "value": "two"
-                },
-                "three": {
-                    "label": "option three",
-                    "value": "three"
-                }
+        "researchCertificateSelect": {
+            "class": "Select",
+            "title": "Klasa certyfikatu",
+            "desc": "A description",
+            "attr": {
+                "options": [
+                    {"name": "klasa A", "value": "1"},
+                    {"name": "klasa B", "value": "2"},
+                    {"name": "klasa C", "value": "3"}
+                ]
             }
         }
     }

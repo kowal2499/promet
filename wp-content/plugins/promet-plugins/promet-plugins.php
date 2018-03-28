@@ -22,7 +22,6 @@ include_once(plugin_dir_path(__FILE__) . 'classes/cpt/Products.php');
 
 include_once(plugin_dir_path(__FILE__) . 'classes/inputs/Input_General.php');
 include_once(plugin_dir_path(__FILE__) . 'classes/inputs/Text.php');
-include_once(plugin_dir_path(__FILE__) . 'classes/inputs/Repeatable.php');
 include_once(plugin_dir_path(__FILE__) . 'classes/inputs/Repeatable2.php');
 include_once(plugin_dir_path(__FILE__) . 'classes/inputs/Number.php');
 include_once(plugin_dir_path(__FILE__) . 'classes/inputs/Textarea.php');
@@ -30,4 +29,3 @@ include_once(plugin_dir_path(__FILE__) . 'classes/inputs/Select.php');
 include_once(plugin_dir_path(__FILE__) . 'classes/inputs/Checkbox.php');
 include_once(plugin_dir_path(__FILE__) . 'classes/inputs/Radio.php');
 include_once(plugin_dir_path(__FILE__) . 'classes/inputs/Image.php');
-include_once(plugin_dir_path(__FILE__) . 'classes/inputs/SlideshowConfig.php');

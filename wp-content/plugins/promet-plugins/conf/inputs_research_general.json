@@ -1,21 +1,15 @@
 {
     "inputs": {
-        "item01": {
+        "researchGeneralText": {
             "class": "Text",
             "desc": "A description for the field.",
             "title": "Jakiś text input" 
         },
 
-        "item02": {
+        "researchGeneralTextarea": {
             "class": "Textarea",
             "desc": "A description for the field.",
             "title": "Jakiś textarea"  
-        },
-
-        "repeatable": {
-            "class": "Repeatable",
-            "desc": "A description for the field.",
-            "title": "Jakiś repeat" 
         }
     }
 }

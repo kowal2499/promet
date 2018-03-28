@@ -44,7 +44,7 @@ class Promet_Products_Widget extends WP_Widget
         add_image_size('thumbnail-products', 120, 120, array ('center', 'center'));
 
         // add custom posts
-        // $research = Base\CPT\Research::getInstance();
+        $research = Base\CPT\Research::getInstance();
         $products = Base\CPT\Products::getInstance();
 
         // add settings in admin area

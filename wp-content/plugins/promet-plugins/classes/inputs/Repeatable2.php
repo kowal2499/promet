@@ -35,7 +35,7 @@ class Repeatable2 extends Input_General
         foreach ($this->templates as $element) {
             echo '<td>';
             echo '<label for="'.$element->id.'"><strong>'.$element->title.'</strong></label><br><br>';
-            $element->render($entire = false);
+            $element->render(false);
             echo '</td>';
         }
         if (!empty($this->templates)) {
@@ -54,27 +54,29 @@ class Repeatable2 extends Input_General
         echo '<input type="button" class="button addRow" value="Dodaj element">';
         
         echo '<table class="form-table" data-inner-id="' . $this->getWpId() . '">';
-
-        foreach ($this->value as $rowId => $row) {
-            echo '<tr>';
-            foreach ($this->templates as $element) {
-                $element->setId($this->id . '[' . $rowId . '][' . $element->wpId . ']');
-                $element->setValue($row[$element->wpId]);
-                echo '<td>';
-                echo '<label for="'.$element->id.'"><strong>'.$element->title.'</strong></label><br><br>';
-                $element->render($entire = false);
+        if ($this->value) {
+            foreach ($this->value as $rowId => $row) {
+                echo '<tr>';
+                foreach ($this->templates as $element) {
+                    $element->setId($this->id . '[' . $rowId . '][' . $element->wpId . ']');
+                    $element->setValue($row[$element->wpId]);
+                    echo '<td>';
+                    echo '<label for="'.$element->id.'"><strong>'.$element->title.'</strong></label><br><br>';
+                    $element->render(false);
+                    echo '</td>';
+                }
+                echo '<td class="row-config">';
+                echo '<input type="button" class="button deleteRow" value="Usuń element">';
+                echo '<input type="button" class="button upRow" value="Do góry">';
+                echo '<input type="button" class="button downRow" value="W dół">';
                 echo '</td>';
+                echo '</tr>';
             }
-            echo '<td class="row-config">';
-            echo '<input type="button" class="button deleteRow" value="Usuń element">';
-            echo '<input type="button" class="button upRow" value="Do góry">';
-            echo '<input type="button" class="button downRow" value="W dół">';
-            echo '</td>';
-            echo '</tr>';
         }
 
         echo '</table>';
         echo '</div>';
+        echo '<!-- test -->';
 
         $this->afterRender($entire);
     }

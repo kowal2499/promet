@@ -28,6 +28,20 @@ class Research extends CustomPost
 
             $this->metaboxes = array(
                 array(
+                    'name' =>  'Obrazki',
+                    'manager' => new \Base\InputsManager(plugin_dir_path(__DIR__)
+                        . '../conf/inputs_research_general.json')
+                ),
+                array(
+                    'name' =>  'Certfikaty',
+                    'manager' => new \Base\InputsManager(plugin_dir_path(__DIR__)
+                        . '../conf/inputs_research_certificates.json')
+                )
+            );
+
+         /*   
+            $this->metaboxes = array(
+                array(
                     "name"          => "Promet Research Images",
                     "fields"        => array(
 
@@ -93,7 +107,7 @@ class Research extends CustomPost
                 )
             
             );
-
+*/
             parent::__construct();
         }
 
