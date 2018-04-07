@@ -34,7 +34,10 @@ class Promet_Products_Widget extends WP_Widget
             ->enqueue_script('slidebars', plugins_url('/promet-plugins/public/js/vendor/slidebars.min.js'), 'jQuery3', '1.0.0', true)
             ->enqueue_script('simplelightbox', plugins_url('/promet-plugins/public/js/vendor/simple-lightbox.min.js'), 'jQuery3', '1.0.0', true)
 
-            ->enqueue_script('app', plugins_url('/promet-plugins/public/js/app.js'), 'jQuery3', '1.0.0', true)
+            ->enqueue_script('app.01.init', plugins_url('/promet-plugins/public/js/app.01.init.js'), 'jQuery3', '1.0.0', true)
+            ->enqueue_script('app.02.slider', plugins_url('/promet-plugins/public/js/app.02.slider.js'), 'jQuery3', '1.0.0', true)
+            ->enqueue_script('app.03.others', plugins_url('/promet-plugins/public/js/app.03.others.js'), 'jQuery3', '1.0.0', true)
+
             ->enqueue_script_admin('core-admin.js', plugins_url('/promet-plugins/public/js/admin.js'), 'jQuery', '1.0', true)
             ->enqueue_script_admin('inputs-admin.js', plugins_url('/promet-plugins/admin/js/inputs.js'), 'jQuery', '1.0', true)
             ->enqueue_script_admin('inputs2-admin.js', plugins_url('/promet-plugins/admin/js/inputs2.js'), 'jQuery', '1.0', true)

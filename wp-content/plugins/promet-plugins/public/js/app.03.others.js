@@ -1,29 +1,15 @@
-var PROMET = {};
 
 (function ($) {
     'use strict'
-
-    //----------------------------------------------------/
-    // Predefined variables
-    //----------------------------------------------------/
-
-    var $window = $(window),
-        $document = $(document),
-        $body = $('body'),
-
-        // elements
-        $preloader = $('.preloader'),
-        $mapData = $('#googleMapData'),
-        $slider = $('.slick-slider'),
-        $sidebarToggle = $('#sidebarToggle')
 
     //----------------------------------------------------/
     // PAGE LOADER
     //----------------------------------------------------/
 
     PROMET.loader = function () {
-        if (!$preloader.length) return;
-        $preloader.fadeOut(400);
+        var preloader = PROMET.globals.$preloader;
+        if (!preloader.length) return;
+        preloader.fadeOut(400);
     }
 
     //----------------------------------------------------/
@@ -31,6 +17,7 @@ var PROMET = {};
     //----------------------------------------------------/
 
     PROMET.googleMaps = function() {
+        var $mapData = PROMET.globals.$mapData;
         if (!$mapData.length) return;
 
         var rawSettings = $mapData.data('settings');
@@ -61,53 +48,6 @@ var PROMET = {};
     };
 
     //----------------------------------------------------/
-    // SLICK SLIDER
-    //----------------------------------------------------/
-
-    PROMET.slider = function() {
-        if (!$slider.length) return;
-        $slider.slick({
-            slidesToScroll: 1,
-            autoplay: true,
-            autoplaySpeed: 3500,
-            fade: true,
-            cssEase: 'linear',
-            pauseOnHover: false,
-            arrows: false
-        });
-
-        PROMET.sliderAddAnimation();
-
-        $slider.on('init', function (event, slick, currentSlide, nextSlide) {
-            PROMET.sliderAddAnimation();
-        });
-
-        $slider.on('afterChange init', function (event, slick, currentSlide, nextSlide) {
-            PROMET.sliderAddAnimation();
-        });
-
-        $slider.on('beforeChange', function (event, slick, currentSlide, nextSlide) {
-            $('.slideContent h1').removeClass('visible');
-            $('.slideContent p.lead').removeClass('visible');
-            $('.slideContent .actor').removeClass('visible');
-        });
-    };
-
-    PROMET.sliderAddAnimation = function() {
-        $('.slideContent h1').addClass('animated fadeInDown visible').one('animationend oAnimationEnd mozAnimationEnd webkitAnimationEnd', function () {
-            $(this).removeClass('animated fadeInDown');
-        });
-
-        $('.slideContent p.lead').addClass('animated fadeInUp visible ').one('animationend oAnimationEnd mozAnimationEnd webkitAnimationEnd', function () {
-            $(this).removeClass('animated fadeInUp');
-        });
-
-        $('.slideContent .actor').addClass('animated fadeInLeft visible').one('animationend oAnimationEnd mozAnimationEnd webkitAnimationEnd', function () {
-            $(this).removeClass('animated fadeInLeft');
-        });
-    };
-
-    //----------------------------------------------------/
     // SLIDEBARS
     //----------------------------------------------------/
 
@@ -115,7 +55,7 @@ var PROMET = {};
         PROMET.slidebarsController = new slidebars();
         PROMET.slidebarsController.init();
 
-        $sidebarToggle.on('click', function (event) {
+        PROMET.globals.$sidebarToggle.on('click', function (event) {
             event.stopPropagation();
             event.preventDefault();
 
@@ -133,7 +73,7 @@ var PROMET = {};
     //----------------------------------------------------/
 
     PROMET.homeProductsWidget = function() {
-        $document.on('click', '#home-products .menu .valingContent', PROMET.homeProductsWidgetClick);
+        PROMET.globals.$document.on('click', '#home-products .menu .valingContent', PROMET.homeProductsWidgetClick);
         $('#home-products ul li:first-child .valingContent').trigger('click');
     }
 
@@ -161,7 +101,7 @@ var PROMET = {};
     PROMET.singleProduct = function() {
         if (!$('#single-product').length) return;
 
-        jQuery(document).on('click', '#single-product .thumbnails .blend', PROMET.singleProductThumbnailClick);
+        PROMET.globals.$document.on('click', '#single-product .thumbnails .blend', PROMET.singleProductThumbnailClick);
         jQuery('#single-product .thumbnails .blend').first().trigger('click');
 
         // enable lightbox
@@ -184,11 +124,11 @@ var PROMET = {};
     // DOM READY
     //----------------------------------------------------/
 
-    $document.ready(function() {
+    PROMET.globals.$document.ready(function() {
         PROMET.loader();
         PROMET.slidebars();
         PROMET.slider();
-        PROMET.homeProductsWidget(),
+        PROMET.homeProductsWidget();
         PROMET.singleProduct();
         PROMET.googleMaps();
     });
