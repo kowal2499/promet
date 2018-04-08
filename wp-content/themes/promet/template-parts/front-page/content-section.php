@@ -24,15 +24,3 @@
         </div>
     </div>
 </section>
-
-<section class="home-section">
-    <div class="container">
-        <div class="row">
-            <br>
-            <p class="in-progress">w relizacji</p>
-            <h2>Sekcja 'Firma'</h2>
-            <p>Można wymienić w kilku punktach główne zalety firmy i to czym ona się wyróżnia.</p>
-            <br>
-        </div>
-    </div>
-</section>
