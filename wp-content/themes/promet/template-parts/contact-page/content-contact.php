@@ -12,37 +12,49 @@
     <form action="">
         <div class="row">
             <div class="form-group col-sm-6">
-                <label for="name">Imię & Nazwisko</label>
-                <input type="text" class="form-control required name" placeholder="Podaj imię i nazwisko">
+                <label for="contact[name]">Imię & Nazwisko</label>
+                <input type="text" class="form-control required" placeholder="Podaj imię i nazwisko" name="contact[name]">
             </div>
 
             <div class="form-group col-sm-6">
-                <label for="email">Email</label>
-                <input type="text" class="form-control required email" placeholder="Podaj email">
+                <label for="contact[email]">Email</label>
+                <input type="text" class="form-control required" placeholder="Podaj email" name="contact[email]">
             </div>
         </div>
 
         <div class="row">
             <div class="form-group col-sm-12">
-                <label for="subject">Temat wiadomości</label>
-                <input type="text" class="form-control required subject" placeholder="Temat">
+                <label for="contact[nip]">NIP</label>
+                <input type="text" class="form-control required" placeholder="NIP Twojej firmy" name="contact[nip]">
             </div>
         </div>
 
         <div class="row">
             <div class="form-group col-sm-12">
-                <label for="body">Treść wiadomości</label>
-                <textarea type="text" rows="5" class="form-control required body" placeholder="Treść"></textarea>
+                <label for="contact[subject]">Temat wiadomości</label>
+                <input type="text" class="form-control required" placeholder="Temat" name="contact[subject]">
             </div>
         </div>
 
         <div class="row">
-            <div class="form-group col-md-12">
-                <button class="btn btn-primary">Wyślij wiadomość</button>
+            <div class="form-group col-sm-12">
+                <label for="contact[body]">Treść wiadomości</label>
+                <textarea type="text" rows="5" class="form-control required" placeholder="Treść" name="contact[body]"></textarea>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-4">
+                <button class="btn btn-primary" name="contact[submit]">Wyślij wiadomość</button>
+            </div>
+            <div class="form-group col-md-8">
+                <div class="notify-area"></div>
             </div>
         </div>
 
     </form>
+
+    
 </div>
 
 

@@ -131,6 +131,7 @@
         PROMET.homeProductsWidget();
         PROMET.singleProduct();
         PROMET.googleMaps();
+        PROMET.contactFormSubmit();
     });
 
 })(jQuery);
