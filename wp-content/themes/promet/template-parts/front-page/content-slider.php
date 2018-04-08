@@ -12,38 +12,6 @@
         <?php
             $slides = $settings->getOption('slider2');
 
-            $slides = [
-                [
-                    'background' => 143,
-                    'actor' => '',
-                    'txtDesc01' => 'Trwałe i funkcjonalne pojemniki do betonu',
-                    'txtDesc02' => 'sobet dolar amet...'
-                ],
-                [
-                    'background' => 144,
-                    'actor' => '',
-                    'txtDesc01' => 'Zaprojektowane przez fachowców i dla fachowców',
-                    'txtDesc02' => 'sobet dolar amet...'
-                ],
-                [
-                    'background' => 142,
-                    'actor' => '',
-                    'txtDesc01' => 'Pojemne zbiorniki na gruz i inne materiały',
-                    'txtDesc02' => 'sobet dolar amet...'
-                ],
-                [
-                    'background' => 145,
-                    'actor' => '',
-                    'txtDesc01' => 'Sprawdzone rozwiązania i lata doświadczeń',
-                    'txtDesc02' => 'sobet dolar amet...'
-                ],
-                [
-                    'background' => 146,
-                    'actor' => '',
-                    'txtDesc01' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-                    'txtDesc02' => 'sobet dolar amet...'
-                ]
-            ];
             foreach($slides as $slide):
 
                 $background = wp_get_attachment_image_src($slide['background'], 'full');
