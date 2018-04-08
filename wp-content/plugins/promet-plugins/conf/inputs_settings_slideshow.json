@@ -8,12 +8,7 @@
                 "background": {
                     "class": "Image",
                     "title": "Obraz tła",
-                    "desc": "Zalecana rozdzielczość 1200x400px, rozmiar pliku max 150kB"
-                },
-                "actor": {
-                    "class": "Image",
-                    "title": "Animowany obraz",
-                    "desc": "Zalecana rozdzielczość 400x400px, png, przeźroczyste tło"
+                    "desc": "Zalecana rozdzielczość 1920x400px, rozmiar pliku max 100kB"
                 },
                 "txtDesc01": {
                     "class": "Textarea",
@@ -21,16 +16,7 @@
                     "desc": "A description for the field.",
                     "attr": {
                         "rows": 5,
-                        "cols": 25
-                    }
-                },
-                "txtDesc02": {
-                    "class": "Textarea",
-                    "title": "Tekst mniejszy",
-                    "desc": "A description for the field.",
-                    "attr": {
-                        "rows": 5,
-                        "cols": 25
+                        "cols": 60
                     }
                 }
             }

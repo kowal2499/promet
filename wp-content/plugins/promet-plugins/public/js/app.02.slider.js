@@ -17,7 +17,16 @@ PROMET.slider = function() {
         fade: true,
         cssEase: 'linear',
         pauseOnHover: false,
-        arrows: false
+        pauseOnFocus: false,
+        pauseOnDotsHover: false,
+        arrows: false,
+        dots: true,
+        focusOnSelect: false,
+        customPaging : function(slider, i) {
+            var thumb = $(slider.$slides[i]).data();
+            return '<a>' + (i+1) + '</a>';
+            },
+        appendDots: $('.custom-nav')
     });
 
     PROMET.sliderAddAnimation();

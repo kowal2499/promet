@@ -2,6 +2,7 @@ section#single-product {
 
     .heading {
         margin: 10px;
+        margin-top: 20px;
         
         
         h2 {
@@ -14,12 +15,13 @@ section#single-product {
             padding-top: 10px;
             padding-bottom: 10px;
             border-left: 6px solid $cOrange;
-            background-color: $colorGray2;
-            color: #fff;
+            background-color: $cPanelBackground;
+            color: $cDark;
+            font-size: 33px;
         }
         p {
-            color: $cBlue;
-            font-size: 16px;
+            color: $cDark;
+            font-size: 17px;
         }
         
     }
@@ -28,7 +30,7 @@ section#single-product {
         margin-top: 30px;
 
         .scene {
-            height: 450px;
+            height: 380px;
             overflow: hidden;
             img {
                 display: none;
@@ -40,7 +42,10 @@ section#single-product {
         .thumbnails {
 
             padding: 20px 10px;
-            border: 1px solid $cFooter;
+            border: none;
+            border-radius: 0;
+            border-left: 1px solid $cOrange;
+            border-right: 1px solid $cOrange;
 
         .tile {
                 position: relative;
@@ -48,7 +53,7 @@ section#single-product {
                 img {
                     display: block;
                     width: 100%;
-                    max-width: 120px;
+                    max-width: 80px;
                     margin: 0 auto;
                     
                     &+img {
@@ -81,9 +86,11 @@ section#single-product {
     }
 
     .well {
-        border: 1px solid $cFooter;
-        background-color: #f5f5f5;
+        border: none;
         border-radius: 0;
+        border-left: 1px solid $cOrange;
+        border-right: 1px solid $cOrange;
+        background-color: $cPanelBackground;
         font-size: 15px;
         box-shadow: 0 1px 1px rgba(0,0,0,.05);
     }
@@ -122,7 +129,42 @@ aside {
     .panel {
         border-radius: 0;
         border: none;
+        box-shadow: none;
+
         .panel-heading {
+            text-align: center;
+            a {
+                h4 {
+                    background-color: $cOrange;
+                    text-align: center;
+                    text-transform: uppercase;
+                    font-weight: 700;
+                    font-size: 15px;
+                    padding: 10px;
+                    color: #454545;
+                }
+                &.collapsed h4:after {
+                    @include transform(rotate(0deg));
+                }
+                h4:after{
+                    font-family: 'Font Awesome 5 Free';
+                    cursor: pointer;
+                    display: block;
+                    padding: 3px 6px 2px;
+                    color: $cWhite;
+                    content: "\f106";
+                    font-size: 18px;
+                    font-weight: 800;
+                    transition: all 0.25s ease-in-out 0s;
+                    @include transform(rotate(180deg));
+                }
+            }
+            a:hover, a:focus {
+                text-decoration: none;
+            }
+        }
+
+        .panel-heading2 {
             border: 1px solid $cFooter;
             border-bottom: 1px solid $cFooter;
             border-top-left-radius: 0px;
