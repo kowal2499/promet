@@ -27,7 +27,7 @@
 
         <?php if (!empty($images)): ?>
         <div class="row gallery">
-            <div class="col-xs-9">
+            <div class="col-xs-10">
                 <div class="scene">
                     <?php foreach ($images as $image): ?>
                     <a href="<?php echo $image['full']; ?>">
@@ -37,7 +37,7 @@
                 </div>
             </div>
 
-            <div class="col-xs-3">
+            <div class="col-xs-2">
                 <div class="thumbnails">
                     <?php foreach ($images as $image): ?>
                         <div class="tile">
