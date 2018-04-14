@@ -3,8 +3,6 @@ section#archive-products
 {
     .menu {
         position: relative;
-        display: block;
-        top: -42px;
         width: 100%;
         text-align: center;
         
@@ -17,6 +15,7 @@ section#archive-products
             border: 10px solid $cWhite;
             padding: 0;
             margin: 0;
+            margin-top: 2px;
             font-size: 0;
             
 
@@ -26,7 +25,7 @@ section#archive-products
                 .valign {
                     margin: 0 auto;
                     .valingContent {
-                        width: 170px;
+                        width: 200px;
                         height: 74px;
                         text-align: center;
                         text-transform: uppercase;
@@ -58,7 +57,7 @@ section#archive-products
 
     .showcase {
         position: relative;
-        top: -40px;
+        // top: -40px;
         display: flex;
         justify-content: space-around;
         flex-wrap: wrap;

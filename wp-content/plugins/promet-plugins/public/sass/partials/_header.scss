@@ -1,6 +1,5 @@
 #header {
     background-color: $colorGray;
-    height: 140px;
 
     .container {
         position: relative;
@@ -93,6 +92,7 @@
         z-index: 5;
         border: 10px solid $colorGray;
         border-top: 0;
+        margin-bottom: 1px;
         
         ul.menu {
             margin: 0;
@@ -190,7 +190,6 @@ header, [off-canvas] {
         
 @media screen and (min-width: 525px) and (max-width: 991px) {
     #header {
-        height: 210px;
         .infoBar {
             height: 170px;
             .sideLeft {
@@ -212,10 +211,10 @@ header, [off-canvas] {
             }
         }
         .menuBar ul.menu li a {
-            padding-left: 20px;
-            padding-right: 20px;
+            padding: 10px 20px;
             font-size: 12px;
         }
+       
     }
 }
 
