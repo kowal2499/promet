@@ -18,6 +18,8 @@ include_once(plugin_dir_path(__FILE__) . 'classes/cpt/CustomPost.php');
 include_once(plugin_dir_path(__FILE__) . 'classes/cpt/Research.php');
 include_once(plugin_dir_path(__FILE__) . 'classes/cpt/Products.php');
 
+// ajax calls
+include_once(plugin_dir_path(__FILE__) . 'classes/ajax/Mailer.php');
 
 
 include_once(plugin_dir_path(__FILE__) . 'classes/inputs/Input_General.php');

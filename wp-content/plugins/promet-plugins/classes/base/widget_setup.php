@@ -62,24 +62,26 @@ class Widget_Setup {
         return self::$instance;
     }
 
-    public function enqueue_script($handle, $src, $deps=array(), $version='1.0', $inFooter=true) {
+    public function enqueue_script($handle, $src, $deps=array(), $version='1.0', $inFooter=true, $localize=array()) {
         $this->front_scripts[] = array(
             'handle' => $handle,
             'src' => $src,
             'deps' => $deps,
             'version' => $version,
-            'inFooter' => $inFooter
+            'inFooter' => $inFooter,
+            'localize' => $localize
         );
         return self::$instance;
     }
 
-    public function enqueue_script_admin($handle, $src, $deps=array(), $version='1.0', $inFooter=true) {
+    public function enqueue_script_admin($handle, $src, $deps=array(), $version='1.0', $inFooter=true, $localize=array()) {
         $this->admin_scripts[] = array(
             'handle' => $handle,
             'src' => $src,
             'deps' => $deps,
             'version' => $version,
-            'inFooter' => $inFooter
+            'inFooter' => $inFooter,
+            'localize' => $localize
         );
         return self::$instance;
     }
@@ -112,13 +114,27 @@ class Widget_Setup {
             $scripts = $this->front_scripts;
 
             foreach ($scripts as $script) {
-                wp_enqueue_script(
+
+                wp_register_script(
                     $script['handle'],
                     $script['src'],
                     $script['deps'],
                     $script['version'],
                     $script['inFooter']
                 );
+
+                wp_enqueue_script(
+                    $script['handle']
+                );
+
+                if (!empty($script['localize'])) {
+                    // set variables for script
+                    wp_localize_script(
+                        $script['handle'],
+                        $script['localize']['name'],
+                        $script['localize']['data']
+                    );
+                }
             }
             return true;
         });

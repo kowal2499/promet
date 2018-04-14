@@ -36,12 +36,26 @@ class Promet_Products_Widget extends WP_Widget
 
             ->enqueue_script('app.01.init', plugins_url('/promet-plugins/public/js/app.01.init.js'), 'jQuery3', '1.0.0', true)
             ->enqueue_script('app.02.slider', plugins_url('/promet-plugins/public/js/app.02.slider.js'), 'jQuery3', '1.0.0', true)
+            ->enqueue_script('app.04.forms', plugins_url('/promet-plugins/public/js/app.04.forms.js'), 'jQuery3', '1.0.0', true, [
+                'name' => 'app04',
+                'data' => [
+                    'ajaxurl' => admin_url('admin-ajax.php'),
+                    'sendingMessage' => __('Trwa wysyłanie wiadomości', 'contact'),
+                    'successMessage' => __('Wiadomość została pomyślnie wysłana', 'contact'),
+                    'errorMessage' => __('Nie udało się wysłać wiadomości', 'contact'),
+                ]
+            ])
             ->enqueue_script('app.03.others', plugins_url('/promet-plugins/public/js/app.03.others.js'), 'jQuery3', '1.0.0', true)
 
             ->enqueue_script_admin('core-admin.js', plugins_url('/promet-plugins/public/js/admin.js'), 'jQuery', '1.0', true)
             ->enqueue_script_admin('inputs-admin.js', plugins_url('/promet-plugins/admin/js/inputs.js'), 'jQuery', '1.0', true)
             ->enqueue_script_admin('inputs2-admin.js', plugins_url('/promet-plugins/admin/js/inputs2.js'), 'jQuery', '1.0', true)
             ->add_actions();
+
+        // mailer object
+        $this->mailer = new Ajax\Mailer();
+        add_action('wp_ajax_nopriv_send_contact_message', array( $this->mailer, 'send_contact_message'));
+        add_action('wp_ajax_send_contact_message', array($this->mailer, 'send_contact_message'));
 
         // rozmiar ikonek w galerii produktu
         add_image_size('thumbnail-products', 120, 120, array('center', 'center'));
