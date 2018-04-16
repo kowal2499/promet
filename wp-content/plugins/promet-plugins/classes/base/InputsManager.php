@@ -74,4 +74,9 @@ class InputsManager
     {
         return $this->varWrapper;
     }
+
+    public function getTranslateStrings()
+    {
+       
+    }
 }

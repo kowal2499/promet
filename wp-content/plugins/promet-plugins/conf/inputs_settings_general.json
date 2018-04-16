@@ -33,11 +33,13 @@
         },
         "addressVoivodeship": {
             "class": "Text",
-            "title": "Województwo"
+            "title": "Województwo",
+            "translate": true
         },
         "addressCountry": {
             "class": "Text",
-            "title": "Kraj"
+            "title": "Kraj",
+            "translate": true
         },
         "workingDays": {
             "class": "Text",
@@ -53,6 +55,16 @@
             "class": "Text",
             "title": "Numer NIP firmy",
             "desc": ""
+        },
+        "companyHistory": {
+            "class": "Textarea",
+            "title": "Historia firmy",
+            "desc": "Kilka zdań o firmie. Widoczne na każdej stronie w stopce.",
+            "translate": true,
+            "attr": {
+                "rows": 8,
+                "cols": 80
+            }
         }
     }
 }

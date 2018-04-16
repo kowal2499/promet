@@ -30,7 +30,8 @@
         "contactFormHeader": {
             "class": "Text",
             "title": "Nagłówek nad formularzem kontaktowym",
-            "desc": ""
+            "desc": "",
+            "translate": true
         },
         "contactFormDescription": {
             "class": "Textarea",
@@ -39,12 +40,14 @@
             "attr": {
                 "rows": 8,
                 "cols": 80
-            }
+            },
+            "translate": true
         },
         "addressDataHeader": {
             "class": "Text",
             "title": "Nagłówek nad danymi teleadresowymi",
-            "desc": ""
+            "desc": "",
+            "translate": true
         }
     }
 }

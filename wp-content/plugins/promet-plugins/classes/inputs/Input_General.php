@@ -52,7 +52,7 @@ abstract class Input_General
 
     public function getValue()
     {
-        $value = get_option($this->wpId);
+        $value = pll__(get_option($this->wpId));
         return $value ?? '';
     }
 

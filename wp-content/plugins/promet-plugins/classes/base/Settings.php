@@ -36,6 +36,12 @@ class Settings
         });
 
         $this->cacheKeys();
+
+        // każdy z managerów rejestruje swoje stringi
+        foreach ($this->tabs as $tab) {
+            $tab['manager']->getTranslateStrings();
+        }
+        
     }
 
     public function pageContent()
@@ -112,8 +118,26 @@ class Settings
     {
         foreach ($this->tabs as $tab) {
             foreach ($tab['manager']->getFields() as $id => $input) {
-                $this->cache[$id]['manager'] = $tab['manager'];
-                $this->cache[$id]['inputs'] = $input;
+                $this->cache[$id] = [
+                    'manager' => $tab['manager'],
+                    'inputs' => $input
+                ];
+
+                if (is_admin()) {
+                    if (isset($input['translate']) && $input['translate'] === true) {
+                        pll_register_string(
+                            'promet',
+                            $this->getOption($id),
+                            'z ustawień',
+                            'true'
+                        );
+                        // var_dump($this->getOption($id));
+                    }
+                }
+                
+                
+                // ['manager'] = $tab['manager'];
+                // $this->cache[$id]['inputs'] = $input;
             }
         }
     }
