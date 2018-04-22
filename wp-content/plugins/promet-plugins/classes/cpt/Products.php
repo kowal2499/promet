@@ -11,7 +11,7 @@ class Products extends CustomPost
         $this->name = 'products';
 
         $this->names = array(
-            'name'              => __('Produkty'),
+            'name'              => __('Produkty', 'promet-plugins'),
             'singular_name'     => 'Produkt',
             'add_new'           => 'Dodaj nowy produkt',
             'all_items'         => 'Wszystkie produkty'

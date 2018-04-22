@@ -37,11 +37,6 @@ class Settings
 
         $this->cacheKeys();
 
-        // każdy z managerów rejestruje swoje stringi
-        foreach ($this->tabs as $tab) {
-            $tab['manager']->getTranslateStrings();
-        }
-        
     }
 
     public function pageContent()
@@ -125,13 +120,25 @@ class Settings
 
                 if (is_admin()) {
                     if (isset($input['translate']) && $input['translate'] === true) {
+
+                        /**
+                         * 1. register string niech wywołuje sam obiekt inputa, zna swoją wartość dokładnie
+                         * 2. inaczej tę funkcję będzie realizował repeatable 2
+                         * 3. tutaj trzeba by zrobić pętle po wszystkich obiektach z tłumaczeniem i utworzyć ich instancje by móc wywołać funkcję register string na niej
+                         */
+
+                        $val = $this->getOption($id);
+
+                        if ($input['class'] == 'Repeatable2') {
+                            $val =$this->getOption($id)[1]['txtDesc01'];
+                        } 
                         pll_register_string(
                             'promet',
-                            $this->getOption($id),
+                            $val,
                             'z ustawień',
                             'true'
                         );
-                        // var_dump($this->getOption($id));
+                        var_dump($val);
                     }
                 }
                 
