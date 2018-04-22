@@ -40,9 +40,9 @@ class Promet_Products_Widget extends WP_Widget
                 'name' => 'app04',
                 'data' => [
                     'ajaxurl' => admin_url('admin-ajax.php'),
-                    'sendingMessage' => __('Trwa wysyłanie wiadomości', 'contact'),
-                    'successMessage' => __('Wiadomość została pomyślnie wysłana', 'contact'),
-                    'errorMessage' => __('Nie udało się wysłać wiadomości', 'contact'),
+                    'sendingMessage' => __('Trwa wysyłanie wiadomości', 'promet-plugins'),
+                    'successMessage' => __('Wiadomość została pomyślnie wysłana', 'promet-plugins'),
+                    'errorMessage' => __('Nie udało się wysłać wiadomości', 'promet-plugins'),
                 ]
             ])
             ->enqueue_script('app.03.others', plugins_url('/promet-plugins/public/js/app.03.others.js'), 'jQuery3', '1.0.0', true)
@@ -77,3 +77,4 @@ function promet_products_load_widget()
 }
 
 add_action('widgets_init', 'promet_products_load_widget');
+

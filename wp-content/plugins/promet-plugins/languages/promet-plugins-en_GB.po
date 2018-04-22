@@ -1,0 +1,43 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2018-04-22 00:17+0200\n"
+"PO-Revision-Date: 2018-04-22 00:23+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en_GB\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.2\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __\n"
+"X-Poedit-SearchPath-0: classes/cpt/CustomPost.php\n"
+"X-Poedit-SearchPath-1: classes/cpt/Products.php\n"
+"X-Poedit-SearchPath-2: classes/cpt/Research.php\n"
+"X-Poedit-SearchPath-3: .\n"
+
+#: classes/base/Settings.php:50
+msgid "Nie posiadasz wystarczających uprawnień."
+msgstr "You do not have sufficent access rights."
+
+#: classes/base/widget.php:43
+msgid "Trwa wysyłanie wiadomości"
+msgstr "Sending message"
+
+#: classes/base/widget.php:44
+msgid "Wiadomość została pomyślnie wysłana"
+msgstr "Message has been sent"
+
+#: classes/base/widget.php:45
+msgid "Nie udało się wysłać wiadomości"
+msgstr "Message was not sent"
+
+#: classes/cpt/Products.php:14
+msgid "Produkty"
+msgstr "Products"
+
+#: classes/cpt/Research.php:13
+msgid "Badania i Rozwój"
+msgstr "Research"

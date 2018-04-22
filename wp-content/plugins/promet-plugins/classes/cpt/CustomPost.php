@@ -36,7 +36,7 @@ abstract class CustomPost
                 );
                 register_post_type($this->name, $args);
             });
-        }
+        }        
     }
 
     

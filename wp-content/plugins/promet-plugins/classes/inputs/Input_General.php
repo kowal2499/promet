@@ -70,4 +70,8 @@ abstract class Input_General
     {
         $this->id = $newId;
     }
+
+    public function getValueToRegister() {
+        return null;
+    }
 }

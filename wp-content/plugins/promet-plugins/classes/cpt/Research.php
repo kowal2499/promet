@@ -10,7 +10,7 @@ class Research extends CustomPost
         $this->name = 'research';
 
         $this->names = array(
-            'name' => __('Badania i Rozwój'),
+            'name' => __('Badania i Rozwój', 'promet-plugins'),
             'singular_name' => 'Element B&R',
             'add_new' => 'Dodaj nowy element B&R',
             'add_new_item' => 'Dodaj nowy element B&R',

@@ -19,7 +19,8 @@
                         "cols": 60
                     }
                 }
-            }
+            },
+            "translate": true
         }
     }
 }
