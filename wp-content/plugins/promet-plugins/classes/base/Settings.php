@@ -5,7 +5,7 @@ include_once(plugin_dir_path(__FILE__) . 'InputsManager.php');
 class Settings
 {
     private static $instance;
-    private $cache = array();
+    // private $cache = array();
 
     private function __construct()
     {
@@ -35,7 +35,14 @@ class Settings
             add_menu_page('Ustawienia', 'Ustawienia podstawowe', 'manage_options', 'ustawienia', array($this, 'pageContent'));
         });
 
-        $this->cacheKeys();
+        // rejestruj stringi do tłumaczeń
+        if (is_admin()) {
+            foreach ($this->tabs as $tab) {
+                $tab['manager']->polylangRegister();
+            }
+        }
+
+        // $this->cacheKeys();
 
     }
 
@@ -109,65 +116,51 @@ class Settings
      * Tworzy tablicę id-ików i zarządzających nimi managerów.
      * W trakcie działania skryptu dopisywane też są referencje utworzonych obiektów.
      */
-    private function cacheKeys()
-    {
-        foreach ($this->tabs as $tab) {
-            foreach ($tab['manager']->getFields() as $id => $input) {
-                $this->cache[$id] = [
-                    'manager' => $tab['manager'],
-                    'inputs' => $input
-                ];
-
-                if (is_admin()) {
-                    if (isset($input['translate']) && $input['translate'] === true) {
-
-                        /**
-                         * 1. register string niech wywołuje sam obiekt inputa, zna swoją wartość dokładnie
-                         * 2. inaczej tę funkcję będzie realizował repeatable 2
-                         * 3. tutaj trzeba by zrobić pętle po wszystkich obiektach z tłumaczeniem i utworzyć ich instancje by móc wywołać funkcję register string na niej
-                         */
-
-                        $val = $this->getOption($id);
-
-                        if ($input['class'] == 'Repeatable2') {
-                            $val =$this->getOption($id)[1]['txtDesc01'];
-                        } 
-                        pll_register_string(
-                            'promet',
-                            $val,
-                            'z ustawień',
-                            'true'
-                        );
-                        var_dump($val);
-                    }
-                }
-                
-                
-                // ['manager'] = $tab['manager'];
-                // $this->cache[$id]['inputs'] = $input;
-            }
-        }
-    }
+    // private function cacheKeys()
+    // {
+    //     foreach ($this->tabs as $tab) {
+    //         foreach ($tab['manager']->getFields() as $id => $input) {
+    //             $this->cache[$id] = [
+    //                 'manager' => $tab['manager'],
+    //                 'inputs' => $input
+    //             ];
+    //         }
+    //     }
+    // }
 
     /*
      * Zwraca wartość z danego obiektu formularza
      */
-    public function getOption(string $id)
-    {
-        if (isset($this->cache[$id]) && !empty($this->cache[$id])) {
-            // czy jest już utworzony objekt?
-            if (!isset($this->cache[$id]['object']) or (empty($this->cache[$id]['object']))) {
-                $manager = $this->cache[$id]['manager'];
-                $inputs = $this->cache[$id]['inputs'];
-                // utwórz obiekt formularza i zapisz w cache
-                $object = $manager->factory($id, $inputs);
-                $this->cache[$id]['object'] = $object;
-            }
+    // public function getOption(string $id)
+    // {
+    //     if (isset($this->cache[$id]) && !empty($this->cache[$id])) {
+    //         // czy jest już utworzony objekt?
+    //         if (!isset($this->cache[$id]['object']) or (empty($this->cache[$id]['object']))) {
+    //             $manager = $this->cache[$id]['manager'];
+    //             $inputs = $this->cache[$id]['inputs'];
+    //             // utwórz obiekt formularza i zapisz w cache
+    //             $object = $manager->factory($id, $inputs);
+    //             $this->cache[$id]['object'] = $object;
+    //         }
 
-            if ($this->cache[$id]['object']) {
-                return $this->cache[$id]['object']->getValue();
+    //         if ($this->cache[$id]['object']) {
+    //             return pll__($this->cache[$id]['object']->getValue());
+    //         }
+    //     }
+    // }
+
+    public function getOption2(string $id)
+    {
+        foreach($this->tabs as $tab) {
+            if (in_array($id, $tab['manager']->getIds())) {
+                $input = $tab['manager']->getInput($id);
+                if ($input) {
+                    return pll__($input->getValue());
+                }
             }
         }
+
+        return null;
     }
 
     public static function getInstance()

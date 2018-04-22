@@ -44,7 +44,8 @@
         "workingDays": {
             "class": "Text",
             "title": "Dni otwarcia firmy",
-            "desc": "Tekst opisujący dni w jakich firma jest otwarta"
+            "desc": "Tekst opisujący dni w jakich firma jest otwarta",
+            "translate": true
         },
         "workingHours": {
             "class": "Text",

@@ -75,4 +75,61 @@ class InputsManager
         return $this->varWrapper;
     }
 
+    /**
+     * REFACTORiNG
+     */
+
+    public function getIds() {
+        return array_keys($this->fields['inputs'] ?? []);
+    }
+
+    /**
+     * Zwraca obiekt inputa
+     */
+    public function getInput($id) {
+        $params = $this->fields['inputs'][$id];
+
+        if (!$params) {
+            return false;
+        }
+
+        // jeśli jest już utworzony obiekt to go zwróć
+        if (array_key_exists('object', $params)) {
+            return $params['object'];
+        }
+
+        // utwórz instancję obiektu, zapisz ją i zwróć referencję
+
+        $object = $this->factory($id, $params);
+        if ($object) {
+            $this->fields['inputs'][$id]['object'] = $object;
+        }
+        return $object;
+    }
+
+    /**
+     * Rejestruje łańcuchy dla plugina Polylang
+     */
+    public function polylangRegister()
+    {
+        foreach ($this->fields['inputs'] as $id => $params) {
+            if (array_key_exists('translate', $params) && $params['translate'] === true) {
+                // var_dump($params);
+
+                $input = $this->getInput($id);
+
+                $to_translate = $input->getTransleatable();
+
+                foreach((array)$to_translate as $translate_me) {
+                    pll_register_string(
+                        'promet',
+                        $translate_me,
+                        'z ustawień',
+                        'true'
+                    );
+                }
+            }
+        }
+    }
+
 }

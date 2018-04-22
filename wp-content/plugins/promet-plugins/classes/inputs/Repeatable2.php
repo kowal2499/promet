@@ -80,4 +80,13 @@ class Repeatable2 extends Input_General
 
         $this->afterRender($entire);
     }
+
+    public function getTransleatable()
+    {
+        return array_map(function($record) {
+            return $record['txtDesc01'] ?? null;
+        }, get_option($this->wpId));
+        // var_dump(get_option($this->wpId));
+        // die();
+    }
 }

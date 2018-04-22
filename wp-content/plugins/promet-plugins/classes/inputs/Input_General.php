@@ -52,7 +52,7 @@ abstract class Input_General
 
     public function getValue()
     {
-        $value = pll__(get_option($this->wpId));
+        $value = get_option($this->wpId);
         return $value ?? '';
     }
 
@@ -71,7 +71,8 @@ abstract class Input_General
         $this->id = $newId;
     }
 
-    public function getValueToRegister() {
-        return null;
+    public function getTransleatable()
+    {
+        return get_option($this->wpId);
     }
 }
